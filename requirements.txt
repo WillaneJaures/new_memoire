@@ -1,0 +1,17 @@
+# Astro Runtime includes the following pre-installed providers packages: https://www.astronomer.io/docs/astro/runtime-image-architecture#provider-packages
+beautifulsoup4
+requests
+boto3
+pandas
+streamlit
+pandas
+scrapy
+selenium
+SQLAlchemy
+scikit-learn
+lightgbm
+optuna
+plotly
+lightgbm
+joblib
+polars

@@ -1,0 +1,471 @@
+price,type,superficie,nombre_chambres,nombre_sdb,category,area,city
+300000,Appartements,170,2,3,Location,Yoff,Dakar
+850000,Appartements,120,1,2,Location,Mermoz,Dakar
+2000000,Villas,304,4,4,Location,Almadies,Dakar
+300000,Appartements,170,2,2,Location,Mamelles,Dakar
+2000000,Appartements,400,3,5,Location,Virage,Dakar
+1100000,Appartements,170,3,4,Location,Almadies,Dakar
+1200000,Appartements,170,3,3,Location,Mermoz,Dakar
+1600000,Appartements,170,3,5,Location,Mermoz,Dakar
+800000,Appartements,170,3,3,Location,Mamelles,Dakar
+1000000,Villas,170,4,4,Location,Almadies,Dakar
+200000,Appartements,170,3,3,Location,Almadies 2,Dakar
+1100000,Appartements,170,3,3,Location,Plateau,Dakar
+1200000,Appartements,170,3,2,Location,Plateau,Dakar
+2000000,Appartements,170,3,3,Location,Almadies,Dakar
+2200000,Villas,170,4,5,Location,Almadies,Dakar
+1346800,Appartements,230,3,4,Location,Almadies,Dakar
+1400000,Villas,312,4,5,Location,Almadies,Dakar
+700000,Appartements,200,3,3,Location,Ngor,Dakar
+1200000,Appartements,400,3,3,Location,Amitié,Dakar
+500000,Appartements,170,2,2,Location,Plateau,Dakar
+1900000,Appartements,190,2,3,Location,Plateau,Dakar
+250000,Appartements,150,1,3,Location,Almadies 2,Dakar
+1400000,Villas,170,4,4,Location,Ouakam,Dakar
+1100000,Appartements,146,2,4,Location,Plateau,Dakar
+950000,Appartements,200,3,3,Location,Liberte 6,Dakar
+800000,Appartements,170,2,2,Location,VDN,Dakar
+350000,Appartements,152,2,3,Location,Almadies,Dakar
+350000,Appartements,170,2,2,Location,Sicap foire,Dakar
+1200000,Appartements,170,3,3,Location,Plateau,Dakar
+1500000,Appartements,204,3,5,Location,Almadies,Dakar
+800001,Appartements,170,3,3,Location,Cité keur gorgui,Dakar
+300000,Appartements,170,2,2,Location,Liberte 6,Dakar
+1700000,Appartements,200,3,3,Location,Dakar,Dakar
+400000,Appartements,170,2,3,Location,Mamelles,Dakar
+200000,Appartements,100,2,2,Location,Sicap foire,Dakar
+2400000,Appartements,170,3,3,Location,Almadies,Dakar
+500000,Appartements,110,2,3,Location,Almadies,Dakar
+550000,Appartements,170,3,3,Location,Sacré-cœur,Dakar
+250000,Appartements,150,2,3,Location,Hann maristes,Dakar
+3000000,Villas,400,4,5,Location,Fann,Dakar
+367000,Appartements,170,2,3,Location,Sicap baobab,Dakar
+550000,Appartements,170,3,4,Location,Corniche,Dakar
+450000,Appartements,170,3,3,Location,Sacré-cœur,Dakar
+280000,Appartements,70,1,3,Location,Liberte 6 extension,Dakar
+1200000,Villas,170,4,4,Location,Almadies,Dakar
+1350000,Appartements,250,3,3,Location,Point-e,Dakar
+569800,Appartements,150,3,4,Location,Almadies,Dakar
+1700000,Appartements,220,3,5,Location,Almadies,Dakar
+600000,Appartements,300,3,5,Location,Sacré-cœur,Dakar
+2300000,Appartements,250,3,4,Location,Fann,Dakar
+6000000,Villas,514,4,6,Location,Fann,Dakar
+500000,Appartements,170,3,3,Location,Sicap foire,Dakar
+1300000,Appartements,238,3,4,Location,Point-e,Dakar
+900000,Appartements,200,3,4,Location,Fann,Dakar
+400000,Appartements,150,2,2,Location,Cité keur gorgui,Dakar
+850000,Appartements,150,3,4,Location,Point-e,Dakar
+1300000,Appartements,149,3,2,Location,Almadies,Dakar
+120000,Appartements,170,2,2,Location,Keur Massar,Dakar
+275000,Appartements,100,2,2,Location,Sud foire,Dakar
+800000,Appartements,152,2,3,Location,Almadies,Dakar
+150000,Appartements,170,2,3,Location,VDN,Dakar
+1800000,Appartements,170,3,3,Location,Mermoz,Dakar
+700000,Villas,170,4,3,Location,Mermoz,Dakar
+1800000,Appartements,210,3,4,Location,Almadies,Dakar
+1800000,Appartements,170,3,2,Location,Almadies,Dakar
+425000,Appartements,170,3,3,Location,Sacré-cœur,Dakar
+500000,Appartements,170,3,4,Location,Sacré-cœur,Dakar
+600000,Appartements,170,3,3,Location,Cité keur gorgui,Dakar
+850000,Villas,200,4,5,Location,Point-e,Dakar
+650000,Appartements,120,3,3,Location,Mermoz,Dakar
+350000,Appartements,170,2,2,Location,Almadies,Dakar
+350000,Appartements,120,2,3,Location,Ouakam,Dakar
+225000,Appartements,170,1,1,Location,Mermoz,Dakar
+850000,Appartements,170,3,3,Location,Virage,Dakar
+180000,Appartements,120,2,2,Location,Zac Mbao,Dakar
+500000,Appartements,100,2,2,Location,Almadies,Dakar
+600000,Appartements,150,3,3,Location,Ngor,Dakar
+1250000,Appartements,120,3,2,Location,Plateau,Dakar
+275000,Appartements,170,1,2,Location,Mamelles,Dakar
+1000000,Appartements,170,3,3,Location,Amitié,Dakar
+1500000,Appartements,150,3,3,Location,Ouakam,Dakar
+125000,Appartements,170,2,2,Location,Diamniadio,Dakar
+1150000,Appartements,250,3,3,Location,Almadies,Dakar
+500000,Appartements,170,3,3,Location,Mamelles,Dakar
+950000,Appartements,200,3,3,Location,Almadies,Dakar
+1250000,Appartements,170,3,3,Location,Fann,Dakar
+500000,Appartements,170,3,4,Location,Zone de captage,Dakar
+10000000,Villas,2,5,3,Location,Diamniadio,Dakar
+850000,Appartements,150,3,3,Location,Point-e,Dakar
+800000,Appartements,170,3,3,Location,Almadies,Dakar
+600000,Appartements,55,1,1,Location,Mermoz,Dakar
+265000,Appartements,170,1,1,Location,Mamelles,Dakar
+250000,Appartements,170,3,3,Location,Hann maristes,Dakar
+1600000,Appartements,800,3,3,Location,Almadies,Dakar
+450000,Appartements,168,3,3,Location,Almadies,Dakar
+2200000,Appartements,241,3,4,Location,Almadies,Dakar
+250000,Appartements,170,3,3,Location,Cite Mixta,Dakar
+330000,Appartements,170,2,3,Location,Ouakam,Dakar
+1500000,Appartements,170,3,3,Location,Almadies,Dakar
+1500000,Appartements,170,3,3,Location,Point-e,Dakar
+,Appartements,212,3,4,Location,Mermoz,Dakar
+1200000,Appartements,170,3,2,Location,Mermoz,Dakar
+800000,Appartements,230,3,3,Location,Amitié,Dakar
+230000,Appartements,170,1,3,Location,Amitié,Dakar
+160000,Appartements,140,2,2,Location,Zac Mbao,Dakar
+1400000,Appartements,204,2,3,Location,Almadies,Dakar
+300000,Appartements,170,3,3,Location,Liberte 6,Dakar
+450000,Appartements,100,3,2,Location,Zone de captage,Dakar
+1000000,Appartements,170,3,1,Location,Virage,Dakar
+200000,Appartements,170,1,1,Location,Almadies,Dakar
+850000,Appartements,170,3,3,Location,Ouakam,Dakar
+2500000,Villas,310,4,5,Location,Plateau,Dakar
+700000,Appartements,170,3,3,Location,VDN,Dakar
+350000,Appartements,140,3,3,Location,Ngor,Dakar
+1250000,Villas,271,4,3,Location,Point-e,Dakar
+,Appartements,170,3,3,Location,Point-e,Dakar
+250000,Appartements,170,2,2,Location,Ouest foire,Dakar
+670000,Appartements,170,2,3,Location,Almadies,Dakar
+750000,Appartements,170,3,3,Location,Dakar,Dakar
+250000,Appartements,170,3,3,Location,Médina,Dakar
+600000,Appartements,150,3,4,Location,Mamelles,Dakar
+280000,Appartements,120,2,2,Location,Hlm grand-yoff,Dakar
+400000,Appartements,170,3,2,Location,Liberte 6 extension,Dakar
+35000,Appartements,80,2,3,Location,Ouest foire,Dakar
+2000000,Appartements,170,3,3,Location,Fenêtre mermoz,Dakar
+1600000,Appartements,170,3,3,Location,Almadies,Dakar
+750000,Appartements,170,2,2,Location,Point-e,Dakar
+1000000,Appartements,300,3,4,Location,Sicap Sacré-cœur,Dakar
+700000,Appartements,100,1,1,Location,Hann maristes,Dakar
+350000,Appartements,170,3,3,Location,Almadies,Dakar
+750000,Appartements,170,3,4,Location,Almadies,Dakar
+65000000,Appartements,170,1,2,Location,Mermoz,Dakar
+2800000,Villas,440,4,6,Location,Almadies,Dakar
+600000,Appartements,170,3,3,Location,Almadies,Dakar
+400000,Appartements,12,2,2,Location,Point-e,Dakar
+350000,Appartements,170,2,2,Location,Ngor,Dakar
+1100000,Villas,244,4,4,Location,Virage,Dakar
+900000,Appartements,170,2,2,Location,Mermoz,Dakar
+1700000,Appartements,200,3,3,Location,Fann,Dakar
+450000,Appartements,150,2,3,Location,Mamelles,Dakar
+250000,Appartements,150,3,3,Location,Mamelles,Dakar
+,Appartements,210,3,4,Location,Sacré-cœur,Dakar
+275000,Appartements,100,1,1,Location,VDN,Dakar
+750000,Villas,170,5,6,Location,Almadies,Dakar
+900000,Appartements,150,3,4,Location,Almadies,Dakar
+2300000,Appartements,250,3,5,Location,Plateau,Dakar
+750000,Villas,170,4,3,Location,Virage,Dakar
+1100000,Appartements,195,3,5,Location,Virage,Dakar
+1200000,Appartements,170,3,3,Location,Point-e,Dakar
+1,Appartements,170,3,3,Location,Cité keur gorgui,Dakar
+3000000,Villas,480,5,6,Location,Ngor,Dakar
+850000,Appartements,153,3,3,Location,Point-e,Dakar
+1500000,Appartements,170,3,5,Location,Mamelles,Dakar
+1800000,Villas,250,4,4,Location,Fenêtre mermoz,Dakar
+1600000,Appartements,200,3,4,Location,Point-e,Dakar
+600000,Appartements,200,3,4,Location,Mamelles,Dakar
+290000,Appartements,170,2,2,Location,Sacré-cœur,Dakar
+125000,Appartements,170,2,2,Location,Mbao,Dakar
+450000,Appartements,170,3,3,Location,Sicap baobab,Dakar
+950000,Appartements,170,3,4,Location,Point-e,Dakar
+2000000,Appartements,170,2,2,Location,Mermoz,Dakar
+460000,Appartements,170,3,3,Location,VDN,Dakar
+325000,Appartements,170,2,2,Location,Sacré-cœur,Dakar
+425000,Appartements,170,2,2,Location,Almadies,Dakar
+1200000,Appartements,170,3,3,Location,Almadies,Dakar
+550000,Appartements,180,3,3,Location,Ouakam,Dakar
+1000000,Appartements,170,3,5,Location,Point-e,Dakar
+300000,Appartements,170,3,3,Location,Sicap foire,Dakar
+850000,Appartements,180,3,4,Location,Point-e,Dakar
+300000,Appartements,170,1,3,Location,Plateau,Dakar
+1350000,Appartements,144,1,2,Location,Fann,Dakar
+2000000,Villas,255,4,3,Location,Almadies,Dakar
+400000,Appartements,170,2,3,Location,Dakar,Dakar
+350000,Appartements,170,2,2,Location,Cité keur gorgui,Dakar
+1200000,Appartements,170,3,3,Location,Fenêtre mermoz,Dakar
+275000,Appartements,170,2,2,Location,Sicap foire,Dakar
+550000,Appartements,200,3,3,Location,Sacré-cœur,Dakar
+700000,Appartements,120,2,2,Location,Ngor,Dakar
+900000,Appartements,170,3,3,Location,Mermoz,Dakar
+650000,Appartements,200,3,4,Location,Mermoz,Dakar
+1000000,Appartements,170,3,3,Location,Point-e,Dakar
+1600000,Appartements,170,3,3,Location,Mermoz,Dakar
+130000,Appartements,170,2,3,Location,Tivaouane peulh,Dakar
+550000,Appartements,180,2,2,Location,Point-e,Dakar
+1760000,Appartements,160,3,3,Location,VDN,Dakar
+1700000,Appartements,200,3,3,Location,Fann,Dakar
+3300000,Villas,260,4,6,Location,Fann,Dakar
+6,Villas,170,4,3,Location,Virage,Dakar
+550000,Appartements,170,3,2,Location,Cité keur gorgui,Dakar
+300000,Appartements,100,2,2,Location,Ngor,Dakar
+1,Appartements,1,2,2,Location,Hann maristes,Dakar
+500000,Appartements,170,3,3,Location,VDN,Dakar
+550000,Appartements,170,3,4,Location,Amitié,Dakar
+400000,Appartements,150,3,3,Location,VDN,Dakar
+2000000,Appartements,150,2,2,Location,Mermoz,Dakar
+1350000,Appartements,170,3,3,Location,Almadies,Dakar
+425600,Appartements,170,2,2,Location,VDN,Dakar
+1010000,Appartements,202,3,3,Location,Almadies,Dakar
+300000,Appartements,170,2,1,Location,Ngor,Dakar
+600000,Appartements,170,1,1,Location,Corniche,Dakar
+450000,Villas,100,4,3,Location,Ouakam,Dakar
+650000,Appartements,170,3,3,Location,Sacré-cœur,Dakar
+250000,Appartements,170,3,3,Location,Hann maristes,Dakar
+1300000,Appartements,288,3,4,Location,Almadies,Dakar
+700000,Appartements,170,3,3,Location,Mamelles,Dakar
+1000000,Villas,300,4,4,Location,Almadies,Dakar
+1864800,Appartements,290,3,2,Location,Almadies,Dakar
+275000,Appartements,170,1,2,Location,Cité keur gorgui,Dakar
+2000000,Villas,300,4,5,Location,Point-e,Dakar
+250000,Appartements,170,2,3,Location,Parcelles Assainies,Dakar
+900000,Appartements,180,3,4,Location,Liberte 5,Dakar
+1200000,Appartements,156,3,3,Location,Point-e,Dakar
+90000000,Appartements,87,2,2,Location,Virage,Dakar
+650000,Appartements,170,3,3,Location,Yoff,Dakar
+950000,Appartements,170,3,2,Location,Mermoz,Dakar
+1500000,Appartements,170,3,3,Location,Mermoz,Dakar
+750000,Appartements,170,3,4,Location,Mermoz,Dakar
+2500000,Villas,350,5,7,Location,Mermoz,Dakar
+500000,Appartements,100,1,1,Location,Mermoz,Dakar
+40000,Appartements,170,3,3,Location,Virage,Dakar
+300000,Appartements,170,1,1,Location,Almadies,Dakar
+,Appartements,210,3,2,Location,Mamelles,Dakar
+1800000,Villas,2,5,3,Location,Nguering,Thiès
+500000,Appartements,170,3,3,Location,Cité keur gorgui,Dakar
+280000,Appartements,170,3,3,Location,Liberte 6 extension,Dakar
+1100000,Appartements,175,3,4,Location,Ngor,Dakar
+1000000,Appartements,150,3,5,Location,Almadies,Dakar
+450000,Villas,170,4,3,Location,Nord foire,Dakar
+750000,Appartements,169,3,3,Location,Mamelles,Dakar
+400000,Appartements,170,3,3,Location,Mamelles,Dakar
+2500000,Appartements,170,3,3,Location,Fenêtre mermoz,Dakar
+250000,Appartements,170,2,3,Location,Nord foire,Dakar
+275000,Appartements,100,2,2,Location,Hann maristes,Dakar
+1300000,Villas,250,5,4,Location,Ngor,Dakar
+175000,Appartements,40,3,1,Location,Sendou,Dakar
+2200000,Appartements,170,3,3,Location,Fann,Dakar
+1000000,Appartements,200,3,3,Location,Mermoz,Dakar
+750000,Appartements,150,3,2,Location,Virage,Dakar
+3800000,Appartements,170,3,3,Location,Mamelles,Dakar
+1700000,Appartements,170,2,3,Location,Almadies,Dakar
+1200000,Appartements,150,3,4,Location,Virage,Dakar
+300000,Appartements,170,2,3,Location,Yoff,Dakar
+250000,Appartements,170,3,3,Location,Guediawaye,Dakar
+550000,Appartements,110,2,3,Location,VDN,Dakar
+362600,Appartements,90,2,2,Location,Almadies,Dakar
+1000000,Villas,300,4,4,Location,Ngor,Dakar
+1000000,Villas,200,4,5,Location,Ngor,Dakar
+1200000,Appartements,170,3,3,Location,Plateau,Dakar
+1500000,Appartements,170,3,2,Location,Mermoz,Dakar
+350000,Appartements,90,2,2,Location,Almadies,Dakar
+275000,Appartements,170,2,2,Location,Mermoz,Dakar
+650000,Appartements,200,3,3,Location,Almadies,Dakar
+300000,Appartements,170,2,3,Location,Virage,Dakar
+1500000,Appartements,170,3,4,Location,Ngor,Dakar
+1500000,Appartements,170,3,4,Location,Mermoz,Dakar
+250000,Appartements,170,2,2,Location,Ouakam,Dakar
+350000,Appartements,170,3,4,Location,VDN,Dakar
+15,Villas,170,4,5,Location,Mamelles,Dakar
+200000,Appartements,170,2,2,Location,Golf,Dakar
+500000,Appartements,170,3,3,Location,Mamelles,Dakar
+1400000,Villas,350,4,4,Location,Almadies,Dakar
+360000,Appartements,150,2,3,Location,Ouakam,Dakar
+450000,Appartements,150,2,2,Location,Yoff,Dakar
+900000,Appartements,150,3,4,Location,Mermoz,Dakar
+1700000,Appartements,170,3,4,Location,Almadies,Dakar
+150000,Appartements,170,1,3,Location,Sicap foire,Dakar
+3000000,Villas,300,7,11,Location,Mamelles,Dakar
+1000000,Appartements,250,3,5,Location,Almadies,Dakar
+1000000,Appartements,197,3,3,Location,Point-e,Dakar
+310000,Appartements,170,2,2,Location,Liberte 6 extension,Dakar
+700000,Appartements,250,2,3,Location,Almadies,Dakar
+1,Appartements,170,3,3,Location,Plateau,Dakar
+850000,Appartements,170,3,4,Location,Yoff,Dakar
+350000,Appartements,170,3,3,Location,Liberte 3,Dakar
+425000,Appartements,170,2,2,Location,Virage,Dakar
+300000,Appartements,110,2,2,Location,Mamelles,Dakar
+3000000,Appartements,170,3,4,Location,Fann,Dakar
+600000,Appartements,170,2,2,Location,Mamelles,Dakar
+210000,Appartements,170,3,3,Location,Grand-Dakar,Dakar
+900000,Appartements,170,3,2,Location,Almadies,Dakar
+2000000,Appartements,241,3,3,Location,Almadies,Dakar
+518000,Appartements,150,3,3,Location,Almadies,Dakar
+300000,Appartements,170,2,2,Location,Grand-Yoff,Dakar
+600000,Appartements,170,3,3,Location,Liberte 6,Dakar
+550000,Appartements,170,3,3,Location,Mermoz,Dakar
+375000,Appartements,170,2,3,Location,Mamelles,Dakar
+450000,Appartements,150,3,2,Location,Almadies,Dakar
+650000,Appartements,165,3,3,Location,Ngor,Dakar
+1400000,Appartements,230,3,3,Location,Point-e,Dakar
+800000,Appartements,170,3,3,Location,Mermoz,Dakar
+250000,Appartements,170,2,2,Location,Sicap foire,Dakar
+2100000,Villas,280,4,4,Location,Mermoz,Dakar
+1500000,Villas,170,5,3,Location,Almadies,Dakar
+650000,Appartements,170,3,4,Location,VDN,Dakar
+500000,Appartements,125,2,3,Location,Almadies,Dakar
+285000,Appartements,170,2,2,Location,Mamelles,Dakar
+230000,Appartements,170,2,3,Location,Mamelles,Dakar
+1,Villas,170,4,3,Location,Sacré-cœur,Dakar
+130000000,Appartements,284,3,3,Location,Hlm,Dakar
+1200000,Appartements,200,3,3,Location,Point-e,Dakar
+1000000,Appartements,200,3,3,Location,Fann,Dakar
+1300000,Appartements,170,3,3,Location,Almadies,Dakar
+350000,Villas,170,4,3,Location,Nord foire,Dakar
+1200000,Villas,170,4,3,Location,Virage,Dakar
+350000,Appartements,150,2,2,Location,Mamelles,Dakar
+300000,Appartements,130,2,2,Location,Ouest foire,Dakar
+200000,Appartements,150,2,3,Location,Zac Mbao,Dakar
+700000,Appartements,150,3,4,Location,Point-e,Dakar
+400000,Appartements,130,3,3,Location,Mamelles,Dakar
+1300000,Appartements,170,3,3,Location,Mermoz,Dakar
+900000,Appartements,200,3,3,Location,Mermoz,Dakar
+800000,Appartements,170,3,4,Location,Hann maristes,Dakar
+300000,Appartements,140,2,3,Location,Almadies,Dakar
+1250000,Villas,170,4,5,Location,Almadies,Dakar
+331000,Appartements,170,2,2,Location,Sicap baobab,Dakar
+650000,Appartements,190,3,4,Location,VDN,Dakar
+1000000,Appartements,103,2,2,Location,Ngor,Dakar
+270000,Appartements,170,1,2,Location,Ouest foire,Dakar
+1300000,Appartements,250,3,4,Location,Almadies,Dakar
+300000,Appartements,160,2,2,Location,Almadies,Dakar
+,Villas,400,5,6,Location,Mamelles,Dakar
+450000,Appartements,170,2,3,Location,Sicap Liberté,Dakar
+1200000,Appartements,170,3,5,Location,Almadies,Dakar
+800000,Appartements,12,3,3,Location,Mermoz,Dakar
+1800000,Villas,170,4,3,Location,Point-e,Dakar
+2200000,Appartements,230,2,3,Location,Plateau,Dakar
+850000,Appartements,150,3,4,Location,Almadies,Dakar
+700000,Appartements,150,3,4,Location,Mamelles,Dakar
+950000,Appartements,200,3,3,Location,Fann,Dakar
+550000,Appartements,170,3,2,Location,Almadies,Dakar
+450000,Appartements,170,2,3,Location,Almadies,Dakar
+850000,Villas,200,4,3,Location,Ngor,Dakar
+1300000,Villas,300,4,3,Location,Ngor,Dakar
+350000,Appartements,170,3,3,Location,Sacré-cœur,Dakar
+500000,Appartements,170,3,3,Location,Diamniadio,Dakar
+,Appartements,264,3,3,Location,Ngor,Dakar
+225000,Appartements,100,3,2,Location,Hann maristes,Dakar
+1200000,Appartements,187,3,4,Location,Ngor,Dakar
+250000,Appartements,170,3,3,Location,Sacré-cœur,Dakar
+500000,Appartements,185,3,3,Location,Mamelles,Dakar
+600000,Appartements,170,3,3,Location,Liberte 6 extension,Dakar
+1250000,Villas,340,4,5,Location,Ngor,Dakar
+1000000,Appartements,140,3,4,Location,Almadies,Dakar
+550000,Villas,170,4,4,Location,VDN,Dakar
+175000,Appartements,175,3,2,Location,Mbao,Dakar
+150000,Appartements,170,3,3,Location,Diamniadio,Dakar
+300000,Appartements,170,2,3,Location,HLM Grand Médine,Dakar
+2000000,Appartements,170,3,4,Location,Fann,Dakar
+300000,Appartements,170,2,2,Location,Ngaparou,Thiès
+500000,Appartements,170,3,3,Location,Almadies,Dakar
+300000,Appartements,170,2,3,Location,Fass,Dakar
+450000,Appartements,170,2,3,Location,Liberte 1,Dakar
+260000,Appartements,170,2,2,Location,Ngor,Dakar
+1500000,Appartements,170,3,2,Location,Almadies,Dakar
+450000,Appartements,170,3,3,Location,Sacré-cœur,Dakar
+250000,Appartements,170,1,2,Location,VDN,Dakar
+1500000,Appartements,160,3,4,Location,Almadies,Dakar
+275000,Appartements,170,2,2,Location,Ouakam,Dakar
+500000,Appartements,170,3,3,Location,Bel air,Dakar
+800000,Appartements,160,3,3,Location,Virage,Dakar
+450000,Appartements,170,3,3,Location,Ouest foire,Dakar
+120000,Appartements,170,3,3,Location,Hann maristes,Dakar
+1200000,Appartements,170,3,3,Location,Virage,Dakar
+600000,Appartements,150,3,3,Location,Amitié,Dakar
+250000,Appartements,130,2,2,Location,Liberte 6,Dakar
+500000,Appartements,100,3,2,Location,Hann maristes,Dakar
+450000,Villas,170,4,3,Location,Mamelles,Dakar
+850000,Appartements,3,3,3,Location,Mermoz,Dakar
+700000,Appartements,170,3,3,Location,Ouest foire,Dakar
+1000000,Appartements,200,3,3,Location,Virage,Dakar
+1500000,Villas,280,4,6,Location,Point-e,Dakar
+120000,Appartements,170,1,1,Location,Golf,Dakar
+395000,Appartements,170,2,2,Location,Cité keur gorgui,Dakar
+1400000,Appartements,160,3,3,Location,Almadies,Dakar
+673400,Appartements,300,3,3,Location,Virage,Dakar
+1800000,Appartements,200,3,3,Location,Almadies,Dakar
+900000,Appartements,170,1,1,Location,Almadies,Dakar
+470000,Appartements,120,2,3,Location,VDN,Dakar
+450000,Appartements,170,3,4,Location,Liberte 5,Dakar
+2600000,Villas,400,4,6,Location,Point-e,Dakar
+180000,Appartements,170,1,3,Location,Fass,Dakar
+350000,Appartements,100,2,3,Location,Ouakam,Dakar
+2000000,Appartements,170,3,3,Location,Mermoz,Dakar
+800000,Appartements,170,3,4,Location,Amitié,Dakar
+1139600,Appartements,180,3,4,Location,Almadies,Dakar
+300000,Appartements,100,2,2,Location,Hann maristes,Dakar
+185000,Appartements,55,1,2,Location,Parcelles Assainies,Dakar
+130000000,Villas,170,5,4,Location,Virage,Dakar
+1200000,Villas,250,4,2,Location,Almadies,Dakar
+1500000,Villas,170,4,4,Location,Mamelles,Dakar
+2999990,Villas,400,4,4,Location,Fann,Dakar
+1600000,Appartements,170,3,4,Location,Almadies,Dakar
+500000,Appartements,170,2,2,Location,Mamelles,Dakar
+1750000,Appartements,170,2,3,Location,Fann,Dakar
+450000,Appartements,170,2,3,Location,Mamelles,Dakar
+1400000,Appartements,170,3,3,Location,Plateau,Dakar
+160000,Appartements,150,2,3,Location,Keur ndiaye lô,Dakar
+750000,Appartements,180,3,3,Location,Ngor,Dakar
+550000,Appartements,170,3,4,Location,Point-e,Dakar
+1,Appartements,107,3,3,Location,Diamniadio,Dakar
+500000,Appartements,100,2,3,Location,Almadies,Dakar
+700000,Appartements,170,3,3,Location,Hann maristes,Dakar
+325000,Appartements,170,2,2,Location,Patte d‘oie,Dakar
+800000,Appartements,150,3,4,Location,Mamelles,Dakar
+600000,Appartements,170,3,3,Location,Mamelles,Dakar
+700000,Appartements,170,3,3,Location,Mermoz,Dakar
+350000,Appartements,90,1,3,Location,Sicap Sacré-cœur,Dakar
+1000000,Appartements,170,3,3,Location,Ngor,Dakar
+1500000,Appartements,300,3,4,Location,Mamelles,Dakar
+850000,Villas,170,4,5,Location,Sacré-cœur,Dakar
+600000,Appartements,170,3,3,Location,Point-e,Dakar
+2800000,Villas,250,6,3,Location,Plateau,Dakar
+700000,Appartements,200,3,3,Location,Almadies,Dakar
+300000,Appartements,170,3,3,Location,Parcelles Assainies,Dakar
+250000,Appartements,170,2,2,Location,Parcelles Assainies,Dakar
+414400,Appartements,95,2,2,Location,Yoff,Dakar
+1100000,Appartements,200,3,5,Location,Almadies,Dakar
+950000,Appartements,110,2,2,Location,Ouest foire,Dakar
+3000000,Villas,320,4,5,Location,Fann,Dakar
+1700000,Villas,170,4,5,Location,Almadies,Dakar
+900000,Villas,250,4,3,Location,Ouakam,Dakar
+650000,Appartements,170,2,4,Location,Cité keur gorgui,Dakar
+400000,Appartements,170,2,3,Location,Liberte 3,Dakar
+900000,Appartements,170,3,4,Location,Mermoz,Dakar
+1300000,Appartements,170,3,3,Location,Plateau,Dakar
+1000000,Appartements,170,3,3,Location,Plateau,Dakar
+225000,Appartements,100,3,2,Location,Nord foire,Dakar
+500000,Appartements,170,3,2,Location,Cité keur gorgui,Dakar
+,Appartements,170,2,2,Location,Point-e,Dakar
+850000,Villas,170,6,5,Location,Sacré-cœur,Dakar
+800000,Appartements,170,3,4,Location,Liberte 6,Dakar
+,Villas,306,4,4,Location,Point-e,Dakar
+400000,Appartements,170,2,3,Location,Almadies,Dakar
+850000,Appartements,150,3,5,Location,Almadies,Dakar
+1150000,Appartements,250,3,4,Location,Almadies,Dakar
+400000,Appartements,170,2,3,Location,Mamelles,Dakar
+300000,Appartements,170,2,2,Location,Hann maristes,Dakar
+1000000,Appartements,170,1,3,Location,Almadies,Dakar
+500000,Villas,170,4,5,Location,Yoff,Dakar
+200000,Appartements,170,1,1,Location,Ouakam,Dakar
+120000,Appartements,150,2,2,Location,Keur ndiaye lô,Dakar
+1300000,Appartements,190,3,3,Location,Point-e,Dakar
+1300000,Appartements,170,3,3,Location,Sacré-cœur,Dakar
+300000,Appartements,160,2,3,Location,Sacré-cœur,Dakar
+350000,Appartements,170,3,3,Location,Cambérène,Dakar
+200000,Appartements,170,1,1,Location,Dakar,Dakar
+1000000,Appartements,180,3,2,Location,Mamelles,Dakar
+30000,Appartements,170,1,1,Location,Sacré-cœur,Dakar
+550000,Appartements,170,3,3,Location,Mamelles,Dakar
+5500000,Villas,514,4,6,Location,Fann,Dakar
+600000,Appartements,170,3,3,Location,Amitié,Dakar
+650000,Appartements,170,3,3,Location,Cité keur gorgui,Dakar
+1000000,Appartements,178,3,3,Location,Mermoz,Dakar
+800000,Appartements,115,2,2,Location,Point-e,Dakar
+1290000,Villas,280,4,4,Location,Virage,Dakar
+500000,Appartements,170,2,2,Location,Almadies,Dakar
+200000,Appartements,100,2,1,Location,Ouest foire,Dakar
+349000,Appartements,170,2,3,Location,Almadies,Dakar
+250000,Appartements,170,1,1,Location,Ouest foire,Dakar
+1400000,Appartements,170,2,2,Location,Dakar,Dakar
+350000,Appartements,170,1,1,Location,Almadies,Dakar
+360000,Appartements,170,3,3,Location,Mermoz,Dakar
+1300000,Appartements,200,3,5,Location,Virage,Dakar
+350000,Villas,150,4,4,Location,Ouest foire,Dakar
+1600000,Villas,285,4,4,Location,Mamelles,Dakar
+932400,Appartements,150,3,3,Location,Ngor,Dakar
+750000,Appartements,164,3,3,Location,Mamelles,Dakar
+3000000,Appartements,250,3,5,Location,Fann,Dakar
+1100000,Villas,170,4,4,Location,Almadies,Dakar
+450000,Appartements,170,3,3,Location,Ngor,Dakar
