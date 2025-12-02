@@ -30,7 +30,7 @@ with DAG(
         import time
 
         df = pd.DataFrame()
-        for i in range(1, 444):  
+        for i in range(1, 10):  
             url = f'https://sn.coinafrique.com/categorie/immobilier?page={i}'
             logging.info(f"🔎 Scraping page {i}: {url}")
             res = get(url)
@@ -868,40 +868,158 @@ with DAG(
     def merge_datasets():
         """Merge and clean both datasets"""
         import polars as pl
+        import pandas as pd
         import logging
+        import numpy as np
         
         try:
             df_coin = pl.read_csv('./data/cleaned_data.csv')
             df_expat = pl.read_csv('./data/cleaned_expatdakar.csv')
-            
+
             print("coinmarket dataset:")
             print(f"Columns: {df_coin.columns}")
             print(f"Shape: {df_coin.shape}")
             print(df_coin.head(2))
-            
+
             print("\nexpatdakar dataset:")
             print(f"Columns: {df_expat.columns}")
             print(f"Shape: {df_expat.shape}")
             print(df_expat.head(2))
-            
-            # Based on your logs, the datasets have different column structures
-            # Let's align them properly
-            
-            # Coin dataset columns from your log: 
-            # ['price', 'type', 'nombre_chambres', 'nombre_sdb', 'superficie', 'category', 'area', 'city']
-            
-            # Expat dataset columns from your log:
-            # ['price', 'type', 'superficie', 'nombre_chambres', 'nombre_sdb', 'category', 'area', 'city']
-            
+
             # Reorder expat dataset columns to match coin dataset
             df_expat_aligned = df_expat.select([
                 'price', 'type', 'nombre_chambres', 'nombre_sdb', 'superficie', 'category', 'area', 'city'
             ])
-            
+
             df_merged = pl.concat([df_coin, df_expat_aligned], how="vertical")
-            
+
+            #---renomage---
+            df_rev = df_merged.rename({'type': 'type_bien'})
+
+            # --- Correction area : Point-e → Point E ---
+            df_rev = df_rev.with_columns(
+                pl.col("area").str.replace_all("Point-e", "Point E").alias("area")
+            )
+
+            # --- Remplacement aléatoire des "Dakar" ---
+            mask_dakar = pl.col("area") == "Dakar"
+            other_areas = df_rev.filter(~mask_dakar)["area"].to_list()
+
+            df_rev = df_rev.with_columns([
+                pl.when(pl.col("area") == "Dakar")
+                .then(pl.lit(np.random.choice(other_areas)))
+                .otherwise(pl.col("area"))
+                .alias("area")
+            ])
+
+            # --- Minuscule + underscores pour toutes les colonnes catégorielles ---
+            categorical_cols = [
+                col for col, dtype in zip(df_rev.columns, df_rev.dtypes) 
+                if dtype == pl.Utf8
+            ]
+
+            for col in categorical_cols:
+                df_rev = df_rev.with_columns([
+                    pl.col(col)
+                    .str.to_lowercase()
+                    .str.replace_all(" ", "_")
+                    .alias(col)
+                ])
+
+            print(df_rev.head(2))
+
+            # --- type_bien: "immeubles" → "terrains" ---
+            df_rev = df_rev.with_columns([
+                pl.when(pl.col("type_bien") == "immeubles")
+                .then(pl.lit("terrains"))  # ← CORRECTION ICI
+                .otherwise(pl.col("type_bien"))
+                .alias("type_bien")
+            ])
+
+            # --- Forcer chambres/SDB = 0 pour les terrains ---
+            terrains_list = ['terrains', 'terrains_agricoles', 'terrains_commerciaux', 'bureaux_&_commerces']
+
+            df_rev = df_rev.with_columns([
+                pl.when(pl.col("type_bien").is_in(terrains_list))
+                .then(pl.lit(0))
+                .otherwise(pl.col("nombre_chambres"))
+                .alias("nombre_chambres"),
+
+                pl.when(pl.col("type_bien").is_in(terrains_list))
+                .then(pl.lit(0))
+                .otherwise(pl.col("nombre_sdb"))
+                .alias("nombre_sdb"),
+            ])
+
+            # --- Corrections de valeurs aberrantes ---
+            corrections = [
+                ('villas', 'superficie', '<', 150),
+                ('appartements', 'nombre_chambres', '>', 6),
+                ('villas', 'nombre_chambres', '>', 9),
+                ('appartements', 'nombre_sdb', '>', 6),
+                ('villas', 'nombre_sdb', '>', 9),
+                ('bureaux_&_commerces', 'superficie', '<', 20),
+            ]
+
+            for type_bien, colonne, operation, seuil in corrections:
+                if operation == ">":
+                    mask = (pl.col("type_bien") == type_bien) & (pl.col(colonne) > seuil)
+                else:
+                    mask = (pl.col("type_bien") == type_bien) & (pl.col(colonne) < seuil)
+
+                mediane = df_rev.filter(pl.col("type_bien") == type_bien)[colonne].median()
+
+                df_rev = df_rev.with_columns([
+                    pl.when(mask)
+                    .then(pl.lit(mediane))
+                    .otherwise(pl.col(colonne))
+                    .alias(colonne)
+                ])
+
+            # --- Séparation location / vente ---
+            df_loc = df_rev.filter(pl.col("category") == "location")
+            df_vente = df_rev.filter(pl.col("category") == "vente")
+
+            # --- Prix anormaux location (villas < 300k) ---
+            median_villas_loc = df_loc.filter(pl.col("type_bien") == "villas")["price"].median()
+
+            df_loc = df_loc.with_columns([
+                pl.when((pl.col("type_bien") == "villas") & (pl.col("price") < 300000))
+                .then(pl.lit(median_villas_loc))
+                .otherwise(pl.col("price"))
+                .alias("price")
+            ])
+
+            # --- Prix anormaux vente (villas < 20M) ---
+            median_villas_vente = df_vente.filter(pl.col("type_bien") == "villas")["price"].median()
+
+            df_vente = df_vente.with_columns([
+                pl.when((pl.col("type_bien") == "villas") & (pl.col("price") < 20000000))
+                .then(pl.lit(median_villas_vente))
+                .otherwise(pl.col("price"))
+                .alias("price")
+            ])
+
+            # --- Prix terrains trop bas (< 5M) ---
+            median_terrains = df_vente.filter(
+                pl.col("type_bien").is_in(["terrains", "terrains_agricoles", "terrains_commerciaux"])
+            )["price"].median()
+
+            df_vente = df_vente.with_columns([
+                pl.when(
+                    pl.col("type_bien").is_in(["terrains", "terrains_agricoles", "terrains_commerciaux"]) 
+                    & (pl.col("price") < 5000000)
+                )
+                .then(pl.lit(median_terrains))
+                .otherwise(pl.col("price"))
+                .alias("price")
+            ])
+
+            # --- Final merge ---
+            df_fin = pl.concat([df_loc, df_vente], how="vertical")
+
             df_final = (
-                df_merged
+                df_fin
                 .unique()
                 .filter(pl.col("price") > 0)
                 .filter(pl.col("superficie") > 0)
@@ -909,6 +1027,9 @@ with DAG(
                 .filter(pl.col("nombre_sdb") >= 0)
             )
             
+            
+            
+
             output_path = "./data/joined_cleaned_data.csv"
             df_final.write_csv(output_path)
             
@@ -973,12 +1094,14 @@ with DAG(
                 logging.error(f"❌ Error connecting to SQLite: {e}")
                 return False
             
+
+            cursor.execute("DROP TABLE IF EXISTS realestate")
             # Créer la table 'realestate' avec le bon schéma
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS realestate (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     price INTEGER,
-                    type TEXT,
+                    type_bien TEXT,
                     superficie INTEGER,
                     nombre_chambres INTEGER,
                     nombre_sdb INTEGER,
@@ -1006,7 +1129,7 @@ with DAG(
                 df_clean['nombre_sdb'] = pd.to_numeric(df_clean['nombre_sdb'], errors='coerce').fillna(0).astype(int)
             
             # Remplir les valeurs manquantes pour les colonnes texte
-            text_columns = ['type', 'category', 'area', 'city']
+            text_columns = ['type_bien', 'category', 'area', 'city']
             for col in text_columns:
                 if col in df_clean.columns:
                     df_clean[col] = df_clean[col].fillna('Unknown')
@@ -1042,263 +1165,359 @@ with DAG(
     @task
     def train_model_after_etl():
         """
-        Entraîne automatiquement le modèle ML juste après la fin de l'ETL
-        (upload_join_to_sqlite). Sauvegarde le modèle et les objets preprocessing.
+        Entraîne automatiquement le modèle ML juste après l’ETL.
+        Sauvegarde le meilleur modèle + preprocessing + métriques.
         """
         import pandas as pd
         import numpy as np
         import sqlite3
         import joblib
         import os
+        import logging
+        import time
+
         from sklearn.model_selection import train_test_split, cross_val_score
-        from sklearn.preprocessing import StandardScaler, OneHotEncoder
-        from sklearn.ensemble import GradientBoostingRegressor
+        from sklearn.preprocessing import OneHotEncoder, StandardScaler
         from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
-        from datetime import datetime
 
-        logging.info("🚀 Début de l'entraînement du modèle ML")
+        from sklearn.linear_model import RidgeCV, ElasticNetCV
+        from sklearn.ensemble import (
+            GradientBoostingRegressor,
+            RandomForestRegressor,
+            ExtraTreesRegressor
+        )
+        from sklearn.tree import DecisionTreeRegressor
+        import xgboost as xgb
 
-        db_path = './data/immobilier.db'
+        # ============================================================
+        # 1️⃣ CHARGEMENT DES DONNÉES
+        # ============================================================
+
+        db_path = "./data/immobilier.db"
         if not os.path.exists(db_path):
-            raise FileNotFoundError(f" Base SQLite introuvable : {db_path}")
+            raise FileNotFoundError(f"❌ Base SQLite introuvable : {db_path}")
 
-        # Chargement des données
         conn = sqlite3.connect(db_path)
         df = pd.read_sql("SELECT * FROM realestate", conn)
         conn.close()
 
         if df.empty:
-            raise ValueError(" Aucune donnée trouvée pour l'entraînement du modèle")
+            raise ValueError("❌ Aucune donnée dans la base.")
 
-        # Préparation des données
-        # Supprimer colonnes inutiles
+        logging.info(f"✅ Données chargées : {df.shape}")
+
+        # ============================================================
+        # 2️⃣ PRÉTRAITEMENTS (identique à ton code)
+        # ============================================================
+
+        df.rename(columns={'type': 'type_bien'}, inplace=True)
+        df['area'] = df['area'].replace("Point-e", 'Point E')
+        mask_dakar = df['area'] == 'Dakar'
+        other_areas = df.loc[~mask_dakar, 'area']
+        df.loc[mask_dakar, 'area'] = np.random.choice(
+            other_areas.values, 
+            size=mask_dakar.sum()
+        )
+
+        categorical_cols = df.select_dtypes(include=[object]).columns
+
+        # Nettoyage texte
+        for col in categorical_cols:
+            df[col] = df[col].astype(str).str.lower().str.replace(" ", "_")
+
+        
+        #remplace veleur immeuble par terrain
+        df['type_bien'] = df['type_bien'].replace("immeubles",'terrains')
+
+        # Terrains = 0 chambres/sdb
+        mask_terr = df["type_bien"].isin([
+            "terrains", "terrains_agricoles",
+            "terrains_commerciaux", "bureaux_&_commerces"
+        ])
+        df.loc[mask_terr, ["nombre_chambres", "nombre_sdb"]] = 0
+
+        # Toutes les corrections en une liste
+        corrections = [
+            ('villas', 'superficie', '<', 150),
+            ('appartements', 'nombre_chambres', '>', 6),
+            ('villas', 'nombre_chambres', '>', 9),
+            ('appartements', 'nombre_sdb', '>', 6),
+            ('villas', 'nombre_sdb', '>', 9),
+            ('bureaux_&_commerces', 'superficie', '<', 20)  # Nouveau masque ajouté
+        ]
+
+        for type_bien, colonne, operation, seuil in corrections:
+            mask = (df['type_bien'] == type_bien) & (
+                (df[colonne] > seuil) if operation == '>' else (df[colonne] < seuil)
+            )
+            if mask.any():
+                mediane = df[df['type_bien'] == type_bien][colonne].median()
+                count = mask.sum()
+                df.loc[mask, colonne] = mediane
+                print(f"✅ {type_bien}.{colonne}: {count} valeurs {operation} {seuil} → {mediane:.0f}")
+        
+        #separation des location et ventes
+        df_loc = df[df['category'] == 'location']
+        df_vente = df[df['category'] == 'vente']
+
+        #===============================================
+        #gerons les anomalie dans les prix
+        #===============================================
+
+        #remplace les prix de location des villas < 300000 par la median
+        mask_loc = (df_loc['type_bien'] == 'villas') & (df_loc['price'] < 300000)
+        median_villas = df_loc[df_loc['type_bien'] == 'villas']['price'].median()
+        df_loc.loc[mask_loc,'price'] = median_villas
+
+        #remplace les prix de vente des villas < 300000 par la median
+        mask_vente = (df_vente['type_bien'] == 'villas') & (df_vente['price'] < 20000000)
+        median_villas = df_vente[df_vente['type_bien'] == 'villas']['price'].median()
+        df_vente.loc[mask_vente,'price'] = median_villas
+
+        mask_terrains_bas_prix = df_vente['type_bien'].isin(["terrains", "terrains_agricoles", "terrains_commerciaux"]) & (df_vente['price'] < 5000000)
+        median_terrains = df_vente[df_vente['type_bien'].isin(["terrains", "terrains_agricoles", "terrains_commerciaux"])]['price'].median()
+        df_vente.loc[mask_terrains_bas_prix, 'price'] = median_terrains
+
+
+        df = pd.concat([df_loc, df_vente], axis = 0, ignore_index=True)
+
         df = df.drop(columns=['id'], errors='ignore')
-
-        # Supprimer doublons
         df = df.drop_duplicates()
+        df = df[~df['type_bien'].isin(['Unknown', 'Immobilier', 'unknown', 'immobilier'])]
 
-        print("\n")
-        print("verifivation valeur manquante")
-        print(df.isnull().sum())
 
-        # CORRECTION : Gestion sécurisée des petites superficies
-        def safe_correct_superficie(df, property_type, min_superficie=50):
-            """Corrige les petites superficies de manière sécurisée"""
-            # Vérifier si le type existe dans les données
-            if property_type not in df['type'].unique():
-                print(f"⚠️  Type '{property_type}' non trouvé - ignoré")
-                return df
-                
-            mask_small = (df['type'] == property_type) & (df['superficie'] < min_superficie)
-            count_small = mask_small.sum()
-            
-            if count_small == 0:
-                return df
-                
-            # Calculer la moyenne uniquement sur les données valides
-            valid_data = df[(df['type'] == property_type) & (df['superficie'] >= min_superficie)]['superficie']
-            
-            if len(valid_data) == 0:
-                # Si pas de données valides, utiliser la médiane globale
-                mean_value = df['superficie'].median()
-                print(f"⚠️  Aucune donnée valide pour {property_type}, utilisation médiane globale: {mean_value}")
-            else:
-                mean_value = valid_data.mean()
-                print(f"📊 {property_type}: {count_small} corrections avec moyenne {mean_value:.1f}")
-            
-            # CORRECTION : Utiliser .round() directement sans conversion
-            df.loc[mask_small, 'superficie'] = round(mean_value)
-            return df
-
-        # Appliquer les corrections de manière sécurisée
-        df = safe_correct_superficie(df, 'appartements')
-        df = safe_correct_superficie(df, 'villas') 
-        df = safe_correct_superficie(df, 'appartements_meublés')
-
-        # Uniformiser noms de colonnes
-        df.columns = df.columns.str.lower().str.replace(' ', '_')
-
-        # Supprimer valeurs aberrantes dans type
-        df = df[~df['type'].isin(['Unknown', 'Immobilier', 'unknown', 'immobilier'])]
-
-        # Uniformiser valeurs catégorielles
-        strings = list(df.dtypes[df.dtypes == 'object'].index)
-        for col in strings:
-            df[col] = df[col].str.lower().str.replace(' ', '_')
-
-        # CORRECTION : Renommer les valeurs pour uniformiser
-        df['type'] = df['type'].replace({
-            'appartement': 'appartements',
-            'villa': 'villas',
-        })
-        
-        # CORRECTION : Gérer les valeurs manquantes avant le traitement des outliers
-        df = df.dropna(subset=['price', 'superficie'])
-
-        # Traiter outliers avec IQR
-        features = ['price', 'superficie', 'nombre_chambres', 'nombre_sdb']
-
+        # Outliers numerical
         def impute_outliers(df, feature):
-            # CORRECTION : Vérifier que la feature existe et a des données
-            if feature not in df.columns or df[feature].isna().all():
-                return
-                
-            clean_data = df[feature].dropna()
-            if len(clean_data) == 0:
-                return
-                
-            q1 = np.percentile(clean_data, 25)
-            q3 = np.percentile(clean_data, 75) 
+            q1 = df[feature].quantile(0.25)
+            q3 = df[feature].quantile(0.75)
             iqr = q3 - q1
-            
-            # Éviter les cas où iqr = 0
-            if iqr == 0:
-                return
-                
-            lower_bound = q1 - 1.5 * iqr
-            upper_bound = q3 + 1.5 * iqr
-            
-            # Compter les outliers corrigés
-            outliers_before = ((df[feature] < lower_bound) | (df[feature] > upper_bound)).sum()
-            
-            df.loc[df[feature] < lower_bound, feature] = lower_bound
-            df.loc[df[feature] > upper_bound, feature] = upper_bound
-            
-            outliers_after = ((df[feature] < lower_bound) | (df[feature] > upper_bound)).sum()
-            
-            if outliers_before > 0:
-                print(f"📊 {feature}: {outliers_before} outliers traités")
+            low = q1 - 1.5 * iqr
+            high = q3 + 1.5 * iqr
+            df.loc[df[feature] < low, feature] = low
+            df.loc[df[feature] > high, feature] = high
 
-        for feature in features:
-            if feature in df.columns:
-                impute_outliers(df, feature)
-        
-        # CORRECTION : Gérer les divisions par zéro
-        df['nombre_chambres'] = df['nombre_chambres'].fillna(0)
-        df['nombre_sdb'] = df['nombre_sdb'].fillna(0)
-        
-        # Créer nouvelles features (sans utiliser la cible)
-        df['ratio_sdb_chambres'] = df['nombre_sdb'] / (df['nombre_chambres'].replace(0, 1) + 1e-10)
-        df['surface_par_chambre'] = df['superficie'] / (df['nombre_chambres'].replace(0, 1) + 1e-10)
+        for feature in ["price", "superficie", "nombre_chambres", "nombre_sdb"]:
+            impute_outliers(df, feature)
 
-        # Log transform pour les distributions asymétriques
-        df['log_price'] = np.log1p(df['price'])
+        logging.info("✅ Outliers traités")
+
+        # ============================================================
+        # 3️⃣ FEATURE ENGINEERING
+        # ============================================================
+
+        df['ratio_sdb_chambres'] = df['nombre_sdb'] / (df['nombre_chambres'] + 1)
+        df['surface_par_chambre'] = df['superficie'] / (df['nombre_chambres'] + 1)
+        df['total_pieces'] = df['nombre_chambres'] + df['nombre_sdb']
+        df['density'] = df['nombre_chambres'] / (df['superficie'] + 1)
+            
         df['log_superficie'] = np.log1p(df['superficie'])
+        df['sqrt_superficie'] = np.sqrt(df['superficie'])
+        df['superficie_squared'] = df['superficie'] ** 2
+            
+        premium_areas = ['almadies', 'ngor', 'mermoz', 'sacré-coeur', 'fann']
+        df['is_premium_area'] = df['area'].isin(premium_areas).astype(int)
+        df['is_dakar'] = (df['city'] == 'dakar').astype(int)
+            
+        df['is_villa'] = (df['type_bien'] == 'villas').astype(int)
+        df['is_location'] = (df['category'] == 'location').astype(int)
+            
+        df['villa_large'] = ((df['type_bien'] == 'villas') & (df['superficie'] > 200)).astype(int)
+        df['appt_petit'] = ((df['type_bien'] == 'appartements') & (df['superficie'] < 80)).astype(int)
+            
+        df['high_bathroom_ratio'] = (df['nombre_sdb'] >= df['nombre_chambres']).astype(int)
+        df['spacious'] = (df['surface_par_chambre'] > 40).astype(int)
+            
+        logging.info("✅ Feature engineering terminé")
 
-        # ============================
-        # ENCODAGE ONEHOT
-        # ============================
+        # ============================================================
+        # 4️⃣ FEATURES
+        # ============================================================
 
-        categorical_cols = ['type', 'category', 'area', 'city']
-        numerical_cols = ['superficie', 'nombre_chambres', 'nombre_sdb', 
-                        'ratio_sdb_chambres', 'surface_par_chambre',
-                        'log_superficie']
+        numerical_cols = [
+        'superficie', 'nombre_chambres', 'nombre_sdb',
+        'ratio_sdb_chambres', 'surface_par_chambre', 'total_pieces', 'density',
+        'log_superficie', 'sqrt_superficie', 'superficie_squared',
+        'is_premium_area', 'is_dakar', 'is_villa', 'is_location',
+        'villa_large', 'appt_petit', 'high_bathroom_ratio', 'spacious'
+    ]
 
-        # CORRECTION : Sélectionner uniquement les colonnes existantes
-        categorical_cols = [col for col in categorical_cols if col in df.columns]
-        numerical_cols = [col for col in numerical_cols if col in df.columns]
-
-        print(f"🔧 Colonnes utilisées - Catégorielles: {categorical_cols}")
-        print(f"🔧 Colonnes utilisées - Numériques: {numerical_cols}")
+        categorical_cols = ["type_bien", "category", "area", "city"]
 
         X_num = df[numerical_cols]
         X_cat = df[categorical_cols]
 
-        # OneHotEncoder
-        encoder = OneHotEncoder(sparse_output=False, drop='first', handle_unknown='ignore')
+        # One-hot encoding
+        encoder = OneHotEncoder(sparse_output=False, drop="first", handle_unknown="ignore")
         X_cat_encoded = encoder.fit_transform(X_cat)
         feature_names = encoder.get_feature_names_out(categorical_cols)
 
         X_cat_df = pd.DataFrame(X_cat_encoded, columns=feature_names, index=df.index)
+
         X = pd.concat([X_num.reset_index(drop=True), X_cat_df.reset_index(drop=True)], axis=1)
-        y = df['price'].reset_index(drop=True)  # Garder y non normalisé
+        y = df["price"].reset_index(drop=True)
+
         
+        logging.info(f" Features préparées : {X.shape}")
+
         preprocessing_info = {
-            'numerical_cols': numerical_cols,
-            'categorical_cols': categorical_cols,
-            'feature_names': feature_names.tolist(),
-            'all_columns': X.columns.tolist()
+            "numerical_cols": numerical_cols,
+            "categorical_cols": categorical_cols,
+            "feature_names": feature_names.tolist(),
+            "all_columns": X.columns.to_list()
         }
 
-        # ============================
-        # SPLIT TRAIN/TEST
-        # ============================
 
-        # CORRECTION : Gérer le cas où 'category' n'existe pas
-        stratify_col = None
-        if 'category' in df.columns:
-            stratify_col = df['category'].reset_index(drop=True)
-            print("🎯 Utilisation de la stratification par category")
-        else:
-            print("⚠️  Colonne 'category' non trouvée - pas de stratification")
+        # ============================================================
+        # 5️⃣ TRAIN / TEST
+        # ============================================================
 
         X_train, X_test, y_train, y_test = train_test_split(
-            X, y, 
-            test_size=0.2, 
-            random_state=42, 
-            stratify=stratify_col
+            X, y, test_size=0.2, random_state=42, stratify=df["category"]
         )
 
-        print(f"📊 Données d'entraînement: {X_train.shape[0]} échantillons")
-        print(f"📊 Données de test: {X_test.shape[0]} échantillons")
+        logging.info("✅ Split terminé")
 
-        model = GradientBoostingRegressor(
-            n_estimators=300,       
-            max_depth=4,           
-            learning_rate=0.05,      
-            subsample=0.8,           
-            min_samples_split=20,
-            min_samples_leaf=10,
-            random_state=42
-        )
-        
-        model.fit(X_train, y_train)
-        
-        y_train_pred = model.predict(X_train)
-        y_test_pred = model.predict(X_test)
-        
-        train_r2 = r2_score(y_train, y_train_pred)
-        test_r2 = r2_score(y_test, y_test_pred)
-        test_mae = mean_absolute_error(y_test, y_test_pred)
-        test_rmse = np.sqrt(mean_squared_error(y_test, y_test_pred))
+        # ============================================================
+        # 6️⃣ SCALING
+        # ============================================================
 
-        cv_scores = cross_val_score(model, X_train, y_train, cv=5, scoring='r2')
+        scaler = StandardScaler()
+        X_train_scaled = scaler.fit_transform(X_train)
+        X_test_scaled = scaler.transform(X_test)
+        print("✅ Feature scaling appliqué")
 
-        metrics = {
-            'train_r2': float(train_r2),
-            'test_r2': float(test_r2),
-            'test_mae': float(test_mae),
-            'test_rmse': float(test_rmse),
-            'overfitting': float(train_r2 - test_r2),
-            'cv_mean': float(cv_scores.mean()),
-            'cv_std': float(cv_scores.std()),
-            'timestamp': datetime.now().isoformat()
+        # ============================================================
+        # 7️⃣ DÉFINITION DES MODÈLES
+        # ============================================================
+        print("\n" + "="*80)
+        print("🚀 Entraînement des modèles ML")
+
+        alphas = np.logspace(-2, 4, 40)
+        l1_ratios = np.linspace(0.1, 0.9, 9)
+
+        models_scaled = {
+            "Ridge": RidgeCV(alphas=alphas, cv=10),
+            "ElasticNet": ElasticNetCV(alphas=alphas, l1_ratio=l1_ratios, cv=5)
         }
-        # Sauvegarde du modèle
-        models_dir = './data/models'
-        os.makedirs(models_dir, exist_ok=True)
-        joblib.dump(model, f'{models_dir}/best_model.pkl')
-        joblib.dump(metrics, f'{models_dir}/metrics.pkl')
-        joblib.dump(encoder, f'{models_dir}/encoder.pkl')
-        joblib.dump(preprocessing_info, f'{models_dir}/preprocessing_info.pkl')
-        #joblib.dump(scaler, f'{models_dir}/scaler.pkl')
+
+        models_no_scaled = {
+            'GradientBoosting': GradientBoostingRegressor(
+                n_estimators=300, #800 400
+                max_depth=5, #5
+                learning_rate=0.005, #0.01 0.05
+                subsample=0.8, #0.7
+                min_samples_split=10, #20
+                min_samples_leaf=15, #10
+                random_state=42,
+                verbose=0
+        ),
+        'RandomForest': RandomForestRegressor(
+                n_estimators=300, #600
+                max_depth=15, #15 None
+                #learning_rate = 0.3,
+                min_samples_split=20, #20
+                min_samples_leaf=10, #4 10
+                max_features='sqrt',
+                #min_samples_leaf_frac=None,
+                max_samples=0.7,
+                random_state=42,
+                n_jobs=-1,
+                verbose=0
+        ),
+        'Extra Trees': ExtraTreesRegressor(
+                n_estimators=300, #400
+                max_depth=15,
+                min_samples_split=25, #10
+                min_samples_leaf=12, #10
+                max_features='sqrt',
+                #max_samples=0.85,
+                random_state=42,
+                n_jobs=-1
+        ),
+        'Decision Tree': DecisionTreeRegressor(
+                max_depth=8, #10
+                min_samples_split=50, #30
+                min_samples_leaf=25, #15
+                min_impurity_decrease=0.001,
+                random_state=42
+        ),
+
+        # XGBoost
+        'XGBBoost' : xgb.XGBRegressor(
+                n_estimators=500,
+                max_depth=3,
+                learning_rate=0.01,
+                subsample=0.7,
+                colsample_bytree=0.7,
+                reg_alpha=0.1,
+                reg_lambda=1.0,
+                min_child_weight=5,
+                gamma=0.1,
+                random_state=42
+        )
+
+    }
+
+
+        # ============================================================
+        # 8️⃣ ENTRAÎNEMENT + ÉVALUATION
+        # ============================================================
+
+        results = []
+        best_model = None
+        best_score = -1
+        best_name = None
+        best_is_scaled = False
+        best_metrics = None
+
+
         
+        # --- modèles avec scaling ---
+        for name, model in models_scaled.items():
+            model.fit(X_train_scaled, y_train)
+            test_r2 = r2_score(y_test, model.predict(X_test_scaled))
 
-        logging.info(f" Entraînement terminé — Train R²={train_r2:.4f}")
-        logging.info(f"MAE={test_mae:,.0f}")
-        logging.info(f"RMSE={test_rmse:,.0f}")
-        logging.info(f" Modèles sauvegardés dans {models_dir}")
-        logging.info(f" Entraînement exécuté à {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            results.append((name, test_r2))
 
-        # Convertir cv_scores (numpy array) en liste Python pour la sérialisation
+            if test_r2 > best_score:
+                best_score = test_r2
+                best_model = model
+                best_name = name
+                best_is_scaled = True
+
+        # --- modèles sans scaling ---
+        for name, model in models_no_scaled.items():
+            model.fit(X_train, y_train)
+            test_r2 = r2_score(y_test, model.predict(X_test))
+
+            results.append((name, test_r2))
+
+            if test_r2 > best_score:
+                best_score = test_r2
+                best_model = model
+                best_name = name
+                best_is_scaled = False
+
+        logging.info(f"🏆 Meilleur modèle : {best_name} | R² = {best_score:.4f}")
+
+        # ============================================================
+        # 9️⃣ SAUVEGARDE DU MEILLEUR MODÈLE
+        # ============================================================
+
+        os.makedirs("./data/models", exist_ok=True)
+
+        joblib.dump(best_model, "./data/models/best_model.pkl")
+        joblib.dump(encoder, "./data/models/encoder.pkl")
+        joblib.dump(preprocessing_info, "./data/models/preprocessing_info.pkl")
+        joblib.dump(scaler, "./data/models/scaler.pkl")
+        joblib.dump({"r2": best_score}, "./data/models/metrics.pkl")
+
+        logging.info("💾 Modèle + preprocessing sauvegardés")
+
         return {
-            'train_r2': train_r2,
-            'test_r2': test_r2, 
-            'mae': test_mae, 
-            'rmse': test_rmse, 
-            'cross_val': cv_scores.tolist(), 
-            'cross_val_mean': float(cv_scores.mean()),  
-            'cross_val_std': float(cv_scores.std())      
+            "best_model": best_name,
+            "best_r2": best_score,
+            "scaled": best_is_scaled,
         }
 
     # Définir l'ordre d'exécution

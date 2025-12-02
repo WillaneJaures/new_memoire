@@ -172,7 +172,7 @@ if page == "Dashboard":
         if not df_vente.empty:
             avg_price_vente = df_vente.groupby('area')['price'].mean().sort_values(ascending=False).head(10)
             fig_vente = px.bar(x=avg_price_vente.index, y=avg_price_vente.values,
-                               labels={'x': 'Quartier', 'y': 'Prix moyen (FCFA)'}, title="Top 10 - Vente")
+                               labels={'x': 'Area', 'y': 'Prix moyen (FCFA)'}, title="Top 10 - Vente")
             st.plotly_chart(fig_vente, use_container_width=True)
     with col2:
         st.image("../images/rent.png", width=30)
@@ -191,7 +191,7 @@ if page == "Dashboard":
     with col1:
         st.image("../images/pie-chart.png", width=30)
         st.subheader("Répartition par type")
-        type_counts = df['type'].value_counts()
+        type_counts = df['type_bien'].value_counts()
         fig = px.pie(values=type_counts.values, names=type_counts.index)
         st.plotly_chart(fig, use_container_width=True)
     with col2:
@@ -243,7 +243,7 @@ elif page == "Prédiction":
         nombre_sdb = st.number_input("Nombre de salles de bain", min_value=1, max_value=10, value=2)
     
     with col2:
-        type_bien = st.selectbox("Type de bien", df['type'].unique())
+        type_bien = st.selectbox("Type de bien", df['type_bien'].unique())
         category = st.selectbox("Catégorie", ['location', 'vente'])
         area = st.selectbox("Quartier", sorted(df['area'].unique()))
         city = st.selectbox("Ville", sorted(df['city'].unique()))
@@ -294,7 +294,7 @@ elif page == "Prédiction":
                 }
                 
                 categorical_data = {
-                    'type': type_bien,
+                    'type_bien': type_bien,
                     'category': category,
                     'area': area,
                     'city': city
@@ -418,7 +418,7 @@ elif page == "Recherche":
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        type_filter = st.multiselect("Type de bien", df['type'].unique())
+        type_filter = st.multiselect("Type de bien", df['type_bien'].unique())
     with col2:
         category_filter = st.multiselect("Catégorie", df['category'].unique())
     with col3:
@@ -437,7 +437,7 @@ elif page == "Recherche":
         price_max = st.number_input(
             "Prix maximum (FCFA)", 
             min_value=price_min,                
-            max_value=int(df['price'].max()) * 2,  
+            max_value=int(df['price'].max()),  
             value=int(df['price'].max()), 
             step=100000
         )
@@ -453,7 +453,7 @@ elif page == "Recherche":
         superficie_max = st.number_input(
             "Superficie maximum (m²)", 
             min_value=superficie_min,               
-            max_value=int(df['superficie'].max()) * 2, 
+            max_value=int(df['superficie'].max()), 
             value=int(df['superficie'].max()), 
             step=10
         )
@@ -461,7 +461,7 @@ elif page == "Recherche":
     filtered_df = df.copy()
     
     if type_filter:
-        filtered_df = filtered_df[filtered_df['type'].isin(type_filter)]
+        filtered_df = filtered_df[filtered_df['type_bien'].isin(type_filter)]
     if category_filter:
         filtered_df = filtered_df[filtered_df['category'].isin(category_filter)]
     if city_filter:
@@ -494,7 +494,7 @@ elif page == "Recherche":
         
         # Affichage
         st.dataframe(
-            filtered_df[['type', 'price', 'superficie', 'nombre_chambres', 'nombre_sdb', 'area', 'city', 'category']],
+            filtered_df[['type_bien', 'price', 'superficie', 'nombre_chambres', 'nombre_sdb', 'area', 'city', 'category']],
             use_container_width=True
         )
         
