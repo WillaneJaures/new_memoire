@@ -1468,14 +1468,12 @@ with DAG(
         best_score = -1
         best_name = None
         best_is_scaled = False
-        best_metrics = None
 
-
-        
         # --- modèles avec scaling ---
         for name, model in models_scaled.items():
             model.fit(X_train_scaled, y_train)
-            test_r2 = r2_score(y_test, model.predict(X_test_scaled))
+            preds_test = model.predict(X_test_scaled)
+            test_r2 = r2_score(y_test, preds_test)
 
             results.append((name, test_r2))
 
@@ -1488,7 +1486,8 @@ with DAG(
         # --- modèles sans scaling ---
         for name, model in models_no_scaled.items():
             model.fit(X_train, y_train)
-            test_r2 = r2_score(y_test, model.predict(X_test))
+            preds_test = model.predict(X_test)
+            test_r2 = r2_score(y_test, preds_test)
 
             results.append((name, test_r2))
 
@@ -1500,19 +1499,62 @@ with DAG(
 
         logging.info(f"🏆 Meilleur modèle : {best_name} | R² = {best_score:.4f}")
 
+
         # ============================================================
-        # 9️⃣ SAUVEGARDE DU MEILLEUR MODÈLE
+        # CALCUL DES MÉTRIQUES POUR STREAMLIT
+        # ============================================================
+
+        def compute_metrics(model, X_train, y_train, X_test, y_test):
+            preds_train = model.predict(X_train)
+            preds_test = model.predict(X_test)
+
+            return {
+                "r2_train": r2_score(y_train, preds_train),
+                "r2_test": r2_score(y_test, preds_test),
+                "mae_train": mean_absolute_error(y_train, preds_train),
+                "mae_test": mean_absolute_error(y_test, preds_test),
+                "rmse_train": mean_squared_error(y_train, preds_train) ** 0.5,
+                "rmse_test": mean_squared_error(y_test, preds_test) ** 0.5,
+                
+            }
+
+
+        X_train_final = X_train_scaled if best_is_scaled else X_train
+        X_test_final = X_test_scaled if best_is_scaled else X_test
+
+        metrics = compute_metrics(best_model, X_train_final, y_train, X_test_final, y_test)
+
+        # CV 5-fold
+        cv_scores = cross_val_score(best_model, X_train_final, y_train, cv=5, scoring='r2')
+        cv_mean = cv_scores.mean()
+
+
+        # ============================================================
+        # 9️⃣ SAUVEGARDE DU MEILLEUR MODÈLE + MÉTRIQUES
         # ============================================================
 
         os.makedirs("./data/models", exist_ok=True)
+
+        final_metrics = {
+            "model_name": best_name,
+            "train_r2": metrics["r2_train"],
+            "test_r2": metrics["r2_test"],
+            "train_mae": metrics["mae_train"],
+            "test_mae": metrics["mae_test"],
+            "train_rmse": metrics["rmse_train"],
+            "test_rmse": metrics["rmse_test"],
+            "cv_mean": cv_mean,
+            "overfitting": abs(metrics["r2_train"] - metrics["r2_test"]),
+            'timestamp': datetime.now().isoformat()
+        }
 
         joblib.dump(best_model, "./data/models/best_model.pkl")
         joblib.dump(encoder, "./data/models/encoder.pkl")
         joblib.dump(preprocessing_info, "./data/models/preprocessing_info.pkl")
         joblib.dump(scaler, "./data/models/scaler.pkl")
-        joblib.dump({"r2": best_score}, "./data/models/metrics.pkl")
+        joblib.dump(final_metrics, "./data/models/metrics.pkl")
 
-        logging.info("💾 Modèle + preprocessing sauvegardés")
+        logging.info("💾 Modèle + preprocessing + métriques sauvegardés")
 
         return {
             "best_model": best_name,
