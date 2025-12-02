@@ -30,7 +30,7 @@ with DAG(
         import time
 
         df = pd.DataFrame()
-        for i in range(1, 10):  
+        for i in range(1, 444):  
             url = f'https://sn.coinafrique.com/categorie/immobilier?page={i}'
             logging.info(f"🔎 Scraping page {i}: {url}")
             res = get(url)
