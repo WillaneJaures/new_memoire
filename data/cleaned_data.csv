@@ -1,752 +1,1090 @@
 price,type,nombre_chambres,nombre_sdb,superficie,category,area,city
-400000,Appartements,4,3,4,Location,Ouakam,Dakar
-4000000,Villas,9,7,780,Location,Mermoz-Sacré Coeur,Dakar
-15000000,Appartements,4,2,100,Vente,Almadies,Dakar
-200000,Bureaux & Commerces,2,2,150,Location,Sicap Liberté,Dakar
-700000,Appartements,3,3,100,Location,Almadies,Dakar
-350000,Bureaux & Commerces,1,1,1,Location,Yoff,Dakar
-1500000,Appartements meublés,3,3,120,Location,Fann,Dakar
-518000,Appartements,4,3,150,Location,Almadies,Dakar
-275000,Appartements,2,1,2,Location,Fass,Dakar
-225000,Appartements,4,2,80,Location,Parcelle Assainies,Dakar
-1500000,Bureaux & Commerces,1,1,350,Location,Yoff,Dakar
-1000000,Appartements,6,4,250,Location,Almadies,Dakar
-700000,Appartements,4,3,100,Location,Mermoz-Sacré Coeur,Dakar
-30000,Appartements meublés,2,1,2,Location,Sacré-Coeur,Dakar
-460000000,Villas,9,8,200,Vente,Mamelles,Dakar
-350000,Appartements,4,2,110,Location,Mariste,Dakar
-90000000,Appartements,3,3,150,Vente,Ouakam,Dakar
-300000,Appartements,3,2,3,Location,Yoff,Dakar
-700000,Appartements,3,2,185,Location,Almadies,Dakar
-225000000,Immeubles,190,190,100,Vente,Grand Yoff,Dakar
-90000000,Appartements,3,3,150,Vente,Ouakam,Dakar
-1200000,Villas,6,6,742,Vente,Point E,Dakar
-800000,Appartements,1,2,95,Location,Almadies,Dakar
-500000,Appartements,3,3,150,Location,Medina,Dakar
-500000,Appartements,3,3,140,Location,Mamelles,Dakar
-,Terrains,4,2,225,Vente,Thies,Thies
-250000,Appartements,4,2,100,Vente,Sacré-Coeur,Dakar
-32000000,Villas,3,3,105,Vente,Parcelle Assainies,Dakar
-1300000,Bureaux & Commerces,1,1,93,Location,Dakar Plateau,Dakar
-550000,Appartements,4,4,100,Location,Sipres,Dakar
-350000,Appartements,4,4,100,Location,Ouakam,Dakar
-100000,Villas,5,5,5,Location,Ngaparou,Ngaparou
-350000,Appartements,3,1,90,Location,Yoff,Dakar
-295000,Appartements,3,1,100,Location,Ngor,Dakar
-1700000,Appartements,5,5,220,Location,Almadies,Dakar
-260000,Appartements,3,3,99,Location,Sicap foire,Dakar
-22000,Appartements meublés,1,1,1,Location,Mermoz-Sacré Coeur,Dakar
-175000,Appartements,1,1,65,Location,Sicap Liberté,Dakar
-,Immeubles,15,15,100,Vente,Dakar Plateau,Dakar
-90000000,Appartements,3,3,150,Vente,Ouakam,Dakar
-550000,Appartements,2,1,2,Location,Point E,Dakar
-75000000,Villas,5,2,500,Vente,Thies,Thies
-725000,Appartements,4,4,250,Location,Ngor,Dakar
-800000,Villas,5,4,200,Location,Sipres,Dakar
-350000,Chambres,1,1,1,Location,Dakar Plateau,Dakar
-750000,Appartements,4,3,4,Location,Medina,Dakar
-400000,Appartements,4,3,130,Location,Sicap Liberté,Dakar
-500000000,Villas,7,5,300,Vente,Sicap Liberté,Dakar
-1500000,Appartements,3,3,160,Location,Fann,Dakar
-950000,Villas,4,3,900,Location,Mariste,Dakar
-1000000,Appartements,4,2,100,Location,Almadies,Dakar
-150000000,Terrains,200,200,100,Vente,Mamelles,Dakar
-450000,Appartements,3,3,110,Location,Mermoz-Sacré Coeur,Dakar
-900000,Villas,6,6,200,Location,Mariste,Dakar
-400000,Appartements,4,3,133,Location,Yoff,Dakar
-550000,Villas,3,2,250,Location,Mamelles,Dakar
-1500000,Appartements,4,4,150,Location,Mamelles,Dakar
-80000,Appartements,1,1,100,Location,Sicap Liberté,Dakar
-450000000,Villas,20,8,1000,Vente,Almadies,Dakar
-450000,Villas,4,3,600,Location,Ouest Foire,Dakar
-1399500000,Villas,4,3,1000,Vente,Almadies,Dakar
-350000,Appartements,2,2,80,Location,Mamelles,Dakar
-750000,Bureaux & Commerces,5,5,300,Location,Fann,Dakar
-550000,Appartements,4,3,136,Location,Yoff,Dakar
-375000,Appartements,4,1,4,Location,Ouakam,Dakar
-2500000,Terrains,4,2,180,Vente,Diamniadio,Diamniadio
-500000,Villas,5,1,200,Location,Sicap Liberté,Dakar
-600000,Appartements meublés,2,2,168,Location,Almadies,Dakar
-400000,Appartements,4,2,4,Location,Yoff,Dakar
-1300000,Appartements,4,4,4,Location,Point E,Dakar
-47000000,Appartements,2,1,66,Vente,Ngor,Dakar
-110000000,Villas,4,2,300,Vente,Saly,Saly
-110000000,Terrains,4,2,100,Vente,Yoff,Dakar
-40000,Appartements meublés,3,1,90,Location,Ouest Foire,Dakar
-350000,Appartements,3,2,45,Location,Mamelles,Dakar
-1000000,Appartements,4,4,150,Location,Mermoz-Sacré Coeur,Dakar
-1000000,Villas,6,5,6,Location,Diamniadio,Diamniadio
-850000,Villas,7,4,230,Location,Yoff,Dakar
-550000,Villas,3,2,260,Location,Mamelles,Dakar
-250000,Appartements,2,1,126,Location,Yoff,Dakar
-180000,Appartements,2,2,125,Location,Yoff,Dakar
-1500000,Appartements,4,4,100,Location,Mamelles,Dakar
-500000,Appartements,2,1,100,Location,Mermoz-Sacré Coeur,Dakar
-310800,Appartements,3,1,90,Location,Sicap foire,Dakar
-500000,Appartements,2,2,100,Location,Mariste,Dakar
-,Villas,6,6,12,Location,Saly,Saly
-14000000,Terrains,150,150,100,Vente,Keur Massar,Keur Massar
-500000,Appartements,3,3,3,Location,Mamelles,Dakar
-1000000,Villas,9,9,100,Location,Mermoz-Sacré Coeur,Dakar
-450000,Appartements,2,1,100,Location,Mamelles,Dakar
-3500000,Appartements,5,3,5,Location,Fann,Dakar
-850000,Villas,4,2,100,Vente,Yoff,Dakar
-1100000,Villas,11,5,120,Location,Mariste,Dakar
-500000000,Villas,7,5,300,Vente,Sicap foire,Dakar
-2500000,Appartements,5,4,450,Location,Almadies,Dakar
-2500000,Villas,15,7,500,Location,Sicap foire,Dakar
-95000,Appartements,2,1,35,Location,Rufisque,Rufisque
-400000,Appartements,4,3,130,Location,Fann,Dakar
-250000000,Immeubles,4,2,150,Vente,Medina,Dakar
-35000000,Bureaux & Commerces,2,2,70,Vente,Almadies,Dakar
-1400000,Appartements,6,4,6,Location,Ouakam,Dakar
-77500000,Immeubles,4,2,200,Vente,Grand Yoff,Dakar
-250000,Appartements,2,2,66,Location,Almadies,Dakar
-3000000,Terrains,150,150,100,Vente,Rufisque,Rufisque
-250000,Appartements,3,2,3,Location,Ouakam,Dakar
-750000,Appartements,5,5,240,Location,Almadies,Dakar
-300000,Appartements,3,1,3,Location,Mermoz-Sacré Coeur,Dakar
-175000,Appartements,1,1,45,Location,Sicap Liberté,Dakar
-2500000,Appartements,5,4,410,Location,Almadies,Dakar
-375000,Appartements,3,2,3,Location,Mamelles,Dakar
-1200000,Villas,6,5,380,Location,Ouakam,Dakar
-2250000,Villas,6,6,100,Location,Fann,Dakar
-,Appartements,4,2,100,Vente,Almadies,Dakar
-75000000,Terrains,4,2,150,Vente,Ouest Foire,Dakar
-3500000,Villas,9,7,780,Location,Mermoz-Sacré Coeur,Dakar
-300000,Appartements,2,2,2,Location,Ouakam,Dakar
-40000000,Villas,6,4,225,Vente,Lac rose,Lac rose
-,Terrains,2000,2000,100,Vente,Hann Bel-Air,Dakar
-260000,Appartements,3,2,130,Location,Mamelles,Dakar
-345000000,Appartements,5,5,295,Vente,Almadies,Dakar
-375000,Appartements,4,2,4,Location,Mamelles,Dakar
-8000000,Terrains,300,300,100,Vente,Malikounda,Dakar
-150000000,Villas,4,2,220,Vente,Point E,Dakar
-175000,Appartements,1,1,65,Location,Sicap Liberté,Dakar
-65000000,Appartements,2,1,2,Vente,Point E,Dakar
-270000000,Villas,6,4,296,Vente,Almadies,Dakar
-220000,Appartements,3,2,3,Location,Almadies,Dakar
-2500000,Appartements,5,4,430,Location,Almadies,Dakar
-2500000,Appartements,5,5,5,Location,Almadies,Dakar
-60000,Chambres,1,1,12,Location,Sicap Liberté,Dakar
-900000,Appartements,6,5,200,Location,Point E,Dakar
-,Appartements,3,3,110,Location,Sicap foire,Dakar
-650000,Appartements,1,1,60,Location,Almadies,Dakar
-550000,Appartements,4,3,110,Location,Mamelles,Dakar
-330000,Appartements,3,3,100,Location,Medina,Dakar
-500000,Villas,8,6,150,Vente,Mbao,Dakar
-400000,Appartements,2,1,90,Location,Sicap Liberté,Dakar
-275000,Appartements,2,1,2,Location,Fass,Dakar
-800000,Terrains,500,500,100,Vente,Almadies,Dakar
-350000,Bureaux & Commerces,1,1,87,Location,Dieuppeul-Derklé,Dakar
-550000,Appartements,4,4,150,Location,Mamelles,Dakar
-400000000,Terrains,600,600,100,Vente,Almadies,Dakar
-300000,Appartements,4,4,100,Location,Almadies 2,Dakar
-260000,Appartements,2,2,110,Location,Sicap foire,Dakar
-1500000,Appartements,4,4,150,Location,Mamelles,Dakar
-2000000,Appartements,150,150,100,Vente,Toubab Dialao,Toubab Dialao
-,Villas,6,5,12,Location,Fann,Dakar
-300000,Appartements,3,3,100,Location,Mamelles,Dakar
-70000000,Appartements,2,2,66,Vente,Yoff,Dakar
-350000,Appartements,3,2,100,Location,Mamelles,Dakar
-300000,Appartements,3,3,3,Location,Fass,Dakar
-1700000,Appartements,5,4,12,Location,Ouakam,Dakar
-275000,Appartements,4,2,130,Location,Parcelle Assainies,Dakar
-700000,Appartements,5,2,210,Location,Mermoz-Sacré Coeur,Dakar
-683000000,Villas,11,5,500,Vente,Yoff,Dakar
-26000000,Terrains agricoles,30000,30000,100,Vente,Thies,Thies
-139000000,Villas,3,3,400,Vente,Thies,Thies
-1300000,Appartements,4,3,4,Location,Point E,Dakar
-400000,Bureaux & Commerces,4,2,4,Location,Almadies,Dakar
-500000,Appartements,3,3,100,Location,Almadies,Dakar
-350000,Bureaux & Commerces,1,1,95,Location,Dieuppeul-Derklé,Dakar
-,Fermes & Vergers,4,2,1170000,Vente,Thies,Thies
-1000000,Villas,8,5,150,Location,Mermoz-Sacré Coeur,Dakar
-700000,Appartements,5,4,5,Location,Mamelles,Dakar
-400000,Appartements,4,3,134,Location,Yoff,Dakar
-1700000,Bureaux & Commerces,5,3,200,Location,Almadies,Dakar
-450000,Appartements,4,2,150,Location,Almadies,Dakar
-50000000,Fermes & Vergers,10000,10000,100,Vente,Thies,Thies
-78000000,Appartements,4,2,100,Vente,Almadies,Dakar
-300000,Appartements,1,4,80,Location,Almadies,Dakar
-1500000,Appartements,10,10,100,Location,Sicap Liberté,Dakar
-1990000,Bureaux & Commerces,2,1,227,Location,Almadies,Dakar
-400000,Appartements,4,1,100,Location,Sicap foire,Dakar
-1000000,Bureaux & Commerces,1,1,110,Location,Sicap Liberté,Dakar
-250000,Appartements meublés,2,2,70,Location,Sicap Liberté,Dakar
-1500000,Appartements meublés,4,4,135,Location,Almadies,Dakar
-650,Appartements,4,3,200,Location,Almadies,Dakar
-700000,Appartements,3,2,3,Location,Dakar Plateau,Dakar
-1200000,Villas,6,5,450,Location,Mermoz-Sacré Coeur,Dakar
-350000,Bureaux & Commerces,1,1,80,Location,Dieuppeul-Derklé,Dakar
-650000,Appartements,3,4,200,Location,Mamelles,Dakar
-6000000,Terrains,150,150,100,Vente,Diamniadio,Diamniadio
-180000,Appartements,1,1,1,Location,Medina,Dakar
-700000,Bureaux & Commerces,5,2,5,Location,Dakar Plateau,Dakar
-1000000,Appartements,7,6,200,Location,Ouakam,Dakar
-22000000,Terrains,200,200,100,Vente,Keur Massar,Keur Massar
-600000,Appartements,2,2,100,Location,Mermoz-Sacré Coeur,Dakar
-1500000000,Appartements,6,6,900,Vente,Yoff,Dakar
-2500000,Bureaux & Commerces,5,5,350,Location,Dakar Plateau,Dakar
-4000000,Terrains,4,2,300,Vente,Ouakam,Dakar
-110000,Appartements,1,1,1,Location,Dieuppeul-Derklé,Dakar
-750000,Bureaux & Commerces,5,5,230,Location,Fann,Dakar
-550000,Appartements,4,2,100,Vente,Mamelles,Dakar
-117000000,Villas,11,7,200,Vente,Grand Yoff,Dakar
-250000000,Immeubles,4,2,150,Vente,Medina,Dakar
-500000,Appartements meublés,2,1,56,Location,Ouakam,Dakar
 70000,Villas,3,2,400,Location,Ngaparou,Ngaparou
-2250000,Appartements,5,5,310,Location,Almadies,Dakar
-300000,Appartements,3,2,100,Location,Ngor,Dakar
-47000000,Villas,4,1,300,Vente,Almadies,Dakar
-375000000,Villas,7,6,285,Vente,Mermoz-Sacré Coeur,Dakar
-50000,Appartements meublés,4,2,120,Location,Sicap Liberté,Dakar
-1600000,Villas,4,3,300,Location,Ngor,Dakar
-260000,Appartements,3,3,120,Location,Sicap foire,Dakar
-1200000,Villas,6,2,450,Location,Mermoz-Sacré Coeur,Dakar
-900000,Appartements meublés,3,2,3,Location,Point E,Dakar
-800000,Villas,5,5,160,Location,Yoff,Dakar
-100000,Bureaux & Commerces,1,1,1,Location,Sacré-Coeur,Dakar
-700000,Appartements,5,4,5,Location,Mermoz-Sacré Coeur,Dakar
-150000,Appartements,1,1,1,Location,Fass,Dakar
-55000000,Villas,325,325,100,Vente,Saly,Saly
-250000,Appartements,4,2,100,Vente,Mariste,Dakar
-425000,Appartements,3,2,150,Location,Almadies,Dakar
-40000,Appartements meublés,2,1,100,Location,Sicap Liberté,Dakar
-500000,Appartements,3,2,120,Location,Ouest Foire,Dakar
-1200000,Appartements meublés,4,2,130,Location,Mermoz-Sacré Coeur,Dakar
-750000,Appartements,4,2,150,Location,Yoff,Dakar
-250000,Appartements,2,1,120,Location,Gueule Tapée,Dakar
-8000000,Terrains,200,200,100,Vente,Rufisque,Rufisque
-1200000,Appartements meublés,4,2,160,Location,Mermoz-Sacré Coeur,Dakar
-900000,Bureaux & Commerces,4,2,100,Location,Yoff,Dakar
-175000,Appartements,1,1,45,Location,Sicap Liberté,Dakar
-350000,Appartements,3,1,3,Location,Mermoz-Sacré Coeur,Dakar
-17000000,Terrains,150,150,100,Vente,Rufisque,Rufisque
-85000000,Villas,8,4,250,Vente,Saly,Saly
-1500000,Appartements,4,4,150,Location,Mamelles,Dakar
-1000000,Appartements,4,5,145,Location,Almadies,Dakar
-350000,Appartements,3,2,3,Location,Medina,Dakar
-300000,Appartements,3,2,160,Location,Almadies,Dakar
-600000,Appartements meublés,4,2,140,Location,Ouakam,Dakar
-300000,Appartements,4,3,12,Location,Diamalaye 1,Dakar
-1000000,Villas,6,5,200,Location,Almadies,Dakar
-35000,Appartements meublés,2,2,110,Location,Sicap Liberté,Dakar
-65000000,Villas,2,2,56,Vente,Fatick,Dakar
-450000,Appartements,3,2,100,Location,Mamelles,Dakar
-200000,Appartements,2,1,120,Location,Yoff,Dakar
-210000000,Villas,6,4,600,Vente,Ngaparou,Ngaparou
-300000000,Terrains,351,351,100,Vente,Yoff,Dakar
-90000,Chambres,1,1,13,Location,Sicap Liberté,Dakar
-2200000,Villas,8,8,100,Location,Mermoz-Sacré Coeur,Dakar
-180000,Bureaux & Commerces,1,1,1,Location,Almadies,Dakar
-500000,Appartements,5,3,135,Location,Yoff,Dakar
-250000,Villas,4,2,4,Location,Almadies,Dakar
-600000,Appartements,4,1,100,Location,Sacré-Coeur,Dakar
-60000,Appartements meublés,4,1,120,Location,Mermoz-Sacré Coeur,Dakar
-400000,Appartements,4,3,4,Location,Mamelles,Dakar
-225000000,Immeubles,4,2,190,Vente,Grand Yoff,Dakar
-225000,Appartements,3,2,98,Location,Sicap Liberté,Dakar
-5500000,Terrains,300,300,100,Vente,Mbour,Mbour
-425000,Villas,4,3,4,Location,Cambérène,Dakar
-1300000,Appartements,4,3,4,Location,Mermoz-Sacré Coeur,Dakar
-750000,Bureaux & Commerces,5,5,450,Location,Fann,Dakar
-500000,Appartements,4,1,4,Location,Mamelles,Dakar
-350000,Appartements,3,3,150,Location,Mermoz-Sacré Coeur,Dakar
-350000,Appartements,2,2,2,Location,Almadies,Dakar
-125000,Chambres,1,1,45,Location,Sicap Liberté,Dakar
-175000000,Immeubles,4,2,100,Vente,Almadies,Dakar
-260,Appartements,3,3,140,Location,Sicap foire,Dakar
-367000,Appartements,3,2,3,Location,Sicap Liberté,Dakar
-650000,Appartements,4,3,130,Location,Mermoz-Sacré Coeur,Dakar
-175000,Appartements,1,1,45,Location,Sicap Liberté,Dakar
-1200000,Villas,6,2,450,Location,Mermoz-Sacré Coeur,Dakar
-400000,Appartements,4,3,140,Location,Fann,Dakar
-38000000,Villas,4,2,150,Vente,Rufisque,Rufisque
-350000000,Villas,8,5,297,Vente,Sicap Liberté,Dakar
-1000000,Appartements,6,4,6,Location,Mermoz-Sacré Coeur,Dakar
-750000,Appartements,5,4,175,Location,Ouest Foire,Dakar
-600000,Appartements,3,3,100,Location,Sipres,Dakar
-125000,Appartements,2,1,150,Location,Guediawaye,Dakar
-800000,Appartements,4,4,12,Location,Mermoz-Sacré Coeur,Dakar
-15000,Appartements,1,1,75,Location,Almadies,Dakar
-800000,Appartements,3,2,3,Location,Dakar Plateau,Dakar
-900000,Villas,6,5,12,Location,Mermoz-Sacré Coeur,Dakar
-1200000,Appartements meublés,4,4,180,Location,Mermoz-Sacré Coeur,Dakar
-500000,Appartements meublés,2,1,65,Location,Ouakam,Dakar
-1000000,Villas,4,4,1000,Location,Mamelles,Dakar
-2500000,Appartements meublés,4,5,230,Location,Yoff,Dakar
-420000000,Villas,5,6,351,Vente,Mamelles,Dakar
-300000,Appartements,3,2,3,Location,Yoff,Dakar
-500000,Appartements,3,2,100,Location,Almadies,Dakar
-550000,Villas,3,2,280,Location,Mamelles,Dakar
-30000,Appartements meublés,2,1,75,Location,Yoff,Dakar
-900000,Appartements,4,2,150,Location,Mermoz-Sacré Coeur,Dakar
-750000,Appartements,4,3,4,Location,Almadies,Dakar
-12000000,Terrains,15,15,100,Vente,Dakar Plateau,Dakar
-550000,Appartements,4,3,180,Location,Damel,Dakar
-4000000,Terrains,4,2,150,Vente,Almadies,Dakar
-175000,Appartements,1,1,48,Location,Sicap Liberté,Dakar
-225000,Appartements,3,3,95,Location,Sicap Liberté,Dakar
-1800000,Appartements meublés,4,4,130,Location,Ouakam,Dakar
-550000,Villas,3,2,250,Location,Mamelles,Dakar
-1800000,Appartements meublés,4,4,140,Location,Ouakam,Dakar
-4000000,Bureaux & Commerces,9,7,780,Location,Mermoz-Sacré Coeur,Dakar
-375000,Appartements,4,2,4,Location,Mamelles,Dakar
-800000,Villas,5,3,5,Location,Sipres,Dakar
-400000,Appartements,4,3,140,Location,Fann,Dakar
-550000,Appartements,3,2,120,Location,Sacré-Coeur,Dakar
-350000,Appartements,3,2,3,Location,Mermoz-Sacré Coeur,Dakar
-800000,Appartements,3,3,200,Location,Almadies,Dakar
-600000,Villas,3,2,200,Location,Almadies,Dakar
-700000,Appartements,4,3,110,Location,Almadies,Dakar
-900000,Maisons de vacances,5,5,5,Location,Mermoz-Sacré Coeur,Dakar
-62000000,Appartements,61,61,100,Vente,Ngor,Dakar
-275000,Appartements,3,2,3,Location,Keur Massar,Keur Massar
-1800000,Villas,4,2,100,Location,Almadies,Dakar
-225000,Appartements,2,2,2,Location,Mamelles,Dakar
-1800000000,Immeubles,276,276,100,Vente,Almadies,Dakar
-800000,Appartements,4,2,123,Location,Point E,Dakar
-650000,Appartements meublés,1,1,1,Location,Almadies,Dakar
-850000,Appartements,4,3,4,Location,Mamelles,Dakar
-2500000,Villas,8,6,500,Location,Almadies,Dakar
-800000,Appartements,4,3,140,Location,Mermoz-Sacré Coeur,Dakar
-1200000,Villas,6,5,380,Location,Mamelles,Dakar
-300000,Appartements,3,1,150,Location,Mariste,Dakar
-25000,Appartements meublés,2,1,2,Location,Sacré-Coeur,Dakar
-28000000,Terrains,4,2,230,Vente,Almadies,Dakar
-1000000000,Terrains,4,2,980,Vente,Yoff,Dakar
-1400000,Appartements,3,3,3,Location,Almadies,Dakar
-1500000,Appartements,4,2,4,Location,Mermoz-Sacré Coeur,Dakar
-400000,Appartements meublés,2,2,150,Location,Damel,Dakar
-260000000,Villas,6,4,325,Vente,Yoff,Dakar
-135000000,Appartements,8,150,8,Vente,Mamelles,Dakar
-225000000,Immeubles,190,190,100,Vente,Grand Yoff,Dakar
-1500000,Appartements,4,4,150,Location,Mamelles,Dakar
-20000000,Terrains,150,150,100,Vente,Rufisque,Rufisque
-800000,Appartements meublés,3,3,80,Location,Point E,Dakar
-225000,Appartements,2,2,80,Location,Ouest Foire,Dakar
-19000000,Terrains,818,818,100,Vente,Fatick,Dakar
-1100000,Villas,3,2,3,Location,Almadies,Dakar
-125000,Bureaux & Commerces,1,1,16,Location,Medina,Dakar
-700000,Appartements,4,3,120,Location,Mermoz-Sacré Coeur,Dakar
-43000000,Villas,3,3,320,Vente,Saly,Saly
-1000000,Villas,5,5,5,Location,Almadies,Dakar
-350000,Appartements,2,2,2,Location,Mamelles,Dakar
-170000,Appartements,3,2,3,Location,Keur Massar,Keur Massar
-500000,Appartements,4,3,170,Location,Mamelles,Dakar
-3500000,Villas,11,7,800,Location,Almadies,Dakar
-90000000,Appartements,3,3,150,Vente,Ouakam,Dakar
-380000,Appartements,3,2,3,Location,Fass,Dakar
-5500000,Villas,8,4,2000,Location,Fann,Dakar
-550000,Appartements,3,2,3,Location,Medina,Dakar
-260000,Appartements,3,3,97,Location,Sicap foire,Dakar
-800000,Appartements,5,4,250,Location,Fann,Dakar
-400000,Appartements,3,150,3,Location,Ouakam,Dakar
-80000000,Terrains,4,2,150,Vente,Yoff,Dakar
-700000,Appartements,4,1,110,Location,Sicap Liberté,Dakar
-150000,Chambres,1,1,1,Location,Medina,Dakar
-249500000,Villas,9,9,1600,Vente,Mbour,Mbour
-350000,Appartements,4,2,100,Location,Ouakam,Dakar
-50000000,Villas,4,2,150,Vente,Rufisque,Rufisque
-325000,Appartements,3,3,130,Location,Yoff,Dakar
-225000,Appartements,3,2,100,Location,Mariste,Dakar
-110000,Chambres,1,1,13,Location,Sicap Liberté,Dakar
-700000,Appartements,3,4,145,Location,Mamelles,Dakar
-275000,Appartements,3,2,105,Location,Mamelles,Dakar
-275000,Appartements,4,2,130,Location,Parcelle Assainies,Dakar
-30000,Appartements meublés,2,1,65,Location,Yoff,Dakar
-400000,Bureaux & Commerces,4,3,140,Location,Fann,Dakar
-800000,Appartements,5,5,300,Location,Almadies,Dakar
-250000000,Immeubles,160,160,100,Vente,Medina,Dakar
-600000,Appartements,4,3,4,Location,Dakar Plateau,Dakar
-300000000,Villas,6,4,300,Vente,Yoff,Dakar
-260000,Appartements,3,3,3,Location,Sicap foire,Dakar
-8500000,Terrains,4,2,150,Vente,Rufisque,Rufisque
-750000,Villas,7,4,150,Vente,Mariste,Dakar
-1700000,Appartements,4,4,13,Location,Ouakam,Dakar
-250000,Appartements,3,2,110,Location,Mamelles,Dakar
-500000,Appartements meublés,2,2,2,Location,Mamelles,Dakar
-1700000,Appartements,4,4,171,Location,Mermoz-Sacré Coeur,Dakar
-3000000,Villas,6,600,6,Location,Mermoz-Sacré Coeur,Dakar
-250000,Appartements,4,2,110,Location,Ouakam,Dakar
-500000,Appartements,4,3,4,Location,Mamelles,Dakar
-1300000,Villas,5,5,100,Location,Mamelles,Dakar
-800000,Appartements,4,2,100,Vente,Almadies,Dakar
-500000,Appartements,4,3,150,Location,Medina,Dakar
-1200000,Appartements meublés,4,4,160,Location,Mermoz-Sacré Coeur,Dakar
-25000,Appartements meublés,2,1,90,Location,Sicap Liberté,Dakar
-700000,Appartements,3,3,150,Location,Almadies,Dakar
-300000,Appartements,3,1,90,Location,Yoff,Dakar
-130000000,Villas,7,2,300,Vente,HLM,Dakar
-1350000,Villas,6,3,500,Location,Rufisque,Rufisque
-1700000,Appartements,4,4,171,Location,Mermoz-Sacré Coeur,Dakar
-90000000,Appartements,3,3,150,Vente,Ouakam,Dakar
-280000,Appartements,2,1,70,Location,Sipres,Dakar
-400000,Appartements,4,3,140,Location,Fann,Dakar
-30000,Appartements meublés,2,1,65,Location,Yoff,Dakar
-,Appartements meublés,4,3,12,Location,Dakar Plateau,Dakar
-325000,Appartements,2,2,100,Location,Almadies,Dakar
-38000000,Terrains,150,150,100,Vente,Mbao,Dakar
-21012,Terrains,4,2,968,Vente,Yoff,Dakar
-,Terrains,337,337,100,Vente,Thies,Thies
-160000,Appartements,2,1,120,Location,Sicap foire,Dakar
-1350000,Appartements,4,3,190,Location,Mermoz-Sacré Coeur,Dakar
-2800000,Bureaux & Commerces,2,2,230,Location,Mermoz-Sacré Coeur,Dakar
-30000,Appartements meublés,2,1,67,Location,Yoff,Dakar
-200000,Appartements,2,1,2,Location,Medina,Dakar
-1800000,Villas,4,2,500,Location,Mermoz-Sacré Coeur,Dakar
-1200000,Appartements,5,4,5,Location,Mermoz-Sacré Coeur,Dakar
-1700000,Appartements,4,4,171,Location,Mermoz-Sacré Coeur,Dakar
-,Terrains agricoles,4,2,100,Vente,Bambey,Dakar
-250000,Appartements,2,1,75,Location,Almadies,Dakar
-200000,Appartements,3,2,80,Location,Almadies,Dakar
-300000,Appartements,4,2,100,Location,Damel,Dakar
-800000000,Appartements,5,5,700,Vente,Almadies,Dakar
-600000,Appartements,2,2,120,Location,Almadies,Dakar
-250000,Appartements,3,2,1,Location,Mariste,Dakar
-300000,Appartements,4,2,100,Vente,Ouest Foire,Dakar
-6000000,Villas,9,7,750,Location,Almadies,Dakar
-100000,Chambres,1,1,43,Location,Yoff,Dakar
-450000,Appartements,3,3,100,Location,Sipres,Dakar
-17500,Appartements meublés,2,1,35,Location,Keur Massar,Keur Massar
-70000000,Terrains,4,2,150,Vente,Almadies,Dakar
-4000000,Villas,9,6,800,Location,Mermoz-Sacré Coeur,Dakar
-1700000,Appartements,4,4,171,Location,Mermoz-Sacré Coeur,Dakar
-350000,Appartements meublés,2,2,60,Location,Almadies,Dakar
-650000000,Terrains,500,500,100,Vente,Mamelles,Dakar
-180000,Appartements,1,1,1,Location,Dakar Plateau,Dakar
-650000,Appartements,4,1,100,Location,Mermoz-Sacré Coeur,Dakar
-350000,Bureaux & Commerces,1,1,74,Location,Dieuppeul-Derklé,Dakar
-45000000,Villas,4,300,4,Vente,Malikounda,Dakar
-500000,Appartements,4,2,120,Location,Mamelles,Dakar
-250000,Appartements,3,1,70,Location,Ngor,Dakar
-2500000,Appartements,5,4,430,Location,Almadies,Dakar
-2500000,Appartements,5,5,304,Location,Almadies,Dakar
-2600000,Appartements,5,5,300,Location,Mamelles,Dakar
-200000,Appartements,1,1,30,Location,Medina,Dakar
-,Immeubles,150,150,100,Vente,Almadies,Dakar
-180000,Appartements,1,1,1,Location,Fass,Dakar
-300000,Appartements,3,3,100,Location,Ouakam,Dakar
-350000,Bureaux & Commerces,1,1,45,Location,Mermoz-Sacré Coeur,Dakar
-,Terrains,200,200,100,Vente,Niaga,Niaga
-225000000,Immeubles,190,190,100,Vente,Grand Yoff,Dakar
-170000000,Villas,4,4,4,Vente,Sicap Liberté,Dakar
-2500000,Appartements,5,4,406,Location,Almadies,Dakar
-350000,Bureaux & Commerces,1,1,65,Location,Dieuppeul-Derklé,Dakar
-15000,Appartements,3,3,3,Location,Chambres,Dakar
-12000000,Terrains,238,238,100,Vente,Louga,Louga
-100000,Chambres,1,1,20,Location,Medina,Dakar
-200000,Appartements,2,1,60,Location,Almadies,Dakar
-75000000,Villas,4,2,4,Vente,Almadies,Dakar
-15000,Chambres,1,1,95,Location,Mamelles,Dakar
-4000000,Villas,6,5,700,Location,Mermoz-Sacré Coeur,Dakar
-400000000,Villas,8,2,327,Vente,Almadies,Dakar
-12500000,Terrains,150,150,100,Vente,Diamniadio,Diamniadio
-750000,Appartements,4,3,4,Location,Mermoz-Sacré Coeur,Dakar
-425000,Appartements,4,3,100,Location,Sicap Liberté,Dakar
-1250000,Appartements,4,3,4,Location,Almadies,Dakar
-200000,Appartements,2,2,100,Location,Ouest Foire,Dakar
-3500000,Villas,10,8,12,Location,Almadies,Dakar
-700000,Villas,8,5,200,Location,Mbao,Dakar
-2800000,Villas,5,5,1000,Location,Ngor,Dakar
-200000000,Terrains,253,253,100,Vente,Sacré-Coeur,Dakar
-350000,Appartements,2,2,75,Location,Almadies,Dakar
-500000,Appartements,3,3,100,Location,Mamelles,Dakar
-1300000,Appartements,4,2,100,Location,Point E,Dakar
-1200000,Villas,8,6,8,Location,Mariste,Dakar
-,Villas,10,10,12,Location,Fann,Dakar
-500000,Appartements,4,3,140,Location,Yoff,Dakar
-2300000,Villas,5,5,100,Location,Fann,Dakar
-200000000,Immeubles,300,300,100,Vente,Grand Yoff,Dakar
+75000000,Villas,5,4,150,Vente,Pikine,Dakar
+1100000,Appartements,3,2,100,Location,Almadies,Dakar
+4000000,Villas,9,8,780,Location,Almadies,Dakar
+125000000,Villas,6,5,250,Vente,Almadies,Dakar
+850000,Villas,6,6,150,Location,Hann Bel-Air,Dakar
+800000,Appartements,4,3,100,Location,Sacré-Coeur,Dakar
+30000,Appartements meublés,2,1,2,Location,Sacré-Coeur,Dakar
+5000000,Terrains,150,150,100,Vente,Mbour,Mbour
+35000,Terrains,70000,70000,100,Vente,Mbour,Mbour
+300000,Appartements,3,2,130,Location,Yoff,Dakar
 625000,Appartements,4,4,150,Location,Yoff,Dakar
-2000000,Villas,5,5,1000,Location,Almadies,Dakar
-130000000,Villas,7,2,300,Vente,Almadies,Dakar
-700000,Appartements,4,3,200,Location,Mermoz-Sacré Coeur,Dakar
-225000000,Immeubles,4,2,190,Vente,Grand Yoff,Dakar
-650000,Appartements,4,4,100,Location,Ouakam,Dakar
-1500000000,Terrains,4,2,1000,Vente,Almadies,Dakar
+35000,Appartements meublés,3,2,150,Location,Yoff,Dakar
+425000,Villas,4,3,4,Location,Cambérène,Dakar
+50000000,Villas,4,2,150,Vente,Rufisque,Rufisque
+800000,Appartements,5,5,300,Location,Fann,Dakar
+70000,Chambres,1,1,1,Location,Ouest Foire,Dakar
+1350000,Villas,6,3,500,Location,Rufisque,Rufisque
+135000,Terrains,5000,5000,100,Vente,Ngaparou,Ngaparou
+1800000,Appartements meublés,4,4,130,Location,Ouakam,Dakar
+2500000,Appartements meublés,4,5,218,Location,Ngor,Dakar
+600000,Appartements meublés,2,2,168,Location,Almadies,Dakar
+500000,Villas,5,1,200,Location,Sicap Liberté,Dakar
+3100000,Terrains,4,2,150,Vente,Rufisque,Rufisque
+450000,Appartements,2,1,100,Location,Mamelles,Dakar
+260000,Appartements,3,3,110,Location,Sicap foire,Dakar
+38000000,Terrains,150,150,100,Vente,Mbao,Dakar
+1200000,Terrains,4,2,1500,Vente,Almadies,Dakar
+125000,Chambres,1,1,45,Location,Sicap Liberté,Dakar
+150000000,Terrains,200,200,100,Vente,Mamelles,Dakar
+100000000,Terrains,4,2,150,Vente,Sicap foire,Dakar
+3500000,Villas,11,8,1000,Location,Almadies,Dakar
+45000000,Villas,3,3,150,Vente,Rufisque,Rufisque
+160000,Appartements,3,2,80,Location,Guediawaye,Dakar
+260000,Appartements,3,2,150,Location,Ngor,Dakar
+80000000,Appartements,4,2,100,Vente,Almadies 2,Dakar
+125000,Bureaux & Commerces,1,1,16,Location,Medina,Dakar
+95000,Appartements,2,1,35,Location,Rufisque,Rufisque
+,Appartements,4,2,100,Vente,Parcelle Assainies,Dakar
+350000,Appartements,3,2,3,Location,Mamelles,Dakar
+180000,Appartements,3,1,150,Location,Rufisque,Rufisque
+350000,Appartements,3,1,90,Location,Yoff,Dakar
+30000,Appartements meublés,3,2,110,Location,Sicap Liberté,Dakar
+250000,Appartements,2,1,75,Location,Almadies,Dakar
+350000,Appartements,3,2,3,Location,Dakar Plateau,Dakar
+13500000,Villas,5,4,300,Vente,Louga,Louga
+120000000,Villas,8,6,150,Vente,Mbao,Dakar
+1399500000,Villas,4,3,1000,Vente,Almadies,Dakar
+19000000,Villas,6,4,450,Vente,Thies,Thies
+1500000,Appartements,4,2,4,Location,Mermoz-Sacré Coeur,Dakar
+240000,Appartements,2,2,2,Location,Medina,Dakar
+400000,Appartements,4,3,130,Location,Fann,Dakar
+8000000,Terrains,200,200,100,Vente,Niaga,Niaga
+65000000,Villas,3,3,300,Vente,Thies,Thies
+400000,Appartements,4,2,135,Location,Mamelles,Dakar
+80000,Appartements,1,1,100,Location,Sicap Liberté,Dakar
+400000,Bureaux & Commerces,4,3,140,Location,Fann,Dakar
+700000,Appartements,4,3,120,Location,Mermoz-Sacré Coeur,Dakar
 400000,Appartements,4,2,4,Location,Yoff,Dakar
-500000,Appartements meublés,1,1,65,Location,Ouakam,Dakar
-75000,Chambres,1,1,1,Location,Grand Yoff,Dakar
-300000,Bureaux & Commerces,3,1,100,Location,Gueule Tapée,Dakar
-350000,Appartements,2,1,90,Location,Sipres,Dakar
+90000000,Appartements,3,3,150,Vente,Ouakam,Dakar
+55000000,Villas,325,325,100,Vente,Saly,Saly
+70000,Chambres,1,1,100,Location,Grand Yoff,Dakar
+25000,Appartements meublés,2,1,90,Location,Sicap Liberté,Dakar
+350000,Bureaux & Commerces,1,1,87,Location,Dieuppeul-Derklé,Dakar
+500000,Appartements,3,3,150,Location,Medina,Dakar
+16500000,Terrains,4,2,150,Vente,Keur Massar,Keur Massar
 4000000,Villas,9,7,800,Location,Mermoz-Sacré Coeur,Dakar
-18000000,Villas,2,1,160,Vente,Rufisque,Rufisque
+100000,Bureaux & Commerces,1,1,1,Location,Cambérène,Dakar
+,Villas,7,5,200,Vente,Almadies,Dakar
+1600000,Villas,4,3,300,Location,Ngor,Dakar
+85000000,Appartements,3,3,180,Vente,Mariste,Dakar
+4000000,Villas,9,7,780,Location,Mermoz-Sacré Coeur,Dakar
+500000000,Villas,7,5,300,Vente,Sicap Liberté,Dakar
+2500000,Terrains,4,2,180,Vente,Diamniadio,Diamniadio
+225000000,Immeubles,4,2,190,Vente,Grand Yoff,Dakar
+550000,Appartements,3,3,140,Location,Sacré-Coeur,Dakar
+350000,Appartements meublés,2,2,60,Location,Almadies,Dakar
+350000,Appartements,3,2,100,Location,Mamelles,Dakar
+4000000,Terrains,4,2,150,Vente,Almadies,Dakar
+,Terrains,4,2,225,Vente,Thies,Thies
+30000,Appartements meublés,3,2,3,Location,Rufisque,Rufisque
+150000,Appartements,3,2,3,Location,Almadies 2,Dakar
+35000,Appartements meublés,2,2,110,Location,Sicap Liberté,Dakar
+1000000,Appartements,4,5,145,Location,Almadies,Dakar
+1500000,Appartements,4,4,150,Location,Mamelles,Dakar
+11000000,Terrains,4,2,150,Vente,Almadies,Dakar
+50000000,Fermes & Vergers,10000,10000,100,Vente,Thies,Thies
+14000000,Terrains,150,150,100,Vente,Keur Massar,Keur Massar
+15000,Chambres,1,1,95,Location,Mamelles,Dakar
+180000,Appartements,1,1,1,Location,Fass,Dakar
+800000,Villas,5,5,160,Location,Yoff,Dakar
+750000,Appartements,4,3,110,Location,Mermoz-Sacré Coeur,Dakar
+12500000,Terrains,150,150,100,Vente,Diamniadio,Diamniadio
+225000000,Immeubles,4,2,190,Vente,Grand Yoff,Dakar
+,Terrains agricoles,4,2,100,Vente,Bambey,Dakar
+550000,Appartements,3,2,300,Location,Mamelles,Dakar
+200000,Appartements,2,1,60,Location,Almadies,Dakar
+1000000,Villas,9,9,100,Location,Mermoz-Sacré Coeur,Dakar
+4000000,Villas,9,7,800,Location,Mermoz-Sacré Coeur,Dakar
+220000,Appartements,3,2,1,Location,Ouakam,Dakar
+650000,Appartements,4,4,100,Location,Ouakam,Dakar
+950000,Villas,4,3,900,Location,Mariste,Dakar
+35000,Appartements meublés,2,1,80,Location,Sicap foire,Dakar
+300000,Appartements,3,2,3,Location,Sicap foire,Dakar
+30000,Appartements meublés,2,1,65,Location,Yoff,Dakar
+110000000,Villas,4,2,300,Vente,Saly,Saly
+1500000,Appartements,4,4,4,Location,Mermoz-Sacré Coeur,Dakar
+900000,Villas,6,6,200,Location,Mariste,Dakar
+45000000,Villas,4,300,4,Vente,Malikounda,Dakar
+375000,Appartements,4,1,4,Location,Ouakam,Dakar
+100000000,Terrains,4,2,200,Vente,Mariste,Dakar
+500000,Appartements,3,2,100,Location,Almadies,Dakar
+225000,Appartements,3,2,98,Location,Sicap Liberté,Dakar
+650,Appartements,4,3,200,Location,Almadies,Dakar
+650000,Appartements,4,1,100,Location,Mermoz-Sacré Coeur,Dakar
+425000,Appartements,4,3,4,Location,Cambérène,Dakar
+135000,Appartements meublés,1,1,1,Location,Ouest Foire,Dakar
+55000000,Villas,8,6,150,Vente,Keur Massar,Keur Massar
+1400000,Appartements,4,3,400,Location,Mamelles,Dakar
+550000,Appartements,4,3,4,Location,Sacré-Coeur,Dakar
+52000000,Appartements,2,2,72,Vente,Sipres,Dakar
+300000,Appartements,1,4,80,Location,Almadies,Dakar
+460000000,Villas,9,8,200,Vente,Mamelles,Dakar
+850000,Appartements,3,2,3,Location,Point E,Dakar
+300000,Appartements,4,4,100,Location,Almadies 2,Dakar
+1000000,Appartements,4,2,230,Location,Ouakam,Dakar
+29000000,Terrains,4,2,201,Vente,Keur Massar,Keur Massar
+55000,Appartements meublés,4,2,120,Location,Sicap Liberté,Dakar
+315000,Appartements,3,2,3,Location,Ouakam,Dakar
+2500000,Terrains,4,2,100,Vente,Almadies,Dakar
+800000,Appartements,5,4,290,Location,Fann,Dakar
+683000000,Villas,11,5,500,Vente,Yoff,Dakar
+250000,Appartements,3,1,70,Location,Ngor,Dakar
+325000,Appartements,3,2,3,Location,Mamelles,Dakar
+700000,Appartements,3,2,185,Location,Almadies,Dakar
+80000,Chambres,1,1,16,Location,Sicap foire,Dakar
+600000,Appartements,3,2,3,Location,Point E,Dakar
+650000,Appartements,4,4,4,Location,Mermoz-Sacré Coeur,Dakar
+170000000,Terrains,4,2,221,Vente,Almadies,Dakar
+375000,Appartements,4,2,4,Location,Mamelles,Dakar
+1500000000,Terrains,1016,1016,100,Vente,Sacré-Coeur,Dakar
+1700000,Appartements,4,4,171,Location,Mermoz-Sacré Coeur,Dakar
+100000,Villas,5,5,5,Location,Ngaparou,Ngaparou
+30000,Appartements meublés,2,2,2,Location,Point E,Dakar
+1250000,Terrains,555,555,100,Vente,Almadies,Dakar
+28000000,Villas,7,1,150,Vente,Almadies,Dakar
+250000,Appartements,4,2,100,Vente,Sacré-Coeur,Dakar
+800000,Appartements,4,4,12,Location,Mermoz-Sacré Coeur,Dakar
+,Terrains,200,200,100,Vente,Niaga,Niaga
+26000000,Terrains agricoles,30000,30000,100,Vente,Thies,Thies
+950000,Appartements meublés,3,2,3,Location,Almadies,Dakar
+950000,Appartements meublés,3,2,3,Location,Almadies,Dakar
+,Villas,7,3,800,Vente,Diourbel,Dakar
+425000,Appartements,5,3,5,Location,Almadies,Dakar
+700000,Appartements,4,3,200,Location,Mermoz-Sacré Coeur,Dakar
+,Immeubles,15,15,100,Vente,Dakar Plateau,Dakar
+100000,Chambres,1,1,1,Location,Ouakam,Dakar
+800000,Appartements,2,1,80,Location,Fann,Dakar
+1200000,Villas,6,2,450,Location,Mermoz-Sacré Coeur,Dakar
+700000,Appartements,5,4,5,Location,Mermoz-Sacré Coeur,Dakar
+180000,Bureaux & Commerces,1,1,1,Location,Almadies,Dakar
+200000,Appartements,2,2,2,Location,Diamniadio,Diamniadio
+375000000,Villas,7,6,285,Vente,Mermoz-Sacré Coeur,Dakar
+300000,Appartements,4,3,12,Location,Diamalaye 1,Dakar
+45000,Appartements meublés,2,2,2,Location,Point E,Dakar
+525000,Bureaux & Commerces,4,2,100,Vente,Medina,Dakar
+2200000,Villas,8,8,100,Location,Mermoz-Sacré Coeur,Dakar
+250000,Appartements,2,2,127,Location,Yoff,Dakar
+800000,Appartements,4,3,100,Location,Sicap Liberté,Dakar
+2300000,Villas,5,5,100,Location,Fann,Dakar
+260000000,Villas,6,4,325,Vente,Yoff,Dakar
+4000000,Terrains,150,150,100,Vente,Rufisque,Rufisque
+1700000,Appartements,4,4,171,Location,Mermoz-Sacré Coeur,Dakar
+900000,Appartements,4,2,150,Location,Mermoz-Sacré Coeur,Dakar
+650000,Villas,3,2,200,Location,Almadies,Dakar
+60000,Appartements meublés,4,1,120,Location,Mermoz-Sacré Coeur,Dakar
+1000000,Appartements,4,4,150,Location,Mermoz-Sacré Coeur,Dakar
+130000000,Villas,7,2,300,Vente,Almadies,Dakar
+25000,Appartements meublés,2,1,150,Location,Sacré-Coeur,Dakar
+35000,Appartements meublés,3,1,70,Location,Almadies,Dakar
+350000,Appartements,3,2,3,Location,Dakar Plateau,Dakar
+650000,Appartements,3,2,100,Location,Ouakam,Dakar
+350,Appartements,2,2,100,Location,Almadies,Dakar
+32000000,Villas,3,3,105,Vente,Parcelle Assainies,Dakar
+250000000,Immeubles,4,2,160,Vente,Medina,Dakar
+75000000,Terrains,150,150,100,Vente,Yoff,Dakar
+300000,Appartements,2,2,2,Location,Dakar Plateau,Dakar
+500000,Appartements,2,1,90,Location,Ouakam,Dakar
+350000000,Villas,8,5,297,Vente,Sicap Liberté,Dakar
+35000,Appartements meublés,2,2,2,Location,Point E,Dakar
+2500000,Appartements,5,5,5,Location,Almadies,Dakar
+450000,Appartements,3,2,100,Location,Mamelles,Dakar
+1800000,Appartements meublés,4,4,140,Location,Ouakam,Dakar
+,Villas,6,5,12,Location,Fann,Dakar
+100000,Chambres,4,2,100,Location,Gueule Tapée,Dakar
+60000000,Villas,3,2,300,Vente,Keur Massar,Keur Massar
+35000000,Bureaux & Commerces,2,2,70,Vente,Almadies,Dakar
+700000,Appartements,4,1,110,Location,Sicap Liberté,Dakar
+275000,Appartements,3,2,3,Location,Keur Massar,Keur Massar
+550000,Appartements,4,3,110,Location,Mamelles,Dakar
+200000,Bureaux & Commerces,2,1,2,Location,Pikine,Dakar
+600000,Appartements,2,2,100,Location,Mamelles,Dakar
+200000,Appartements,2,2,75,Location,Fann,Dakar
+,Terrains,1,300,1,Vente,Mariste,Dakar
+700000,Appartements,3,3,150,Location,Almadies,Dakar
+4000000,Terrains,4,2,150,Vente,Rufisque,Rufisque
+350000,Appartements,3,2,3,Location,Mermoz-Sacré Coeur,Dakar
+275000,Appartements,2,1,100,Location,Almadies,Dakar
+1450000,Appartements,4,3,4,Location,Dakar Plateau,Dakar
+150000000,Villas,3,3,600,Vente,Saly,Saly
+1100000,Appartements meublés,3,2,3,Location,Almadies,Dakar
+150000,Appartements,1,1,1,Location,Fass,Dakar
+1200000,Villas,7,4,7,Location,Mamelles,Dakar
+75000,Chambres,1,1,1,Location,Grand Yoff,Dakar
+300000000,Villas,8,8,260,Vente,Almadies,Dakar
+12000000,Terrains,15,15,100,Vente,Dakar Plateau,Dakar
+400000,Appartements,3,2,120,Location,Grand Yoff,Dakar
+800000,Appartements,5,4,240,Location,Fann,Dakar
+1000000,Villas,8,5,150,Location,Mermoz-Sacré Coeur,Dakar
+550000,Villas,3,2,260,Location,Mamelles,Dakar
+1150000,Villas,4,5,300,Location,Ngor,Dakar
+139000000,Villas,3,3,400,Vente,Thies,Thies
+1500000,Villas,6,4,400,Location,Yoff,Dakar
+1300000,Appartements,4,3,4,Location,Point E,Dakar
+30000,Appartements meublés,2,1,45,Location,Yoff,Dakar
+675000,Villas,3,3,600,Location,Thies,Thies
+1200000,Villas,6,5,380,Location,Ouakam,Dakar
+3800,Terrains,150,150,100,Vente,Mbour,Mbour
+550000,Appartements,2,1,2,Location,Mermoz-Sacré Coeur,Dakar
+14000000,Terrains,600,600,100,Vente,Mbour,Mbour
+1100000,Appartements meublés,3,2,3,Location,Almadies,Dakar
+25000,Appartements,2,2,70,Location,Tambacounda,Dakar
+249500000,Villas,9,9,1600,Vente,Mbour,Mbour
+750000,Appartements,4,3,4,Location,Medina,Dakar
+110000000,Villas,5,4,200,Vente,Diamniadio,Diamniadio
+3500000,Villas,5,5,500,Location,Fann,Dakar
+40000000,Appartements,4,2,100,Vente,Mariste,Dakar
+100000,Chambres,1,1,20,Location,Medina,Dakar
+4955,Appartements,4,2,365000,Vente,Almadies,Dakar
+110000,Chambres,1,1,13,Location,Sicap Liberté,Dakar
+1700000,Terrains,4,2,150,Vente,Malikounda,Dakar
+350000,Appartements,2,1,90,Location,Sipres,Dakar
+400000,Appartements,4,3,120,Location,Fann,Dakar
+3500000,Appartements,5,3,5,Location,Fann,Dakar
+2600000,Appartements,5,5,300,Location,Mamelles,Dakar
+22000,Appartements meublés,1,1,1,Location,Mermoz-Sacré Coeur,Dakar
+75000,Appartements meublés,3,2,3,Location,Point E,Dakar
+300000,Appartements,3,2,1,Location,Mamelles,Dakar
+110000000,Terrains,4,2,100,Vente,Yoff,Dakar
+250000000,Villas,6,4,655,Vente,Mbour,Mbour
+300000,Appartements,2,2,2,Location,Dakar Plateau,Dakar
+350000,Appartements,2,2,65,Location,Almadies,Dakar
+65000,Bureaux & Commerces,4,2,100,Location,Sicap Liberté,Dakar
+900000,Villas,6,5,200,Location,Point E,Dakar
+1300000,Bureaux & Commerces,1,1,114,Location,Fann,Dakar
+3500000,Bureaux & Commerces,11,7,800,Location,Almadies,Dakar
+500000,Appartements,3,3,100,Location,Almadies,Dakar
+1800000,Appartements meublés,4,4,140,Location,Ouakam,Dakar
+210000000,Villas,6,4,600,Vente,Ngaparou,Ngaparou
+,Terrains,337,337,100,Vente,Thies,Thies
+,Terrains,4,2,100,Vente,Almadies,Dakar
+250000000,Immeubles,160,160,100,Vente,Medina,Dakar
+250000,Bureaux & Commerces,1,1,1,Location,Almadies,Dakar
+500000,Bureaux & Commerces,4,1,100,Location,Almadies,Dakar
+1500000,Appartements,4,4,100,Location,Mamelles,Dakar
+12500000,Terrains,150,150,100,Vente,Rufisque,Rufisque
+750000,Appartements,4,3,4,Location,Mermoz-Sacré Coeur,Dakar
+850000,Appartements,8,2,172,Location,Sicap Liberté,Dakar
+22000000,Terrains,200,200,100,Vente,Keur Massar,Keur Massar
+350000,Appartements,4,2,130,Location,Mermoz-Sacré Coeur,Dakar
+2800000,Bureaux & Commerces,1,2,230,Location,Mermoz-Sacré Coeur,Dakar
+300000000,Villas,6,6,200,Vente,Almadies,Dakar
+330000,Appartements,3,3,100,Location,Medina,Dakar
+1500000,Appartements,4,4,350,Location,Mamelles,Dakar
+295000,Appartements,3,1,3,Location,Ouakam,Dakar
+3000000,Terrains,300,300,100,Vente,Malikounda,Dakar
+300000,Appartements,3,2,100,Location,Almadies,Dakar
+1300000,Appartements,3,3,150,Location,Fann,Dakar
+300000,Appartements,3,2,3,Location,Yoff,Dakar
+,Appartements meublés,2,150,2,Location,Toubab Dialao,Toubab Dialao
+600000,Appartements,4,1,100,Location,Sacré-Coeur,Dakar
+1000000,Appartements,4,2,100,Location,Almadies,Dakar
+2000000,Villas,5,5,1000,Location,Almadies,Dakar
+40000,Appartements meublés,3,1,90,Location,Ouest Foire,Dakar
+170000,Appartements,2,1,2,Location,Ouakam,Dakar
+250000,Appartements,2,1,70,Location,Almadies,Dakar
+1500000,Appartements,4,3,130,Location,Mermoz-Sacré Coeur,Dakar
+86900000,Terrains,4,2,167,Vente,Ouest Foire,Dakar
+19000000,Terrains,818,818,100,Vente,Fatick,Dakar
+195000,Appartements,2,1,80,Location,Ngor,Dakar
+,Villas,4,333,4,Location,Thies,Thies
+350000,Appartements,2,2,75,Location,Almadies,Dakar
+550000,Villas,3,2,250,Location,Mamelles,Dakar
+10000000,Terrains,150,150,100,Vente,Almadies 2,Dakar
+195000000,Terrains,300,300,100,Vente,Djily MBaye,Dakar
+3500000,Villas,9,7,780,Location,Mermoz-Sacré Coeur,Dakar
+1300000,Bureaux & Commerces,1,1,93,Location,Dakar Plateau,Dakar
+30000,Appartements meublés,2,1,67,Location,Yoff,Dakar
+250000000,Immeubles,4,2,160,Vente,Medina,Dakar
+78000000,Appartements,4,2,100,Vente,Almadies,Dakar
+900000,Bureaux & Commerces,4,2,100,Location,Yoff,Dakar
+120000,Terrains,4,2,897,Vente,Yoff,Dakar
+300000,Bureaux & Commerces,1,1,1,Location,Sicap Liberté,Dakar
+,Appartements meublés,4,4,12,Location,Mermoz-Sacré Coeur,Dakar
+1000000,Appartements,4,3,4,Location,Dakar Plateau,Dakar
+1200000,Appartements meublés,4,4,160,Location,Mermoz-Sacré Coeur,Dakar
+310000,Appartements,3,2,3,Location,Patte d'oie,Dakar
+1500000,Appartements,5,3,266,Location,Almadies,Dakar
+1400000,Appartements,6,4,6,Location,Ouakam,Dakar
+17000000,Terrains,150,150,100,Vente,Almadies,Dakar
+1200000,Villas,6,2,450,Location,Mermoz-Sacré Coeur,Dakar
+2000000,Appartements,6,6,310,Location,Point E,Dakar
+60000000,Villas,3,3,150,Vente,Mbao,Dakar
+20000000,Villas,5,1,350,Vente,Saint Louis,Dakar
+200000,Appartements,2,2,100,Location,HLM,Dakar
+4500000,Villas,8,6,8,Location,Fann,Dakar
+400000,Appartements meublés,4,2,100,Location,Parcelle Assainies,Dakar
+457000000,Terrains,4,2,2000,Vente,Almadies,Dakar
+20000,Appartements meublés,2,1,150,Location,Mbao,Dakar
+200000,Appartements,2,2,62,Location,Ouest Foire,Dakar
+,Villas,5,6,170,Vente,Rufisque,Rufisque
+5000000,Villas,6,8,1200,Location,Almadies,Dakar
+60000000,Villas,5,5,198,Vente,Saint Louis,Dakar
+850000,Villas,3,3,105,Location,Ouakam,Dakar
+40000000,Terrains,4,2,206,Vente,Keur Massar,Keur Massar
+300000,Appartements,3,2,130,Location,Ngor,Dakar
+600000,Appartements,4,3,4,Location,Dakar Plateau,Dakar
+70000,Chambres,1,1,1,Location,Parcelle Assainies,Dakar
+300000,Appartements,3,3,3,Location,Fass,Dakar
+500000,Appartements,4,3,4,Location,Mermoz-Sacré Coeur,Dakar
+800000,Appartements,4,5,4,Location,Fann,Dakar
+1400000,Appartements,3,3,3,Location,Almadies,Dakar
+180000000,Appartements,8,5,210,Vente,Almadies,Dakar
+900000,Appartements,3,4,190,Location,Almadies,Dakar
+450000000,Villas,20,8,1000,Vente,Almadies,Dakar
+175000,Appartements,1,2,68,Location,Sicap Liberté,Dakar
+15000,Appartements,1,1,75,Location,Almadies,Dakar
+12500000,Terrains,150,150,100,Vente,Diamniadio,Diamniadio
+110000000,Appartements,4,4,137,Vente,Almadies,Dakar
+300000,Appartements,2,1,12,Location,Mermoz-Sacré Coeur,Dakar
+,Villas,6,6,12,Location,Yoff,Dakar
+225000,Appartements meublés,1,1,1,Location,Sicap Liberté,Dakar
+50000,Appartements meublés,7,2,172,Location,Sicap Liberté,Dakar
+250000,Appartements,4,3,4,Location,Almadies 2,Dakar
+1250000,Appartements,4,3,4,Location,Almadies,Dakar
+45000000,Villas,3,2,300,Vente,Keur Massar,Keur Massar
+345000000,Appartements,5,5,295,Vente,Almadies,Dakar
+100000,Appartements meublés,3,3,3,Location,Almadies,Dakar
+550000,Terrains,200,200,100,Vente,Thies,Thies
+350000,Appartements,4,2,100,Vente,Ouest Foire,Dakar
+1800000000,Immeubles,276,276,100,Vente,Almadies,Dakar
+550000,Appartements,4,3,136,Location,Yoff,Dakar
+900000,Villas,6,5,12,Location,Mermoz-Sacré Coeur,Dakar
+110000000,Villas,5,3,108,Vente,Mermoz-Sacré Coeur,Dakar
+1500000,Villas,7,4,200,Location,Almadies,Dakar
+250000,Appartements,3,2,3,Location,Sicap Liberté,Dakar
+750000,Bureaux & Commerces,5,5,450,Location,Fann,Dakar
+472000,Bureaux & Commerces,1,1,60,Location,Almadies,Dakar
+500000,Appartements,4,3,4,Location,Mamelles,Dakar
+2500000,Appartements meublés,4,5,230,Location,Yoff,Dakar
+350000,Bureaux & Commerces,1,1,80,Location,Dieuppeul-Derklé,Dakar
+450000,Appartements,4,2,150,Location,Almadies,Dakar
+550000,Villas,3,2,290,Location,Mamelles,Dakar
+1700000,Bureaux & Commerces,5,3,200,Location,Almadies,Dakar
+90000000,Appartements,3,3,150,Vente,Ouakam,Dakar
+100000,Appartements,2,2,2,Location,Ouest Foire,Dakar
+1700000,Appartements,5,5,220,Location,Almadies,Dakar
+100000,Chambres,1,1,43,Location,Yoff,Dakar
+14000000,Terrains,150,150,100,Vente,Keur Massar,Keur Massar
+1990000,Bureaux & Commerces,2,1,227,Location,Almadies,Dakar
+160000,Appartements,1,1,50,Location,Fass,Dakar
+750000,Appartements meublés,8,3,8,Location,Point E,Dakar
+250000,Appartements,4,2,110,Location,Ouakam,Dakar
+450000,Appartements,3,3,100,Location,Mermoz-Sacré Coeur,Dakar
+350000,Appartements,4,3,150,Location,Fass,Dakar
+200000000,Immeubles,300,300,100,Vente,Grand Yoff,Dakar
+110000,Appartements,1,1,1,Location,Dieuppeul-Derklé,Dakar
+139000000,Villas,4,3,400,Vente,Saly,Saly
+375000,Appartements,3,1,100,Location,Ngor,Dakar
+175000,Appartements,1,1,48,Location,Sicap Liberté,Dakar
+,Bureaux & Commerces,2,1,20,Location,Dakar Plateau,Dakar
+250000,Appartements,2,1,126,Location,Yoff,Dakar
+350000,Bureaux & Commerces,1,1,98,Location,Dieuppeul-Derklé,Dakar
+350000,Appartements,2,1,65,Location,Sacré-Coeur,Dakar
+20000,Chambres,1,1,1,Location,Thies,Thies
+80000,Chambres,4,2,100,Location,Sicap Liberté,Dakar
+550000,Appartements,4,4,100,Location,Sipres,Dakar
+185000000,Villas,8,6,150,Vente,Almadies,Dakar
+550000,Appartements,4,4,150,Location,Mamelles,Dakar
+5500000,Villas,8,4,2000,Location,Fann,Dakar
+750000,Bureaux & Commerces,5,5,230,Location,Fann,Dakar
+310800,Appartements,3,1,90,Location,Sicap foire,Dakar
+700000,Appartements,3,4,145,Location,Mamelles,Dakar
+1700000,Appartements,4,4,171,Location,Mermoz-Sacré Coeur,Dakar
+850000,Appartements,4,2,100,Vente,Point E,Dakar
+390000000,Villas,270,270,100,Vente,Sicap Liberté,Dakar
+225000000,Immeubles,190,190,100,Vente,Grand Yoff,Dakar
+250000,Appartements,2,2,2,Location,Dakar Plateau,Dakar
+17500,Appartements meublés,2,1,35,Location,Keur Massar,Keur Massar
+175000,Appartements,1,1,45,Location,Sicap Liberté,Dakar
+1500000,Villas,4,3,4,Location,Mermoz-Sacré Coeur,Dakar
+100000,Bureaux & Commerces,1,1,1,Location,Sacré-Coeur,Dakar
+300000,Appartements,3,1,3,Location,Mermoz-Sacré Coeur,Dakar
+500000,Appartements meublés,2,2,2,Location,Mamelles,Dakar
+420000000,Appartements,7,7,460,Location,Mariste,Dakar
+2500000,Appartements meublés,4,5,210,Location,Yoff,Dakar
+500000,Appartements,4,3,170,Location,Mamelles,Dakar
+350000,Appartements,2,2,2,Location,Mamelles,Dakar
+80000000,Villas,8,4,160,Vente,Almadies 2,Dakar
+300000,Appartements,3,3,3,Location,Fass,Dakar
+1200000,Villas,6,5,380,Location,Mamelles,Dakar
+1300000,Appartements,4,3,4,Location,Mermoz-Sacré Coeur,Dakar
+300000,Appartements,3,3,100,Location,Mamelles,Dakar
+1200000,Villas,6,6,200,Location,Mamelles,Dakar
+15000000,Appartements,4,2,100,Vente,Almadies,Dakar
+7000000,Terrains,300,300,100,Vente,Mbour,Mbour
+350000,Appartements,3,2,130,Location,Yoff,Dakar
+700000,Villas,8,5,200,Location,Mbao,Dakar
+150000,Appartements,1,1,1,Location,Fass,Dakar
+550000,Appartements,4,3,140,Location,Sacré-Coeur,Dakar
+500000,Appartements,4,3,4,Location,Sipres,Dakar
+500000,Appartements,2,1,100,Location,Mermoz-Sacré Coeur,Dakar
+1200000,Appartements,5,4,5,Location,Mermoz-Sacré Coeur,Dakar
+400000,Bureaux & Commerces,4,2,4,Location,Almadies,Dakar
+90000000,Appartements,3,3,150,Vente,Ouakam,Dakar
+500000,Appartements,4,2,4,Location,Almadies,Dakar
+700000,Villas,5,4,180,Location,Mermoz-Sacré Coeur,Dakar
+1000000,Bureaux & Commerces,1,2,140,Location,Sicap Liberté,Dakar
+55000000,Villas,6,3,250,Vente,Mbour,Mbour
+2500000,Appartements,5,4,430,Location,Almadies,Dakar
+12000,Bureaux & Commerces,1,2,500,Location,Mermoz-Sacré Coeur,Dakar
+30000,Appartements meublés,4,2,100,Location,Sicap Liberté,Dakar
+400000,Appartements,3,3,1,Location,Ouest Foire,Dakar
+2250000,Villas,6,6,100,Location,Fann,Dakar
+800000,Appartements,5,4,250,Location,Fann,Dakar
+750000,Terrains,4,2,225,Vente,Thies,Thies
+165000,Chambres,1,1,1,Location,Mermoz-Sacré Coeur,Dakar
+450000,Appartements,3,3,110,Location,Mermoz-Sacré Coeur,Dakar
+750000,Villas,7,4,150,Vente,Mariste,Dakar
+125000000,Villas,8,6,380,Vente,Mbao,Dakar
+,Villas,6,6,12,Location,Saly,Saly
+205000,Appartements,3,2,3,Location,Ouakam,Dakar
+350000,Appartements,3,2,3,Location,Medina,Dakar
+350000,Bureaux & Commerces,1,1,74,Location,Dieuppeul-Derklé,Dakar
+250000,Appartements,3,2,1,Location,Mariste,Dakar
+1300000,Appartements,4,4,145,Location,Almadies,Dakar
+27000000,Villas,3,2,300,Vente,Saint Louis,Dakar
+250000000,Villas,5,2,360,Vente,Medina,Dakar
+518000,Appartements,4,3,150,Location,Almadies,Dakar
+65000000,Villas,2,2,56,Vente,Fatick,Dakar
+700000,Appartements,5,4,5,Location,Mermoz-Sacré Coeur,Dakar
+175000,Appartements,1,1,65,Location,Sicap Liberté,Dakar
+1200000,Appartements,3,3,190,Location,Almadies,Dakar
+650000000,Terrains,500,500,100,Vente,Mamelles,Dakar
+1200000,Appartements meublés,4,4,180,Location,Mermoz-Sacré Coeur,Dakar
+1200000,Villas,6,5,380,Location,Ouakam,Dakar
+1800000,Villas,4,2,100,Location,Almadies,Dakar
+220000,Appartements,3,2,3,Location,Almadies,Dakar
+1000000,Villas,6,5,6,Location,Diamniadio,Diamniadio
+50000,Appartements,4,2,73,Location,Dakar Plateau,Dakar
+125000,Appartements,2,1,150,Location,Guediawaye,Dakar
+295000,Appartements,3,1,100,Location,Ngor,Dakar
+700000,Appartements,5,4,5,Location,Point E,Dakar
+1500000,Appartements meublés,4,4,135,Location,Almadies,Dakar
+250000,Appartements,3,2,80,Location,Almadies,Dakar
+115000000,Villas,8,7,162,Vente,Ouest Foire,Dakar
+65000000,Appartements,4,2,100,Vente,Mbao,Dakar
+500000,Appartements,3,3,100,Location,Mamelles,Dakar
+,Terrains,2000,2000,100,Vente,Hann Bel-Air,Dakar
+40000,Appartements meublés,2,2,2,Location,Almadies,Dakar
+35000,Appartements meublés,2,2,2,Location,Yoff,Dakar
+45000000,Appartements meublés,3,1,200,Vente,Patte d'oie,Dakar
+225000,Appartements,2,2,65,Location,Ouest Foire,Dakar
+,Appartements meublés,4,3,12,Location,Dakar Plateau,Dakar
+1500000000,Villas,5,5,1000,Vente,Almadies,Dakar
+600000,Appartements,2,2,120,Location,Almadies,Dakar
+650000,Appartements,4,3,130,Location,Mermoz-Sacré Coeur,Dakar
+600000,Appartements,4,3,4,Location,Mamelles,Dakar
+20000000,Terrains,150,150,100,Vente,Rufisque,Rufisque
+725000,Appartements,4,4,250,Location,Ngor,Dakar
+800000,Appartements,3,2,3,Location,Dakar Plateau,Dakar
+350000,Appartements,3,3,150,Location,Mermoz-Sacré Coeur,Dakar
+360000,Appartements,3,1,90,Location,Mamelles,Dakar
+38000000,Terrains,170,170,100,Vente,Rufisque,Rufisque
+1300000,Appartements,3,2,3,Location,Mermoz-Sacré Coeur,Dakar
+90000000,Villas,6,195,6,Vente,Keur Massar,Keur Massar
+250000,Appartements,2,2,2,Location,Almadies,Dakar
+350000,Appartements,4,4,100,Location,Ouakam,Dakar
+750000000,Villas,6,4,300,Vente,Almadies,Dakar
+200000,Appartements,2,1,2,Location,Medina,Dakar
+1100000,Appartements,4,1,110,Location,Almadies,Dakar
+2500000,Terrains,300,300,100,Vente,Grand Dakar,Dakar
+70000,Chambres,2,1,2,Location,Ouakam,Dakar
+250000000,Immeubles,4,2,150,Vente,Medina,Dakar
+4000000,Bureaux & Commerces,9,7,780,Location,Mermoz-Sacré Coeur,Dakar
+200000,Appartements,1,1,1,Location,Ouakam,Dakar
+117000000,Villas,11,7,200,Vente,Grand Yoff,Dakar
+80000000,Terrains,4,2,188,Vente,Almadies,Dakar
+1000000,Appartements,7,6,200,Location,Ouakam,Dakar
+500000,Appartements,4,1,4,Location,Mamelles,Dakar
 350000,Appartements,2,2,74,Location,Almadies,Dakar
 350000,Appartements,3,2,140,Location,Ouakam,Dakar
-350000,Bureaux & Commerces,1,2,90,Location,Yoff,Dakar
-650000,Appartements,4,4,100,Location,Sipres,Dakar
-30000,Appartements meublés,4,2,100,Location,Sicap Liberté,Dakar
-1000000,Bureaux & Commerces,1,2,140,Location,Sicap Liberté,Dakar
-1500000,Appartements,4,4,150,Location,Point E,Dakar
-300000,Appartements,3,2,3,Location,Yoff,Dakar
-13500000,Villas,5,4,300,Vente,Louga,Louga
-800000,Appartements,3,2,150,Location,Almadies,Dakar
-80000000,Terrains,4,2,188,Vente,Almadies,Dakar
-8000000,Terrains,200,200,100,Vente,Niaga,Niaga
-550000,Appartements,2,1,2,Location,Mermoz-Sacré Coeur,Dakar
-1200000,Terrains,4,2,897,Vente,Yoff,Dakar
-375000,Appartements,3,1,100,Location,Ngor,Dakar
-,Villas,6,6,12,Location,Yoff,Dakar
-1200000,Appartements,4,4,4,Location,Fann,Dakar
-200000,Appartements,2,1,12,Location,Sicap Liberté,Dakar
-850000,Villas,6,5,200,Location,Yoff,Dakar
-500000,Bureaux & Commerces,1,1,40,Location,Ngor,Dakar
-265000000,Appartements,5,5,220,Location,Almadies,Dakar
-284000000,Villas,7,5,300,Vente,Ouest Foire,Dakar
-1300000,Bureaux & Commerces,1,1,93,Location,Dakar Plateau,Dakar
-50000,Appartements meublés,3,1,95,Location,Mamelles,Dakar
-400000,Bureaux & Commerces,4,3,140,Location,Fann,Dakar
-550000000,Villas,9,8,369,Vente,Mermoz-Sacré Coeur,Dakar
-3500000,Bureaux & Commerces,11,8,800,Location,Almadies,Dakar
-35000,Appartements meublés,3,1,70,Location,Almadies,Dakar
-400000,Appartements,4,2,100,Location,Ouakam,Dakar
-1200000,Appartements,4,2,1500,Vente,Almadies,Dakar
-30000,Appartements meublés,3,1,56,Location,Almadies,Dakar
-1200000,Villas,6,5,380,Location,Ouakam,Dakar
-750000,Appartements,4,3,120,Location,Ngor,Dakar
-3500000,Villas,5,5,500,Location,Fann,Dakar
-650000,Appartements,3,2,100,Location,Ouakam,Dakar
-180000,Appartements,3,2,3,Location,Almadies,Dakar
-100000,Appartements,2,2,2,Location,Ouest Foire,Dakar
-90000000,Appartements,3,3,150,Vente,Ouakam,Dakar
-14500,Villas,2,1,210,Vente,Ouest Foire,Dakar
-165760,Appartements,2,2,1,Location,HLM,Dakar
-180000,Appartements,3,1,150,Location,Rufisque,Rufisque
-260000,Appartements,3,3,110,Location,Sicap foire,Dakar
-1200000,Appartements meublés,4,2,160,Location,Mermoz-Sacré Coeur,Dakar
-12500000,Terrains,150,150,100,Vente,Diamniadio,Diamniadio
-170000,Appartements,3,2,3,Location,Keur Massar,Keur Massar
-1200000,Appartements meublés,4,4,150,Location,Mermoz-Sacré Coeur,Dakar
-550000,Appartements,4,3,4,Location,Sacré-Coeur,Dakar
-675000,Villas,3,3,600,Location,Thies,Thies
-2000000,Appartements,5,4,300,Location,Rufisque,Rufisque
-300000,Appartements,3,2,130,Location,Yoff,Dakar
-120000,Terrains,4,2,897,Vente,Yoff,Dakar
-2000000,Bureaux & Commerces,7,7,100,Location,Biscuiterie,Dakar
-32599500,Appartements,4,2,50000,Vente,Almadies,Dakar
-350000,Bureaux & Commerces,1,1,80,Location,Dieuppeul-Derklé,Dakar
-4000000,Villas,10,5,10,Location,Mermoz-Sacré Coeur,Dakar
-4000000,Villas,9,7,780,Location,Mermoz-Sacré Coeur,Dakar
-1300000,Appartements,5,4,300,Location,Ngor,Dakar
-4000000,Villas,9,8,780,Location,Almadies,Dakar
-2700000,Bureaux & Commerces,8,7,500,Location,Almadies,Dakar
-457000000,Terrains,4,2,2000,Vente,Almadies,Dakar
-425000,Appartements,5,3,5,Location,Almadies,Dakar
-200000,Appartements,2,2,2,Location,Diamniadio,Diamniadio
-950000000,Appartements,7,10,411,Vente,Mamelles,Dakar
-2500000,Terrains,4,2,100,Vente,Almadies,Dakar
-449500000,Villas,4,4,690,Vente,Saly,Saly
-,Bureaux & Commerces,1,1,100,Location,Mbao,Dakar
-600000,Appartements,4,3,110,Location,Mamelles,Dakar
-16500000,Terrains,4,2,150,Vente,Keur Massar,Keur Massar
-750000,Appartements meublés,2,2,2,Location,Almadies,Dakar
-175000,Appartements,1,1,45,Location,Sicap Liberté,Dakar
-400000,Appartements,4,2,135,Location,Mamelles,Dakar
-250000,Bureaux & Commerces,1,1,1,Location,Almadies,Dakar
-350000,Appartements,4,2,100,Vente,Ouest Foire,Dakar
-300000000,Villas,8,8,260,Vente,Almadies,Dakar
-500000,Appartements,4,3,4,Location,Mermoz-Sacré Coeur,Dakar
-250000000,Immeubles,4,2,160,Vente,Medina,Dakar
-1200000,Appartements meublés,4,2,160,Location,Mermoz-Sacré Coeur,Dakar
-425000,Appartements,4,3,4,Location,Cambérène,Dakar
-195000,Appartements,2,1,80,Location,Ngor,Dakar
-35000,Appartements meublés,2,1,80,Location,Sicap foire,Dakar
-1100000,Appartements,4,1,110,Location,Almadies,Dakar
-1600000,Villas,6,5,800,Location,Almadies,Dakar
-425000,Villas,4,3,160,Location,Cambérène,Dakar
-275000,Appartements,3,1,90,Location,Sicap foire,Dakar
-550000,Appartements,4,4,160,Location,Mamelles,Dakar
-400000,Appartements,4,2,140,Location,Fann,Dakar
-350000,Chambres,1,1,1,Location,Almadies,Dakar
-1000000,Bureaux & Commerces,1,1,140,Location,Sicap Liberté,Dakar
-250000000,Bureaux & Commerces,126,126,100,Vente,Saly,Saly
-2500000,Appartements,5,5,5,Location,Almadies,Dakar
-1500000000,Villas,5,5,1000,Vente,Almadies,Dakar
-18000000,Villas,2,1,160,Vente,Rufisque,Rufisque
-1700000,Appartements,4,4,171,Location,Mermoz-Sacré Coeur,Dakar
-700000,Appartements,4,3,150,Location,Almadies,Dakar
-550000,Appartements,3,2,300,Location,Mamelles,Dakar
-3500000,Bureaux & Commerces,11,7,800,Location,Almadies,Dakar
-360000,Appartements,3,1,90,Location,Mamelles,Dakar
-550000,Appartements,3,3,140,Location,Sacré-Coeur,Dakar
-1000000,Villas,6,6,100,Location,Almadies 2,Dakar
-550000,Appartements,4,3,140,Location,Sacré-Coeur,Dakar
-70000,Appartements meublés,3,2,130,Location,Point E,Dakar
-40000000,Appartements,4,2,100,Vente,Mariste,Dakar
-25000000,Appartements,2,1,52,Vente,Parcelle Assainies,Dakar
-200000,Appartements,2,1,70,Location,Ngor,Dakar
-700000,Appartements,5,4,5,Location,Point E,Dakar
-85000,Chambres,1,1,1,Location,Ouakam,Dakar
-100000,Chambres,4,2,100,Vente,Medina,Dakar
-4000000,Villas,9,7,800,Location,Mermoz-Sacré Coeur,Dakar
-500000,Appartements,4,4,100,Location,Mamelles,Dakar
-1450000,Appartements,4,3,4,Location,Dakar Plateau,Dakar
-90000000,Appartements,3,3,150,Vente,Ouakam,Dakar
-350000,Bureaux & Commerces,1,1,70,Location,Almadies,Dakar
-550000,Villas,3,2,260,Location,Mamelles,Dakar
-350000,Appartements,2,1,65,Location,Sacré-Coeur,Dakar
-56000000,Terrains,4,2,300,Vente,Almadies,Dakar
-700000,Appartements,4,3,100,Location,Point E,Dakar
-90000000,Appartements,3,2,87,Vente,Yoff,Dakar
+240000,Appartements,3,2,3,Location,Mariste,Dakar
 550000,Appartements,4,2,140,Location,Sacré-Coeur,Dakar
-3000000,Terrains,300,300,100,Vente,Malikounda,Dakar
-750000,Appartements,4,3,110,Location,Mermoz-Sacré Coeur,Dakar
-70000,Chambres,1,1,1,Location,Ouest Foire,Dakar
-800000,Villas,6,4,6,Location,Mermoz-Sacré Coeur,Dakar
-2200000,Villas,6,6,12,Location,Fann,Dakar
-800000,Appartements,3,4,150,Location,Mermoz-Sacré Coeur,Dakar
-550000,Appartements,3,2,3,Location,Mamelles,Dakar
-,Villas,5,6,170,Vente,Rufisque,Rufisque
-450000,Appartements,3,3,100,Location,Mermoz-Sacré Coeur,Dakar
-25000,Appartements meublés,2,2,145,Location,Almadies,Dakar
-11000000,Terrains,4,2,150,Vente,Almadies,Dakar
-30000,Appartements meublés,2,1,45,Location,Yoff,Dakar
-30000000,Villas,4,4,303,Vente,Mbour,Mbour
-300000,Appartements,2,2,2,Location,Dakar Plateau,Dakar
-100000,Chambres,4,2,100,Location,Gueule Tapée,Dakar
-1400000,Appartements,4,3,400,Location,Mamelles,Dakar
-32000000,Terrains,150,150,100,Vente,Almadies 2,Dakar
-400000,Appartements,4,1,100,Location,Sipres,Dakar
-40000000,Terrains,4,2,206,Vente,Keur Massar,Keur Massar
-700000,Appartements,4,4,4,Location,Mermoz-Sacré Coeur,Dakar
-300000000,Villas,6,6,200,Vente,Almadies,Dakar
-800000,Appartements,5,4,290,Location,Fann,Dakar
-175000,Appartements,2,2,68,Location,Yoff,Dakar
-330000000,Fermes & Vergers,65000,65000,100,Vente,Thies,Thies
-700000,Appartements,4,4,150,Location,Almadies,Dakar
-20000000,Terrains,4,2,150,Vente,Keur Massar,Keur Massar
-900000,Appartements,4,4,147,Location,Point E,Dakar
-10000000,Appartements,300,300,100,Vente,Toubab Dialao,Toubab Dialao
-,Villas,6,6,12,Location,Yoff,Dakar
-13000000,Terrains,150,150,100,Vente,Rufisque,Rufisque
-45000,Appartements meublés,2,1,100,Location,Sicap Liberté,Dakar
-350000,Appartements,5,1,200,Location,Ouakam,Dakar
-1700000,Terrains,4,2,150,Vente,Malikounda,Dakar
+200000,Appartements,3,2,80,Location,Almadies,Dakar
+800000,Appartements,4,2,123,Location,Point E,Dakar
 700000,Appartements,6,6,100,Location,Fann,Dakar
-,Villas,5,5,1241,Vente,Almadies,Dakar
-300000,Appartements,3,2,3,Location,Ngor,Dakar
-650000,Appartements,4,3,4,Location,Almadies,Dakar
-550000,Villas,3,2,290,Location,Mamelles,Dakar
-2500000,Appartements,5,4,430,Location,Almadies,Dakar
-2100000,Villas,5,5,5,Location,Almadies,Dakar
-500000,Appartements,107,107,100,Location,Hann Bel-Air,Dakar
-800000,Appartements,5,4,240,Location,Fann,Dakar
-275000,Appartements,3,2,3,Location,Almadies,Dakar
-125000000,Villas,8,6,380,Vente,Mbao,Dakar
-2000000,Terrains,4,2,150,Vente,Almadies,Dakar
-52000000,Appartements,2,2,72,Vente,Sipres,Dakar
-200000,Appartements,2,2,100,Location,Mermoz-Sacré Coeur,Dakar
-850000,Appartements,4,2,100,Vente,Point E,Dakar
-35000,Appartements meublés,2,1,50,Location,Sicap foire,Dakar
-1800000,Appartements meublés,4,2,150,Location,Ouakam,Dakar
-600000,Appartements,4,3,110,Location,Mamelles,Dakar
-135000000,Terrains,234,234,100,Vente,Yoff,Dakar
-250000000,Immeubles,4,2,100,Vente,Mariste,Dakar
-,Villas,6,4,12,Location,Fann,Dakar
-900000,Appartements,3,4,190,Location,Almadies,Dakar
-1700000,Appartements,5,5,13,Location,Ouakam,Dakar
-250000,Appartements,4,2,100,Vente,Mariste,Dakar
-550000,Appartements,4,3,4,Location,Mamelles,Dakar
-14000000,Villas,3,3,400,Vente,Saly,Saly
-350000000,Villas,5,3,200,Vente,Almadies,Dakar
-600000,Bureaux & Commerces,3,2,3,Location,Sacré-Coeur,Dakar
-900000,Villas,6,5,12,Location,Mermoz-Sacré Coeur,Dakar
-85000000,Appartements,3,3,180,Vente,Mariste,Dakar
-400000,Appartements,3,3,1,Location,Ouest Foire,Dakar
-65000000,Appartements meublés,4,2,100,Vente,Ouakam,Dakar
-225000,Appartements,2,2,65,Location,Ouest Foire,Dakar
-4000000,Villas,9,7,780,Location,Mermoz-Sacré Coeur,Dakar
-300000,Appartements,2,2,2,Location,Dakar Plateau,Dakar
-15000,Appartements,3,2,100,Location,Almadies,Dakar
-145000000,Appartements,3,3,185,Vente,Almadies,Dakar
-100000000,Terrains,4,2,200,Vente,Mariste,Dakar
-2500000,Appartements meublés,4,5,210,Location,Yoff,Dakar
-900000,Appartements meublés,3,2,3,Location,Almadies,Dakar
-1300000,Appartements,4,4,145,Location,Almadies,Dakar
-300000,Appartements,3,3,3,Location,Fass,Dakar
-130000,Terrains,4,2,100,Vente,Colobane,Dakar
-2500000,Appartements,5,4,430,Location,Almadies,Dakar
-1500000,Villas,7,4,200,Location,Almadies,Dakar
-200000,Appartements,2,2,100,Location,HLM,Dakar
-86900000,Terrains,4,2,167,Vente,Ouest Foire,Dakar
-2000000,Appartements,4,2,100,Location,Almadies,Dakar
-350000,Bureaux & Commerces,1,1,98,Location,Dieuppeul-Derklé,Dakar
-45000000,Appartements,2,1,43,Vente,Almadies,Dakar
-6000000,Villas,6,1400,6,Location,Fann,Dakar
-35000,Appartements meublés,2,2,2,Location,Yoff,Dakar
-,Appartements,4,2,100,Vente,Point E,Dakar
-170000,Appartements,2,1,2,Location,Ouakam,Dakar
-450000,Appartements,3,3,110,Location,Mermoz-Sacré Coeur,Dakar
-85000000,Appartements,4,4,100,Vente,Sicap Liberté,Dakar
-800000,Appartements,4,3,100,Location,Sicap Liberté,Dakar
-700000,Appartements,5,4,5,Location,Mermoz-Sacré Coeur,Dakar
-125000000,Villas,8,6,380,Vente,Mbao,Dakar
-500000,Appartements,3,3,150,Location,Almadies,Dakar
-250000,Appartements,2,2,60,Location,Almadies,Dakar
-,Terrains,4,2,900,Vente,Yoff,Dakar
-250000,Appartements,2,2,2,Location,Almadies,Dakar
-2500000,Appartements meublés,4,5,218,Location,Yoff,Dakar
-350000,Appartements,4,2,130,Location,Mermoz-Sacré Coeur,Dakar
-1000000,Appartements,4,3,4,Location,Dakar Plateau,Dakar
-700000,Bureaux & Commerces,5,2,5,Location,Dakar Plateau,Dakar
-500000,Appartements,2,1,90,Location,Ouakam,Dakar
-45000000,Appartements meublés,3,1,200,Vente,Patte d'oie,Dakar
-80000000,Appartements,4,2,100,Vente,Almadies 2,Dakar
-25000,Appartements,2,1,2,Location,Point E,Dakar
-80000,Appartements,2,1,2,Location,Ouakam,Dakar
-1700000,Appartements,4,4,171,Location,Mermoz-Sacré Coeur,Dakar
-400000,Bureaux & Commerces,4,2,4,Location,Almadies,Dakar
-2500000,Appartements,5,5,410,Location,Almadies,Dakar
-200000,Appartements,3,2,90,Location,Sacré-Coeur,Dakar
-2500000,Appartements meublés,4,4,230,Location,Yoff,Dakar
-175000,Appartements,3,2,100,Location,Almadies,Dakar
-550000,Villas,4,2,100,Location,Mamelles,Dakar
-375000,Appartements,3,2,3,Location,Mermoz-Sacré Coeur,Dakar
-600000,Appartements,2,2,100,Location,Mamelles,Dakar
-1599500,Appartements,6,5,2397,Vente,Fann,Dakar
-185000,Appartements,4,2,100,Location,Mamelles,Dakar
-3500000,Terrains,150,150,100,Vente,Toubab Dialao,Toubab Dialao
-2832000,Bureaux & Commerces,6,354,6,Location,Sacré-Coeur,Dakar
-350000,Bureaux & Commerces,1,1,75,Location,Dieuppeul-Derklé,Dakar
-400000,Appartements,3,3,12,Location,Point E,Dakar
-1800000,Appartements meublés,4,4,140,Location,Ouakam,Dakar
-250000000,Immeubles,4,2,160,Vente,Medina,Dakar
-160000,Appartements,1,1,50,Location,Fass,Dakar
-235000000,Terrains,253,253,100,Vente,Sacré-Coeur,Dakar
-400000,Appartements,4,3,130,Location,Fann,Dakar
-1000000,Appartements,5,4,150,Location,Sipres,Dakar
-225000000,Immeubles,4,2,190,Vente,Grand Yoff,Dakar
-1200000,Villas,6,6,200,Location,Mamelles,Dakar
-65000000,Appartements,4,2,100,Vente,Mbao,Dakar
-350000,Appartements,2,2,65,Location,Almadies,Dakar
-18000000,Terrains,150,150,100,Vente,Almadies 2,Dakar
-400000,Appartements,3,3,3,Location,Fass,Dakar
-1500000,Villas,4,3,4,Location,Mermoz-Sacré Coeur,Dakar
-350000,Bureaux & Commerces,1,1,70,Vente,Sipres,Dakar
-175000,Appartements,2,1,80,Location,Fass,Dakar
-260000,Appartements,3,3,110,Location,Sicap foire,Dakar
-700000,Appartements,4,2,130,Location,Mariste,Dakar
-900000,Villas,6,5,12,Location,Mermoz-Sacré Coeur,Dakar
-350000,Appartements,2,2,68,Location,Almadies,Dakar
-550000,Villas,3,2,250,Location,Mamelles,Dakar
-2000000,Appartements,6,6,310,Location,Point E,Dakar
-1700000,Appartements,5,5,220,Location,Almadies,Dakar
-170000,Appartements,3,2,3,Location,Keur Massar,Keur Massar
-800000,Appartements,5,4,5,Location,Mamelles,Dakar
-12000000,Terrains,450,450,100,Vente,Toubab Dialao,Toubab Dialao
-420000000,Appartements,7,7,460,Location,Mariste,Dakar
-45000000,Villas,3,3,150,Vente,Rufisque,Rufisque
+90000,Chambres,1,1,13,Location,Sicap Liberté,Dakar
+100000,Chambres,2,1,30,Location,Parcelle Assainies,Dakar
+135000000,Appartements,8,150,8,Vente,Mamelles,Dakar
+284000000,Villas,7,5,300,Vente,Ouest Foire,Dakar
+800000,Villas,6,4,6,Location,Mermoz-Sacré Coeur,Dakar
+250000,Appartements,2,2,66,Location,Almadies,Dakar
+1500000,Appartements,4,4,150,Location,Mamelles,Dakar
+300000,Bureaux & Commerces,3,1,100,Location,Gueule Tapée,Dakar
+1500000,Appartements,4,5,350,Location,Mamelles,Dakar
+450000,Villas,4,3,600,Location,Ouest Foire,Dakar
+225000000,Immeubles,190,190,100,Vente,Grand Yoff,Dakar
+550000,Villas,3,2,260,Location,Mamelles,Dakar
+350000,Bureaux & Commerces,1,1,95,Location,Dieuppeul-Derklé,Dakar
+35000,Appartements meublés,2,1,2,Location,Sicap foire,Dakar
 700000,Appartements,4,4,200,Location,Almadies,Dakar
-375000,Appartements,4,2,140,Location,Mariste,Dakar
+500000,Appartements meublés,2,1,65,Location,Ouakam,Dakar
+850000,Appartements,4,3,4,Location,Mamelles,Dakar
+300000,Appartements,3,1,100,Location,Yoff,Dakar
+130000000,Terrains,247,247,100,Vente,Almadies,Dakar
+350000,Bureaux & Commerces,1,2,90,Location,Yoff,Dakar
+350000,Appartements,3,1,3,Location,Mermoz-Sacré Coeur,Dakar
+300000,Appartements,2,2,2,Location,Ouakam,Dakar
+250000,Appartements,2,2,75,Location,Ouakam,Dakar
+800000,Bureaux & Commerces,5,5,300,Location,Fann,Dakar
+38000000,Appartements,4,2,90,Vente,Almadies,Dakar
+240000,Appartements,3,2,3,Location,Mariste,Dakar
+600000,Appartements meublés,4,2,140,Location,Ouakam,Dakar
+250000,Appartements,3,2,3,Location,Guediawaye,Dakar
+800000,Appartements,4,4,190,Location,Mamelles,Dakar
+350000,Bureaux & Commerces,1,1,65,Location,Dieuppeul-Derklé,Dakar
+1200000,Appartements meublés,4,2,120,Location,Mermoz-Sacré Coeur,Dakar
+400000,Bureaux & Commerces,4,2,4,Location,Almadies,Dakar
+1500000,Appartements,3,3,160,Location,Fann,Dakar
+80000000,Villas,4,3,4,Vente,Almadies,Dakar
+350000,Bureaux & Commerces,1,1,70,Location,Almadies,Dakar
+17000000,Terrains,150,150,100,Vente,Keur Massar,Keur Massar
+3500000,Terrains,150,150,100,Vente,Toubab Dialao,Toubab Dialao
+2000000,Terrains,4,2,150,Vente,Almadies,Dakar
+60000,Chambres,1,1,12,Location,Sicap Liberté,Dakar
+1200000,Appartements meublés,4,4,150,Location,Mermoz-Sacré Coeur,Dakar
+50000,Appartements meublés,4,2,120,Location,Sicap Liberté,Dakar
+75000000,Terrains,4,2,150,Vente,Ouest Foire,Dakar
+500000,Appartements,4,3,200,Location,Almadies,Dakar
+,Terrains,4,2,300,Vente,Mbour,Mbour
+250000,Appartements,4,2,100,Vente,Mariste,Dakar
+175000,Appartements,2,1,80,Location,Fass,Dakar
+32000000,Terrains,150,150,100,Vente,Almadies 2,Dakar
+,Bureaux & Commerces,1,1,100,Location,Mbao,Dakar
+90000000,Appartements,3,2,87,Vente,Yoff,Dakar
+200000,Appartements,2,1,70,Location,Ngor,Dakar
 1500000,Appartements,5,4,350,Location,Mamelles,Dakar
+70000000,Villas,4,3,150,Vente,Rufisque,Rufisque
+4000000,Villas,9,6,800,Location,Mermoz-Sacré Coeur,Dakar
+,Villas,5,5,1241,Vente,Almadies,Dakar
+,Appartements,3,3,110,Location,Sicap foire,Dakar
+180000,Appartements,1,1,1,Location,Medina,Dakar
+500000,Appartements,4,3,100,Location,Ouest Foire,Dakar
+2500000,Appartements meublés,4,4,230,Location,Yoff,Dakar
+400000,Bureaux & Commerces,4,3,140,Location,Fann,Dakar
+175000,Appartements,1,1,45,Location,Sicap Liberté,Dakar
+50000,Chambres,1,1,100,Location,Parcelle Assainies,Dakar
+2500000,Bureaux & Commerces,5,5,350,Location,Dakar Plateau,Dakar
+170000000,Villas,4,4,4,Vente,Sicap Liberté,Dakar
+550000,Appartements,4,3,4,Location,Mamelles,Dakar
+85000000,Appartements,2,2,102,Vente,Almadies,Dakar
+1000000,Villas,5,3,200,Location,Almadies,Dakar
+,Immeubles,150,150,100,Vente,Almadies,Dakar
+15000,Appartements,3,3,3,Location,Chambres,Dakar
+450000,Appartements,4,2,110,Location,Yoff,Dakar
+170000000,Villas,5,5,600,Vente,Thies,Thies
+449500000,Villas,4,4,690,Vente,Saly,Saly
+40000,Appartements meublés,2,2,2,Location,Almadies,Dakar
+225000,Appartements,3,3,95,Location,Sicap Liberté,Dakar
+400000,Appartements,4,3,130,Location,Sicap Liberté,Dakar
+1200000,Appartements meublés,4,2,160,Location,Mermoz-Sacré Coeur,Dakar
+2000000,Appartements,150,150,100,Vente,Toubab Dialao,Toubab Dialao
+225000000,Immeubles,190,190,100,Vente,Grand Yoff,Dakar
+60000,Chambres,1,1,1,Location,Yoff,Dakar
+750000,Appartements,5,5,240,Location,Almadies,Dakar
+275000,Appartements,4,2,130,Location,Parcelle Assainies,Dakar
+650000,Appartements,4,3,4,Location,Almadies,Dakar
+1200000,Appartements,3,2,110,Location,Point E,Dakar
+1200000,Villas,6,5,450,Location,Mermoz-Sacré Coeur,Dakar
+500000,Appartements,3,3,3,Vente,Almadies,Dakar
+400000,Appartements,4,2,100,Location,Ouakam,Dakar
+500000,Appartements,3,3,150,Location,Almadies,Dakar
+367000,Appartements,3,2,3,Location,Sicap Liberté,Dakar
+2200000,Villas,6,6,12,Location,Fann,Dakar
+2700000,Bureaux & Commerces,8,7,500,Location,Almadies,Dakar
+700000,Appartements,4,3,100,Location,Point E,Dakar
+265000000,Appartements,5,5,220,Location,Almadies,Dakar
+1000000,Appartements,5,4,200,Location,Mermoz-Sacré Coeur,Dakar
+14500,Villas,2,1,210,Vente,Ouest Foire,Dakar
+300000,Appartements,3,2,45,Location,Mamelles,Dakar
+14000000,Villas,3,3,400,Vente,Saly,Saly
+175000,Appartements,1,1,45,Location,Sicap Liberté,Dakar
+400000,Appartements,2,1,90,Location,Sicap Liberté,Dakar
+250000000,Immeubles,160,160,100,Vente,Medina,Dakar
+1000000000,Terrains,4,2,980,Vente,Yoff,Dakar
+500000,Appartements,4,2,100,Location,Mermoz-Sacré Coeur,Dakar
+30000000,Villas,4,4,303,Vente,Mbour,Mbour
+,Villas,10,10,12,Location,Fann,Dakar
+600000,Appartements,4,3,110,Location,Mamelles,Dakar
+45000000,Appartements,2,1,43,Vente,Almadies,Dakar
+8000000,Terrains,200,200,100,Vente,Rufisque,Rufisque
+62000000,Appartements,61,61,100,Vente,Ngor,Dakar
+75000000,Villas,4,2,100,Vente,Keur Massar,Keur Massar
+700000,Appartements,4,2,130,Location,Mariste,Dakar
+600000,Villas,3,2,200,Location,Almadies,Dakar
+25000,Appartements meublés,2,1,2,Location,Sacré-Coeur,Dakar
+4000000,Villas,9,7,780,Location,Mermoz-Sacré Coeur,Dakar
+150000,Appartements,2,1,2,Location,Ouest Foire,Dakar
+1100000,Villas,3,2,3,Location,Almadies,Dakar
+18000,Chambres,1,1,16,Location,Almadies,Dakar
+3500000,Villas,10,8,12,Location,Almadies,Dakar
+2500000,Appartements,5,4,430,Location,Almadies,Dakar
+2500000,Appartements,5,5,304,Location,Almadies,Dakar
+20000,Appartements meublés,1,2,150,Location,Mbao,Dakar
+290000000,Villas,5,3,290,Vente,Ouest Foire,Dakar
+800000,Appartements meublés,3,3,80,Location,Point E,Dakar
+300000000,Villas,8,7,200,Vente,Almadies,Dakar
+400000,Appartements,4,3,133,Location,Yoff,Dakar
+350000,Appartements,4,2,100,Location,Ouakam,Dakar
+2500000,Villas,8,6,500,Location,Almadies,Dakar
+550000,Appartements,3,2,3,Location,Medina,Dakar
+300000,Appartements,3,3,100,Location,Ouakam,Dakar
+300000000,Terrains,351,351,100,Vente,Yoff,Dakar
+800000,Appartements,4,3,200,Location,Ngor,Dakar
+90000000,Appartements,3,3,150,Vente,Ouakam,Dakar
+2500000,Appartements,5,4,430,Location,Almadies,Dakar
+225000,Appartements,2,2,2,Location,Mamelles,Dakar
+550000,Appartements,2,1,2,Location,Point E,Dakar
+1500000,Appartements,4,4,150,Location,Mamelles,Dakar
+3500000,Terrains,4,2,200,Vente,Thies,Thies
+1350000,Appartements,4,3,190,Location,Mermoz-Sacré Coeur,Dakar
+550000,Appartements,4,3,180,Location,Damel,Dakar
+1100000,Villas,5,6,5,Location,Mamelles,Dakar
+700000,Appartements,3,3,100,Location,Almadies,Dakar
+900000,Appartements,4,4,147,Location,Point E,Dakar
+100000,Appartements meublés,2,2,2,Location,Point E,Dakar
+375000,Appartements,3,2,3,Location,Mermoz-Sacré Coeur,Dakar
+1700000,Appartements,4,4,171,Location,Mermoz-Sacré Coeur,Dakar
+3000000,Villas,7,5,250,Location,Mermoz-Sacré Coeur,Dakar
+60000,Appartements meublés,4,2,110,Location,Sicap Liberté,Dakar
+130000,Terrains,4,2,100,Vente,Colobane,Dakar
+260000,Appartements,3,3,3,Location,Sicap foire,Dakar
+55000000,Villas,5,3,160,Vente,Parcelle Assainies,Dakar
+800000,Appartements,3,4,150,Location,Mermoz-Sacré Coeur,Dakar
+1000000,Villas,5,5,5,Location,Almadies,Dakar
+1400000,Terrains agricoles,4,2,1600000,Vente,Lompoul,Dakar
+50000,Appartements meublés,3,1,95,Location,Mamelles,Dakar
+2500000,Appartements,5,4,450,Location,Almadies,Dakar
+380000,Appartements,3,2,3,Location,Fass,Dakar
+375000,Appartements,4,2,140,Location,Mariste,Dakar
+800000,Villas,4,4,4,Location,Yoff,Dakar
+350000,Appartements,3,2,3,Location,Dakar Plateau,Dakar
+2250000,Appartements,5,5,310,Location,Almadies,Dakar
+8000000,Terrains,150,150,100,Vente,Mermoz-Sacré Coeur,Dakar
+500000,Appartements,4,3,140,Location,Yoff,Dakar
+330000000,Fermes & Vergers,65000,65000,100,Vente,Thies,Thies
+250000,Appartements,3,2,110,Location,Mamelles,Dakar
+150000000,Immeubles,247,247,100,Vente,Thies,Thies
+,Immeubles,4,2,100,Location,Parcelle Assainies,Dakar
+300000,Appartements,3,2,125,Location,HLM,Dakar
+15000,Appartements,3,2,100,Location,Almadies,Dakar
+500,Villas,12,4,300,Vente,Sicap Liberté,Dakar
+38000000,Villas,4,2,150,Vente,Rufisque,Rufisque
+13000000,Terrains,150,150,100,Vente,Rufisque,Rufisque
+170000,Appartements,3,2,3,Location,Keur Massar,Keur Massar
+26000000,Terrains,600,600,100,Vente,Mbour,Mbour
+325000,Appartements,2,2,100,Location,Almadies,Dakar
+300000,Appartements,3,2,3,Location,Yoff,Dakar
+500000,Appartements,3,3,140,Location,Mamelles,Dakar
+800000,Appartements,4,3,120,Location,Yoff,Dakar
+270000000,Villas,6,4,296,Vente,Almadies,Dakar
+170000,Appartements,3,2,3,Location,Keur Massar,Keur Massar
+400000000,Terrains,600,600,100,Vente,Almadies,Dakar
+50000000,Villas,5,3,150,Vente,Keur Massar,Keur Massar
+70000000,Terrains,4,2,150,Vente,Almadies,Dakar
+300000,Appartements,3,2,160,Location,Almadies,Dakar
+2100000,Villas,5,5,5,Location,Almadies,Dakar
+275000,Appartements,4,2,130,Location,Parcelle Assainies,Dakar
+225000000,Immeubles,4,2,190,Vente,Grand Yoff,Dakar
+30000,Appartements meublés,2,2,2,Location,Sacré-Coeur,Dakar
+900000,Villas,6,5,12,Location,Mermoz-Sacré Coeur,Dakar
+700000,Bureaux & Commerces,5,2,5,Location,Dakar Plateau,Dakar
+300000,Appartements,3,2,130,Location,Yoff,Dakar
+1500000000,Appartements,6,6,900,Vente,Yoff,Dakar
+225000,Appartements,2,2,80,Location,Ouest Foire,Dakar
+65000000,Appartements,2,1,2,Vente,Point E,Dakar
+350000,Appartements,2,2,2,Location,Almadies,Dakar
+4000000,Terrains,4,2,300,Vente,Ouakam,Dakar
+135000000,Terrains,234,234,100,Vente,Yoff,Dakar
+600000,Appartements,4,3,110,Location,Mamelles,Dakar
+17000000,Terrains,150,150,100,Vente,Almadies,Dakar
+700000,Appartements,4,4,150,Location,Almadies,Dakar
+150000,Chambres,1,1,1,Location,Medina,Dakar
+18000000,Villas,2,1,160,Vente,Rufisque,Rufisque
+20000000,Terrains,4,2,150,Vente,Keur Massar,Keur Massar
+1000000,Villas,6,6,100,Location,Almadies 2,Dakar
+50000000,Villas,500,500,100,Vente,Mboro,Mboro
+45000000,Villas,3,3,320,Vente,Saly,Saly
+170000000,Immeubles,4,2,190,Vente,Dieuppeul-Derklé,Dakar
+200000,Appartements,2,1,55,Location,Fann,Dakar
+250000,Appartements,4,2,100,Vente,Mariste,Dakar
+700000,Appartements,4,3,150,Location,Almadies,Dakar
+3000000,Villas,8,5,400,Location,Almadies,Dakar
+1300000,Appartements,5,4,200,Location,Yoff,Dakar
+85000000,Appartements,4,4,100,Vente,Sicap Liberté,Dakar
+250000,Appartements,3,2,3,Location,Guediawaye,Dakar
+1000000,Appartements,4,5,4,Location,Point E,Dakar
+280000,Appartements,2,1,70,Location,Sipres,Dakar
+375000,Appartements,3,2,3,Location,Mamelles,Dakar
+600000,Appartements,2,2,100,Location,Mermoz-Sacré Coeur,Dakar
+400000,Appartements,4,3,140,Location,Fann,Dakar
+28000000,Terrains,4,2,230,Vente,Almadies,Dakar
+1800000,Appartements meublés,4,2,150,Location,Ouakam,Dakar
+400000,Appartements,3,150,3,Location,Ouakam,Dakar
+250000,Appartements,2,2,60,Location,Almadies,Dakar
+1700000,Appartements,4,4,171,Location,Mermoz-Sacré Coeur,Dakar
+750000,Appartements,4,3,4,Location,Almadies,Dakar
+400000,Appartements,4,3,140,Location,Fann,Dakar
+350000,Bureaux & Commerces,1,1,65,Location,Dieuppeul-Derklé,Dakar
+400000,Appartements,4,3,225,Location,Sicap Liberté,Dakar
+350000,Chambres,1,1,1,Location,Almadies,Dakar
+650000,Appartements,4,2,130,Location,Mermoz-Sacré Coeur,Dakar
+,Villas,8,4,8,Vente,Ziguinchor,Ziguinchor
+500000,Appartements,4,2,120,Location,Mamelles,Dakar
+1200000,Villas,8,6,8,Location,Mariste,Dakar
+425000,Appartements,3,2,150,Location,Almadies,Dakar
+350000,Bureaux & Commerces,1,1,1,Location,Yoff,Dakar
+350000,Appartements,4,2,110,Location,Mariste,Dakar
+500000,Bureaux & Commerces,1,1,40,Location,Ngor,Dakar
+2000000,Appartements,5,4,300,Location,Rufisque,Rufisque
+700000,Appartements,5,5,167,Location,Mamelles,Dakar
+350000,Bureaux & Commerces,1,1,45,Location,Medina,Dakar
+275000,Appartements,2,1,2,Location,Fass,Dakar
+200000,Appartements,1,1,30,Location,Medina,Dakar
+250000,Appartements,2,2,2,Location,Medina,Dakar
+350000,Appartements,5,1,200,Location,Ouakam,Dakar
 650000,Appartements,4,3,4,Location,Mermoz-Sacré Coeur,Dakar
+2800000,Bureaux & Commerces,2,2,230,Location,Mermoz-Sacré Coeur,Dakar
+275000,Appartements,3,3,3,Location,Almadies 2,Dakar
+150000000,Appartements,4,3,200,Vente,Ngor,Dakar
 800000,Bureaux & Commerces,7,5,300,Location,Fann,Dakar
-850000,Appartements,8,2,172,Location,Sicap Liberté,Dakar
-1250000,Terrains,555,555,100,Vente,Almadies,Dakar
+75000,Appartements,2,2,2,Location,Keur Massar,Keur Massar
+750000,Appartements,4,2,150,Location,Yoff,Dakar
+350000,Appartements,2,2,65,Location,Mermoz-Sacré Coeur,Dakar
+900000,Appartements meublés,3,2,3,Location,Point E,Dakar
+700000,Appartements,5,4,5,Location,Mamelles,Dakar
+4000000,Villas,10,5,10,Location,Mermoz-Sacré Coeur,Dakar
+2500000,Appartements,5,5,5,Location,Almadies,Dakar
+500000,Appartements,4,4,100,Location,Mamelles,Dakar
+,Terrains,4,2,900,Vente,Yoff,Dakar
+275000,Appartements,2,1,2,Location,Fass,Dakar
+5000000,Terrains,225,225,100,Vente,Thies,Thies
+3000000,Villas,6,600,6,Location,Mermoz-Sacré Coeur,Dakar
+3500000,Villas,11,7,800,Location,Almadies,Dakar
+500000000,Villas,7,5,300,Vente,Sicap foire,Dakar
+550000,Appartements,4,2,100,Vente,Mamelles,Dakar
+900000,Villas,6,5,12,Location,Mermoz-Sacré Coeur,Dakar
+345000000,Appartements,5,5,295,Vente,Almadies,Dakar
+500000,Appartements meublés,2,1,56,Location,Ouakam,Dakar
+1800000,Villas,4,2,500,Location,Mermoz-Sacré Coeur,Dakar
+1300000,Appartements,4,2,100,Location,Point E,Dakar
+400000,Appartements,3,3,12,Location,Point E,Dakar
+850000,Appartements,4,3,4,Location,Point E,Dakar
+1200000,Appartements,4,4,4,Location,Fann,Dakar
+56000000,Terrains,4,2,300,Vente,Almadies,Dakar
+30000,Appartements meublés,3,2,80,Location,Almadies,Dakar
+90000000,Appartements,3,3,150,Vente,Ouakam,Dakar
+5500000,Terrains,300,300,100,Vente,Mbour,Mbour
+900000,Villas,5,4,300,Location,Hann Bel-Air,Dakar
+330000,Appartements,3,3,3,Location,Mamelles,Dakar
+90000000,Appartements,3,3,150,Vente,Ouakam,Dakar
+500000,Appartements,3,2,120,Location,Ouest Foire,Dakar
+77500000,Immeubles,4,2,200,Vente,Grand Yoff,Dakar
+850000,Villas,7,4,230,Location,Yoff,Dakar
+6000000,Villas,9,7,750,Location,Almadies,Dakar
+800000,Appartements,4,3,140,Location,Mermoz-Sacré Coeur,Dakar
+750000000,Terrains,4,2,1000,Vente,Almadies,Dakar
+400000,Appartements,3,3,3,Location,Fass,Dakar
+70000000,Appartements,2,2,66,Vente,Yoff,Dakar
+4000000,Villas,5,5,500,Location,Fann,Dakar
+500000,Appartements,4,2,4,Location,Almadies,Dakar
+650000,Appartements,4,4,100,Location,Sipres,Dakar
+80000000,Villas,7,3,150,Vente,Almadies 2,Dakar
+500000,Appartements,4,3,4,Location,Ouest Foire,Dakar
+75000000,Villas,5,2,500,Vente,Thies,Thies
+250000000,Bureaux & Commerces,126,126,100,Vente,Saly,Saly
+425000,Villas,4,3,160,Location,Cambérène,Dakar
+500000,Appartements,3,3,3,Location,Mamelles,Dakar
+,Appartements,2,1,12,Location,Mermoz-Sacré Coeur,Dakar
+550000,Appartements,4,3,150,Location,Yoff,Dakar
+800000,Appartements,3,2,150,Location,Almadies,Dakar
+400000,Appartements,4,2,4,Location,Yoff,Dakar
+750000,Bureaux & Commerces,5,5,300,Location,Fann,Dakar
+350000,Bureaux & Commerces,1,1,80,Location,Dieuppeul-Derklé,Dakar
+17000,Appartements meublés,1,1,1,Location,Yoff,Dakar
+45000,Appartements meublés,3,2,3,Location,Point E,Dakar
+800000,Appartements,1,2,95,Location,Almadies,Dakar
+200000,Bureaux & Commerces,2,2,150,Location,Sicap Liberté,Dakar
+1200000,Villas,6,6,742,Vente,Point E,Dakar
+1700000,Appartements,4,4,171,Location,Mermoz-Sacré Coeur,Dakar
+550000,Villas,3,2,280,Location,Mamelles,Dakar
+650000,Appartements,1,1,60,Location,Almadies,Dakar
+850000,Villas,6,5,200,Location,Yoff,Dakar
+600000,Appartements,3,3,100,Location,Sipres,Dakar
+155000000,Villas,5,3,600,Vente,Ngaparou,Ngaparou
+8000000,Terrains,300,300,100,Vente,Malikounda,Dakar
+2700000,Villas,12,8,1000,Location,Mermoz-Sacré Coeur,Dakar
+17000000,Terrains,150,150,100,Vente,Rufisque,Rufisque
+13000000,Appartements,4,3,234,Location,Point E,Dakar
+1500000,Appartements,4,4,350,Location,Mamelles,Dakar
+50000,Appartements meublés,2,1,2,Location,Point E,Dakar
+,Villas,6,6,12,Location,Yoff,Dakar
+400000,Appartements,4,3,130,Location,Fann,Dakar
+290000,Appartements,3,3,130,Location,Yoff,Dakar
+80000,Appartements,2,1,2,Location,Ouakam,Dakar
+32599500,Appartements,4,2,50000,Vente,Almadies,Dakar
+1599500,Appartements,6,5,2397,Vente,Fann,Dakar
+250000000,Immeubles,161,161,100,Vente,Medina,Dakar
+2500000,Appartements,5,4,430,Location,Almadies,Dakar
+150000000,Villas,4,2,220,Vente,Point E,Dakar
+260000,Appartements,3,3,99,Location,Sicap foire,Dakar
+275000,Appartements,3,2,105,Location,Mamelles,Dakar
+18000000,Villas,2,1,160,Vente,Rufisque,Rufisque
+650000,Appartements meublés,1,1,1,Location,Almadies,Dakar
+55000,Chambres,1,1,100,Location,Mariste,Dakar
+400000,Appartements meublés,2,2,150,Location,Damel,Dakar
+800000,Villas,5,3,5,Location,Sipres,Dakar
+285000000,Villas,8,4,166,Vente,Parcelle Assainies,Dakar
+125000000,Villas,8,6,380,Vente,Mbao,Dakar
+30000,Appartements meublés,3,3,90,Location,Sicap Liberté,Dakar
+12500000,Terrains,150,150,100,Vente,Diamniadio,Diamniadio
+85000,Chambres,1,1,1,Location,Ouakam,Dakar
+4000000,Villas,6,5,700,Location,Mermoz-Sacré Coeur,Dakar
+2800000,Appartements,55,360,55,Location,Ouakam,Dakar
+650000,Appartements,5,4,5,Location,Mermoz-Sacré Coeur,Dakar
+2500000,Appartements,5,4,410,Location,Almadies,Dakar
+350000,Bureaux & Commerces,1,1,65,Location,Dieuppeul-Derklé,Dakar
+75000000,Villas,4,2,4,Vente,Almadies,Dakar
+250000,Appartements,3,2,3,Location,Ouakam,Dakar
+2500000,Villas,15,7,500,Location,Sicap foire,Dakar
+125000000,Villas,6,5,250,Vente,Almadies,Dakar
+800000,Villas,5,4,200,Location,Sipres,Dakar
+550000,Appartements,4,3,4,Location,Mamelles,Dakar
+1200000,Terrains,4,2,897,Vente,Yoff,Dakar
+650000,Appartements,4,3,130,Location,Mermoz-Sacré Coeur,Dakar
+4500000,Villas,5,3,800,Location,Dakar Plateau,Dakar
+250000,Appartements,4,2,100,Location,Almadies,Dakar
+350000,Appartements,2,2,68,Location,Almadies,Dakar
+18000000,Terrains,150,150,100,Vente,Almadies 2,Dakar
+2000000,Appartements,4,2,100,Location,Almadies,Dakar
+750000,Appartements meublés,2,2,2,Location,Almadies,Dakar
+400000,Appartements,4,3,4,Location,Mamelles,Dakar
+10000000,Appartements,300,300,100,Vente,Toubab Dialao,Toubab Dialao
+1000000,Appartements,5,4,150,Location,Sipres,Dakar
+,Fermes & Vergers,4,2,1170000,Vente,Thies,Thies
+2500000,Appartements meublés,4,5,218,Location,Yoff,Dakar
+2000000,Appartements,6,5,6,Location,Ngor,Dakar
+90000000,Appartements,3,3,150,Vente,Ouakam,Dakar
+300000,Appartements,3,1,90,Location,Yoff,Dakar
+,Appartements,4,2,100,Vente,Point E,Dakar
+60000000,Villas,8,2,160,Vente,Rufisque,Rufisque
+4000000,Villas,9,7,780,Location,Mermoz-Sacré Coeur,Dakar
+2500000,Villas,7,7,100,Location,Mermoz-Sacré Coeur,Dakar
+,Bureaux & Commerces,4,2,7000,Vente,Almadies,Dakar
+225000,Appartements,4,2,80,Location,Parcelle Assainies,Dakar
+1300000,Appartements,4,4,4,Location,Point E,Dakar
+1700000,Appartements,5,5,220,Location,Almadies,Dakar
+90000000,Appartements,3,3,150,Vente,Ouakam,Dakar
+1000000,Bureaux & Commerces,1,1,140,Location,Sicap Liberté,Dakar
+650000,Appartements,4,3,4,Location,Mermoz-Sacré Coeur,Dakar
+6000000,Villas,6,1400,6,Location,Fann,Dakar
+375000,Appartements,4,2,4,Location,Mamelles,Dakar
+3000000,Terrains,4,2,150,Vente,Thies,Thies
+1500000,Bureaux & Commerces,1,1,350,Location,Yoff,Dakar
+250000,Appartements meublés,2,2,70,Location,Sicap Liberté,Dakar
+175000,Appartements,1,1,65,Location,Sicap Liberté,Dakar
+200000,Appartements,4,1,4,Location,Almadies,Dakar
+10000000,Terrains,150,150,100,Vente,Rufisque,Rufisque
+2832000,Bureaux & Commerces,6,354,6,Location,Sacré-Coeur,Dakar
+950000000,Villas,7,10,411,Vente,Mamelles,Dakar
+65000000,Appartements meublés,4,2,100,Vente,Ouakam,Dakar
+26000000,Villas,4,2,150,Vente,Almadies,Dakar
+550000,Villas,4,2,100,Location,Mamelles,Dakar
+260000,Appartements,3,3,97,Location,Sicap foire,Dakar
+325000,Appartements,3,1,100,Location,Almadies,Dakar
+,Appartements,4,2,100,Location,Almadies,Dakar
+55000,Appartements meublés,3,2,90,Location,Yoff,Dakar
+40000,Appartements meublés,2,1,100,Location,Sicap Liberté,Dakar
+700000,Bureaux & Commerces,5,2,5,Location,Dakar Plateau,Dakar
+60000000,Villas,1,1,285,Vente,Saint Louis,Dakar
+300,Villas,3,3,120,Location,Mbao,Dakar
+420000000,Villas,5,6,351,Vente,Mamelles,Dakar
+250000000,Immeubles,4,2,150,Vente,Medina,Dakar
+200000000,Terrains,253,253,100,Vente,Sacré-Coeur,Dakar
+900000,Villas,5,4,5,Location,Hann Bel-Air,Dakar
+1300000,Appartements,5,4,300,Location,Ngor,Dakar
+750000,Appartements,6,4,6,Location,Mariste,Dakar
+12000000,Terrains,450,450,100,Vente,Toubab Dialao,Toubab Dialao
+35000,Appartements meublés,2,1,50,Location,Sicap foire,Dakar
+2000000,Bureaux & Commerces,7,7,100,Location,Biscuiterie,Dakar
+800000,Terrains,500,500,100,Vente,Almadies,Dakar
+130000000,Villas,7,2,300,Vente,HLM,Dakar
+2000000,Appartements,5,6,5,Location,Point E,Dakar
+180000,Appartements,3,2,3,Location,Almadies,Dakar
+260000,Appartements,3,2,130,Location,Mamelles,Dakar
 275000,Appartements,3,2,98,Location,Mamelles,Dakar
-250000,Appartements,2,2,127,Location,Yoff,Dakar
-55000,Appartements meublés,4,2,120,Location,Sicap Liberté,Dakar
-28000000,Villas,7,1,150,Vente,Almadies,Dakar
-150000000,Villas,3,3,600,Vente,Saly,Saly
+160000,Appartements,3,2,90,Location,Pikine,Dakar
+450000,Appartements,3,3,110,Location,Mermoz-Sacré Coeur,Dakar
+400000,Appartements,4,2,140,Location,Fann,Dakar
+25000,Appartements meublés,2,2,145,Location,Almadies,Dakar
+450000000,Villas,4,2,200,Vente,Almadies,Dakar
+400000,Appartements,4,3,4,Location,Ouakam,Dakar
+550000,Appartements,3,2,3,Location,Mamelles,Dakar
+160000,Appartements,2,2,70,Location,Fass,Dakar
+10000,Chambres,1,1,1,Location,Ziguinchor,Ziguinchor
+165760,Appartements,2,2,1,Location,HLM,Dakar
+400000,Appartements,4,3,140,Location,Fann,Dakar
+700000,Appartements,4,3,100,Location,Mermoz-Sacré Coeur,Dakar
+200000,Appartements,2,1,120,Location,Yoff,Dakar
+85000,Chambres,1,1,20,Location,Fass,Dakar
+47000000,Appartements,2,1,66,Vente,Ngor,Dakar
+450000,Bureaux & Commerces,1,1,50,Location,Ouakam,Dakar
+800000,Appartements,4,2,100,Vente,Almadies,Dakar
+17000000,Terrains,150,150,100,Vente,Rufisque,Rufisque
+550000,Appartements,4,4,160,Location,Mamelles,Dakar
+70000,Appartements meublés,3,2,130,Location,Point E,Dakar
+500000,Appartements,2,2,100,Location,Mariste,Dakar
+1100000,Villas,11,5,120,Location,Mariste,Dakar
+500000,Appartements,5,3,135,Location,Yoff,Dakar
+1200000,Appartements meublés,4,2,160,Location,Mermoz-Sacré Coeur,Dakar
+800000,Appartements,3,3,200,Location,Almadies,Dakar
+1200000,Appartements meublés,4,2,130,Location,Mermoz-Sacré Coeur,Dakar
+200000,Appartements,2,1,124,Location,Ngor,Dakar
+325000,Appartements,3,3,130,Location,Yoff,Dakar
+700000,Appartements,3,2,3,Location,Dakar Plateau,Dakar
+650000,Appartements,4,3,100,Location,Mermoz-Sacré Coeur,Dakar
+1700000,Appartements,5,4,12,Location,Ouakam,Dakar
+300000,Appartements,4,2,100,Vente,Ouest Foire,Dakar
+350000,Bureaux & Commerces,1,1,75,Location,Dieuppeul-Derklé,Dakar
+600000,Appartements,3,2,100,Location,Yoff,Dakar
+1200000,Appartements meublés,3,3,110,Location,Mermoz-Sacré Coeur,Dakar
+21012,Terrains,4,2,968,Vente,Yoff,Dakar
+1300000,Bureaux & Commerces,1,1,93,Location,Dakar Plateau,Dakar
+18000000,Villas,4,2,150,Vente,Sicap Liberté,Dakar
+260000,Appartements,3,3,120,Location,Sicap foire,Dakar
+1700000,Appartements,5,5,13,Location,Ouakam,Dakar
+1500000,Appartements meublés,3,3,120,Location,Fann,Dakar
+500000,Appartements,3,3,12,Location,Mermoz-Sacré Coeur,Dakar
+260000000,Immeubles,180,180,100,Vente,Hann Bel-Air,Dakar
+43000000,Villas,3,3,320,Vente,Saly,Saly
+275000,Appartements,3,1,90,Location,Sicap foire,Dakar
+950000,Villas,4,3,4,Location,Ouakam,Dakar
+1500000,Appartements,4,4,150,Location,Mamelles,Dakar
+3000000,Villas,5,600,5,Location,Mamelles,Dakar
+2500000,Appartements,5,4,406,Location,Almadies,Dakar
+700000,Appartements,4,3,110,Location,Almadies,Dakar
+500000,Appartements,107,107,100,Location,Hann Bel-Air,Dakar
+550000,Appartements,4,2,181,Location,Mamelles,Dakar
+350000000,Villas,5,3,200,Vente,Almadies,Dakar
+500000,Appartements,4,4,100,Location,Mamelles,Dakar
+1700000,Appartements,4,4,13,Location,Ouakam,Dakar
+30000,Appartements meublés,2,1,75,Location,Yoff,Dakar
+1300000,Villas,5,5,100,Location,Mamelles,Dakar
+100000,Chambres,4,2,100,Vente,Medina,Dakar
+800000000,Appartements,5,5,700,Vente,Almadies,Dakar
+400000,Appartements,4,1,100,Location,Sipres,Dakar
+145000000,Appartements,3,3,185,Vente,Almadies,Dakar
+7000000,Terrains,4,2,1000,Vente,Thies,Thies
+350000,Chambres,1,1,1,Location,Dakar Plateau,Dakar
+3000000,Terrains,150,150,100,Vente,Rufisque,Rufisque
+235000000,Terrains,253,253,100,Vente,Sacré-Coeur,Dakar
+175000,Appartements,3,2,100,Location,Almadies,Dakar
+6000000,Terrains,150,150,100,Vente,Diamniadio,Diamniadio
+300000,Appartements,3,2,100,Location,Ngor,Dakar
+250000,Villas,4,2,4,Location,Almadies,Dakar
+300000000,Immeubles,4,2,100,Vente,Mermoz-Sacré Coeur,Dakar
+1000000,Villas,6,5,200,Location,Almadies,Dakar
+1700000,Appartements,4,4,171,Location,Mermoz-Sacré Coeur,Dakar
+900000,Chambres,1,1,15,Location,HLM,Dakar
+170000,Appartements,3,2,3,Location,Keur Massar,Keur Massar
+400000,Appartements,4,3,134,Location,Yoff,Dakar
+58000000,Appartements,5,2,50,Vente,Mermoz-Sacré Coeur,Dakar
+45000000,Terrains,4,2,170,Vente,Almadies,Dakar
+12000000,Terrains,238,238,100,Vente,Louga,Louga
+350000,Bureaux & Commerces,1,1,70,Vente,Sipres,Dakar
+80000000,Terrains,4,2,150,Vente,Yoff,Dakar
+700000,Appartements,4,4,4,Location,Mermoz-Sacré Coeur,Dakar
+3500000,Bureaux & Commerces,11,8,800,Location,Almadies,Dakar
+350000,Appartements,2,2,80,Location,Mamelles,Dakar
+25000,Appartements,2,1,2,Location,Point E,Dakar
+950000,Appartements meublés,3,2,3,Location,Almadies,Dakar
+275000,Appartements,3,2,3,Location,Almadies,Dakar
+30000000,Villas,4,2,200,Vente,Thies,Thies
+600000,Bureaux & Commerces,3,2,3,Location,Sacré-Coeur,Dakar
+350000,Bureaux & Commerces,1,1,45,Location,Mermoz-Sacré Coeur,Dakar
+1300000,Villas,6,6,6,Location,Ouakam,Dakar
+40000000,Villas,6,4,225,Vente,Lac rose,Lac rose
+1000000,Villas,4,4,1000,Location,Mamelles,Dakar
+175000,Appartements,2,2,68,Location,Yoff,Dakar
+1000000,Appartements,6,4,250,Location,Almadies,Dakar
+1500000000,Terrains,4,2,1000,Vente,Almadies,Dakar
+275000,Appartements,2,2,2,Location,Sipres,Dakar
+500000,Appartements,6,2,90,Location,Sacré-Coeur,Dakar
+2000000,Terrains,200,200,100,Vente,Thies,Thies
+260000,Appartements,2,2,110,Location,Sicap foire,Dakar
+200000,Appartements,2,2,100,Location,Mermoz-Sacré Coeur,Dakar
+160000,Appartements,2,1,120,Location,Sicap foire,Dakar
+350000,Bureaux & Commerces,1,2,88,Location,Dieuppeul-Derklé,Dakar
+750000,Appartements,3,2,3,Location,Keur Massar,Keur Massar
+135000,Chambres,1,1,1,Location,Ouest Foire,Dakar
+200000,Appartements,3,2,90,Location,Sacré-Coeur,Dakar
+550000000,Villas,9,8,369,Vente,Mermoz-Sacré Coeur,Dakar
+10000,Chambres,3,2,70,Location,Mbour,Mbour
+375000,Appartements,2,2,2,Location,Mermoz-Sacré Coeur,Dakar
+1100000,Villas,5,4,5,Location,Mamelles,Dakar
+250000,Appartements,2,1,120,Location,Gueule Tapée,Dakar
+85000000,Villas,8,4,250,Vente,Saly,Saly
+500000,Appartements meublés,1,1,65,Location,Ouakam,Dakar
+550000,Appartements,3,2,120,Location,Sacré-Coeur,Dakar
+1000000,Bureaux & Commerces,1,1,110,Location,Sicap Liberté,Dakar
+450000,Appartements,3,2,90,Location,Mariste,Dakar
+750000,Appartements,5,4,175,Location,Ouest Foire,Dakar
+175000,Appartements,1,1,45,Location,Sicap Liberté,Dakar
+30000,Appartements meublés,3,1,56,Location,Almadies,Dakar
+,Villas,6,4,12,Location,Fann,Dakar
+175000,Appartements,4,3,150,Location,Keur Massar,Keur Massar
+260000,Appartements,3,3,110,Location,Sicap foire,Dakar
+200000,Appartements,2,1,12,Location,Sicap Liberté,Dakar
+650000,Appartements,3,4,200,Location,Mamelles,Dakar
+550000,Villas,3,2,250,Location,Mamelles,Dakar
+550000,Villas,3,2,250,Location,Mamelles,Dakar
+425000,Appartements,4,3,100,Location,Sicap Liberté,Dakar
+350000,Bureaux & Commerces,1,1,65,Location,Dieuppeul-Derklé,Dakar
+200000,Appartements,2,2,100,Location,Ouest Foire,Dakar
+150000,Appartements,3,2,3,Location,Almadies 2,Dakar
+18000,Chambres,1,1,18,Location,Almadies,Dakar
+250000,Appartements,2,2,2,Location,Dakar Plateau,Dakar
+1500000,Appartements,4,4,150,Location,Point E,Dakar
+3000000,Villas,6,5,300,Location,Mamelles,Dakar
+300000,Appartements,4,2,100,Location,Damel,Dakar
+400000,Appartements,4,1,100,Location,Sicap foire,Dakar
+2800000,Villas,5,5,1000,Location,Ngor,Dakar
+225000,Appartements,3,2,100,Location,Mariste,Dakar
+300000,Appartements,3,2,3,Location,Ngor,Dakar
+35000000,Terrains,230,230,100,Vente,Keur Massar,Keur Massar
+50000000,Terrains,150,150,100,Vente,Parcelle Assainies,Dakar
+1800000,Villas,7,5,7,Location,Almadies,Dakar
+750000,Appartements,4,3,120,Location,Ngor,Dakar
+1500000,Appartements,10,10,100,Location,Sicap Liberté,Dakar
+30000,Appartements meublés,2,1,65,Location,Yoff,Dakar
+700000,Villas,5,3,5,Location,Yoff,Dakar
+45000,Appartements meublés,2,1,100,Location,Sicap Liberté,Dakar
+175000000,Immeubles,4,2,100,Vente,Almadies,Dakar
+1600000,Villas,6,5,800,Location,Almadies,Dakar
+260,Appartements,3,3,140,Location,Sicap foire,Dakar
+400000000,Villas,8,2,327,Vente,Almadies,Dakar
+900000,Maisons de vacances,5,5,5,Location,Mermoz-Sacré Coeur,Dakar
+47000000,Villas,4,1,300,Vente,Almadies,Dakar
+300000,Appartements,3,1,150,Location,Mariste,Dakar
+2500000,Appartements,5,5,410,Location,Almadies,Dakar
+300000,Appartements,3,2,3,Location,Yoff,Dakar
+300000000,Villas,6,4,300,Vente,Yoff,Dakar
+25000000,Appartements,2,1,52,Vente,Parcelle Assainies,Dakar
+700000,Appartements,5,2,210,Location,Mermoz-Sacré Coeur,Dakar
+850000,Villas,4,2,100,Vente,Yoff,Dakar
+1000000,Appartements,6,4,6,Location,Mermoz-Sacré Coeur,Dakar
+500000,Villas,8,6,150,Vente,Mbao,Dakar
+48900000,Appartements,2,2,82,Vente,Almadies,Dakar
+1200000,Appartements meublés,4,2,160,Location,Mermoz-Sacré Coeur,Dakar
+800000,Appartements,5,4,5,Location,Mamelles,Dakar
+500000,Appartements,4,3,150,Location,Medina,Dakar
+1500000,Villas,10,4,800,Vente,Point E,Dakar
+400000,Appartements,2,2,2,Location,Mamelles,Dakar
+450000,Appartements,3,3,100,Location,Sipres,Dakar
+250000000,Immeubles,4,2,100,Vente,Mariste,Dakar
+180000,Appartements,1,1,1,Location,Dakar Plateau,Dakar
+8500000,Terrains,4,2,150,Vente,Rufisque,Rufisque
+,Appartements,4,2,100,Vente,Almadies,Dakar

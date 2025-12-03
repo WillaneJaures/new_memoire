@@ -1,5 +1,39 @@
 Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
+950000,Ouest foire,Dakar,2,2,110,Appartement
 300000,Grand-Yoff,Dakar,2,2,,Appartement
+2000000,Fann,Dakar,3,3,300,Appartement
+3000000,Fann,Dakar,4,4,400,Appartement
+750000,Almadies,Dakar,3,4,,Appartement
+500000,Almadies,Dakar,2,3,,Appartement
+300000,Ouest foire,Dakar,3,3,,Appartement
+260000,Sicap foire,Dakar,2,2,,Appartement
+280000,Hlm grand-yoff,Dakar,2,,,Appartement
+350000,Ouest foire,Dakar,3,,,Appartement
+500000,Mermoz,Dakar,2,1,,Appartement
+1800000,Point-e,Dakar,4,4,264,Appartement
+800000,Almadies,Dakar,,,,Appartement
+1300000,Almadies,Dakar,3,3,,Appartement
+650000,Dieuppeul,Dakar,3,4,,Appartement
+330000,Ouakam,Dakar,2,3,,Appartement
+550000,Cité keur gorgui,Dakar,3,2,,Appartement
+500000,Almadies,Dakar,2,2,,Appartement
+550000,Mermoz,Dakar,3,3,,Appartement
+1000000,Almadies,Dakar,4,4,,Appartement
+600000,Almadies,Dakar,3,3,,Appartement
+750000,Ngor,Dakar,3,3,180,Appartement
+3000000,Ngor,Dakar,5,6,480,Appartement
+600000,Mamelles,Dakar,2,2,,Appartement
+1000000,Ngor,Dakar,3,3,,Appartement
+750000,Mamelles,Dakar,3,3,164,Appartement
+1500000,Mamelles,Dakar,4,4,,Appartement
+2200000,Corniche,Dakar,4,4,380,Appartement
+1200000,Point-e,Dakar,3,4,,Appartement
+130000000,Virage,Dakar,5,4,170,Appartement
+1000000,Virage,Dakar,3,3,200,Appartement
+450000,Mamelles,Dakar,2,3,150,Appartement
+200000,Zac Mbao,Dakar,2,2,,Appartement
+180000,Zac Mbao,Dakar,2,2,,Appartement
+550000,Mamelles,Dakar,3,4,150,Appartement
 500000,Mamelles,Dakar,3,3,,Appartement
 185000,Parcelles Assainies,Dakar,1,2,55,Appartement
 800000,Mermoz,Dakar,,,,Appartement
@@ -44,13 +78,11 @@ Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
 1600000,Mermoz,Dakar,3,4,,Appartement
 1500000,Mermoz,Dakar,3,4,,Appartement
 1000000,Plateau,Dakar,3,3,,Appartement
-1300000,Almadies,Dakar,3,3,,Appartement
 1500000,Virage,Dakar,3,4,,Appartement
 750000,Virage,Dakar,3,,,Appartement
 550000,Corniche,Dakar,3,4,,Appartement
 1600000,Virage,Dakar,,,,Appartement
 1000000,Fann,Dakar,3,3,200,Appartement
-1300000,Almadies,Dakar,4,4,,Appartement
 180000,Fass,Dakar,1,,,Appartement
 1100000,Plateau,Dakar,,,,Appartement
 1300000,Point-e,Dakar,3,3,190,Appartement
@@ -169,7 +201,6 @@ Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
 ,Mamelles,Dakar,3,2,210,Appartement
 ,Sacré-cœur,Dakar,3,4,210,Appartement
 1,Ouest foire,Dakar,,,,Appartement
-650000,Dieuppeul,Dakar,3,4,,Appartement
 3800000,Mamelles,Dakar,,,,Appartement
 2400000,Almadies,Dakar,,,,Appartement
 1500000,Almadies,Dakar,,,,Appartement
@@ -228,19 +259,8 @@ Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
 500000,Almadies,Dakar,2,100 m²,,Appartement
 280000,Liberte 6 extension,Dakar,1,70 m²,,Appartement
 900000,Ouakam,Dakar,3,3,,Appartement
-450000,Mamelles,Dakar,2,3,150,Appartement
-750000,Mamelles,Dakar,3,3,164,Appartement
-1000000,Ngor,Dakar,3,3,,Appartement
-600000,Mamelles,Dakar,2,2,,Appartement
 400000,Mamelles,Dakar,3,3,,Appartement
 350000,Almadies,Dakar,1,1,200,Appartement
-3000000,Ngor,Dakar,5,6,480,Appartement
-750000,Ngor,Dakar,3,3,180,Appartement
-550000,Mermoz,Dakar,3,3,,Appartement
-500000,Almadies,Dakar,2,2,,Appartement
-1000000,Almadies,Dakar,4,4,,Appartement
-600000,Almadies,Dakar,3,3,,Appartement
-1500000,Mamelles,Dakar,4,4,,Appartement
 1100000,Fann,Dakar,2,,,Appartement
 225000,Nord foire,Dakar,3,2,100,Appartement
 850000,Sacré-cœur,Dakar,6,5,,Appartement
@@ -248,6 +268,7 @@ Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
 1100000,Almadies,Dakar,3,4,,Appartement
 400000,Liberte 6 extension,Dakar,3,2,,Appartement
 290000,Sacré-cœur,Dakar,2,2,,Appartement
+600000,Mamelles,Dakar,3,3,,Appartement
 600000,Mamelles,Dakar,3,3,,Appartement
 2300000,Sacré-cœur,Dakar,4,4,253,Appartement
 2300000,Plateau,Dakar,3,5,250,Appartement
@@ -272,8 +293,6 @@ Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
 500000,Mamelles,Dakar,,,,Appartement
 1700000,Almadies,Dakar,3,4,,Appartement
 1600000,Point-e,Dakar,3,4,200,Appartement
-1000000,Virage,Dakar,3,3,200,Appartement
-130000000,Virage,Dakar,5,4,170,Appartement
 300000,Ouest foire,Dakar,2,2,130,Appartement
 650000,Mermoz,Dakar,3,4,200,Appartement
 800000,Cité keur gorgui,Dakar,,,,Appartement
@@ -324,7 +343,6 @@ Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
 280000,Liberte 6 extension,Dakar,3,,,Appartement
 1500000,Mermoz,Dakar,3,2,,Appartement
 120000,Keur ndiaye lô,Dakar,2,2,150,Appartement
-330000,Ouakam,Dakar,2,3,,Appartement
 460000,VDN,Dakar,3,3,,Appartement
 1500000,Mamelles,Dakar,3,4,300,Appartement
 1150000,Yoff,Dakar,3,,,Appartement
@@ -340,6 +358,7 @@ Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
 2000000,Virage,Dakar,3,5,400,Appartement
 1500000,Ouakam,Dakar,3,3,150,Appartement
 1100000,Almadies,Dakar,3,5,200,Appartement
+1000000,Ngor,Dakar,4,5,200,Appartement
 1000000,Ngor,Dakar,4,5,200,Appartement
 550000,Sacré-cœur,Dakar,3,3,200,Appartement
 2000000,Mermoz,Dakar,2,2,,Appartement
@@ -379,7 +398,6 @@ Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
 425000,Almadies,Dakar,2,2,,Appartement
 40000,Virage,Dakar,,,,Appartement
 600000,Corniche,Dakar,1,1,,Appartement
-950000,Ouest foire,Dakar,2,2,110,Appartement
 1600000,Almadies,Dakar,3,4,,Appartement
 750000,Point-e,Dakar,2,2,,Appartement
 900000,Ouakam,Dakar,4,3,250,Appartement
@@ -450,7 +468,6 @@ Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
 2500000,Fenêtre mermoz,Dakar,3,3,,Appartement
 450000,Almadies,Dakar,3,3,168,Appartement
 550000,Point-e,Dakar,2,2,180,Appartement
-550000,Cité keur gorgui,Dakar,3,2,,Appartement
 210000,Grand-Dakar,Dakar,,,,Appartement
 300000,Plateau,Dakar,1,,,Appartement
 1350000,Almadies,Dakar,,,,Appartement
@@ -531,6 +548,7 @@ Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
 1300000,Almadies,Dakar,,,,Appartement
 35000,Ouest foire,Dakar,2,3,80,Appartement
 2000000,Almadies,Dakar,,,,Appartement
+230000,Amitié,Dakar,1,,,Appartement
 230000,Amitié,Dakar,1,,,Appartement
 850000,Virage,Dakar,3,3,,Appartement
 250000,Guediawaye,Dakar,3,3,,Appartement
@@ -929,7 +947,6 @@ Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
 1500000,Mermoz,Dakar,3,2,,Appartement
 1200000,Plateau,Dakar,3,3,,Appartement
 750000,VDN,Dakar,3,4,,Appartement
-750000,VDN,Dakar,3,4,,Appartement
 250000,Almadies 2,Dakar,3,150 m²,,Appartement
 150000,Mbao,Dakar,,,,Appartement
 1500000,Almadies,Dakar,3,3,200,Appartement
@@ -938,7 +955,6 @@ Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
 1300000,Point-e,Dakar,180 m²,,,Appartement
 900000,Point-e,Dakar,2,3,,Appartement
 315000,Virage,Dakar,1,2,,Appartement
-300000,Sacré-cœur,Dakar,2,,,Appartement
 300000,Sacré-cœur,Dakar,2,,,Appartement
 470000,Hann maristes,Dakar,3,2,,Appartement
 280000,Guediawaye,Dakar,3,3,,Appartement
@@ -968,7 +984,6 @@ Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
 2500000,Corniche,Dakar,4,4,,Appartement
 800000,Point-e,Dakar,2,3,,Appartement
 500000,Almadies,Dakar,4,3,,Appartement
-300000,Keur Massar,Dakar,3,3,160,Appartement
 300000,Keur Massar,Dakar,3,3,160,Appartement
 1500000,Virage,Dakar,3,4,200,Appartement
 300000,Mamelles,Dakar,2,2,100,Appartement
@@ -1134,7 +1149,6 @@ Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
 650000,Mamelles,Dakar,2,2,150,Appartement
 1300000,Ouakam,Dakar,4,4,450,Appartement
 3000000,Mamelles,Dakar,3,3,,Appartement
-250000,Mermoz,Dakar,1,1,,Appartement
 350000,Ngor,Dakar,2,3,110,Appartement
 160000,Dieuppeul,Dakar,1,2,100,Appartement
 730000,Mamelles,Dakar,3,5,,Appartement
@@ -1280,7 +1294,6 @@ Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
 265000,Mamelles,Dakar,1,2,,Appartement
 600000,Mermoz,Dakar,3,200 m²,,Appartement
 1400000,Mermoz,Dakar,3,170 m²,,Appartement
-1500000,Almadies,Dakar,3,3,,Appartement
 250000,Hann maristes,Dakar,2,2,,Appartement
 1400000,Ouakam,Dakar,3,4,250,Appartement
 2500000,Almadies,Dakar,3,341 m²,,Appartement
@@ -1416,16 +1429,3 @@ Price,quartier,region,nombre_chambres,nombre_sdb,superficie,type
 2200000,Plateau,Dakar,3,5,250,Appartement
 2000000,Plateau,Dakar,4,5,250,Appartement
 1500000,Almadies,Dakar,3,3,225,Appartement
-600000,Mamelles,Dakar,3,2,150,Appartement
-300000,Guediawaye,Dakar,2,2,150,Appartement
-900000,Hann marinas,Dakar,2,,,Appartement
-2000000,Almadies,Dakar,3,4,250,Appartement
-1300000,Mamelles,Dakar,5,6,250,Appartement
-200000,Mboro,Thiès,4,3,,Appartement
-170000,Sicap mbao,Dakar,2,,,Appartement
-2500000,Plateau,Dakar,3,4,250,Appartement
-3000000,Fann,Dakar,4,5,300,Appartement
-400000,Amitié,Dakar,1,1,52,Appartement
-1500000,Almadies,Dakar,4,5,300,Appartement
-800000,Almadies,Dakar,3,3,,Appartement
-600000,Almadies,Dakar,4,5,300,Appartement

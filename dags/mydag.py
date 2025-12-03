@@ -30,7 +30,7 @@ with DAG(
         import time
 
         df = pd.DataFrame()
-        for i in range(1, 444):  
+        for i in range(1, 14):  
             url = f'https://sn.coinafrique.com/categorie/immobilier?page={i}'
             logging.info(f"🔎 Scraping page {i}: {url}")
             res = get(url)
@@ -1188,6 +1188,7 @@ with DAG(
         )
         from sklearn.tree import DecisionTreeRegressor
         import xgboost as xgb
+        from xgboost import XGBRegressor
 
         # ============================================================
         # 1️⃣ CHARGEMENT DES DONNÉES
@@ -1377,189 +1378,93 @@ with DAG(
 
         logging.info("✅ Split terminé")
 
-        # ============================================================
-        # 6️⃣ SCALING
-        # ============================================================
-
-        scaler = StandardScaler()
-        X_train_scaled = scaler.fit_transform(X_train)
-        X_test_scaled = scaler.transform(X_test)
-        print("✅ Feature scaling appliqué")
-
-        # ============================================================
-        # 7️⃣ DÉFINITION DES MODÈLES
-        # ============================================================
         print("\n" + "="*80)
-        print("🚀 Entraînement des modèles ML")
-
-        alphas = np.logspace(-2, 4, 40)
-        l1_ratios = np.linspace(0.1, 0.9, 9)
-
-        models_scaled = {
-            "Ridge": RidgeCV(alphas=alphas, cv=10),
-            "ElasticNet": ElasticNetCV(alphas=alphas, l1_ratio=l1_ratios, cv=5)
-        }
-
-        models_no_scaled = {
-            'GradientBoosting': GradientBoostingRegressor(
-                n_estimators=300, #800 400
-                max_depth=5, #5
-                learning_rate=0.005, #0.01 0.05
-                subsample=0.8, #0.7
-                min_samples_split=10, #20
-                min_samples_leaf=15, #10
-                random_state=42,
-                verbose=0
-        ),
-        'RandomForest': RandomForestRegressor(
-                n_estimators=300, #600
-                max_depth=15, #15 None
-                #learning_rate = 0.3,
-                min_samples_split=20, #20
-                min_samples_leaf=10, #4 10
-                max_features='sqrt',
-                #min_samples_leaf_frac=None,
-                max_samples=0.7,
-                random_state=42,
-                n_jobs=-1,
-                verbose=0
-        ),
-        'Extra Trees': ExtraTreesRegressor(
-                n_estimators=300, #400
-                max_depth=15,
-                min_samples_split=25, #10
-                min_samples_leaf=12, #10
-                max_features='sqrt',
-                #max_samples=0.85,
-                random_state=42,
-                n_jobs=-1
-        ),
-        'Decision Tree': DecisionTreeRegressor(
-                max_depth=8, #10
-                min_samples_split=50, #30
-                min_samples_leaf=25, #15
-                min_impurity_decrease=0.001,
-                random_state=42
-        ),
-
-        # XGBoost
-        'XGBBoost' : xgb.XGBRegressor(
-                n_estimators=500,
-                max_depth=3,
-                learning_rate=0.01,
-                subsample=0.7,
-                colsample_bytree=0.7,
-                reg_alpha=0.1,
-                reg_lambda=1.0,
-                min_child_weight=5,
-                gamma=0.1,
-                random_state=42
-        )
-
-    }
+        print("🚀 Entraînement du modèles ML")
+        print("="*80)
 
 
-        # ============================================================
-        # 8️⃣ ENTRAÎNEMENT + ÉVALUATION
-        # ============================================================
-
-        results = []
-        best_model = None
-        best_score = -1
-        best_name = None
-        best_is_scaled = False
-
-        # --- modèles avec scaling ---
-        for name, model in models_scaled.items():
-            model.fit(X_train_scaled, y_train)
-            preds_test = model.predict(X_test_scaled)
-            test_r2 = r2_score(y_test, preds_test)
-
-            results.append((name, test_r2))
-
-            if test_r2 > best_score:
-                best_score = test_r2
-                best_model = model
-                best_name = name
-                best_is_scaled = True
-
-        # --- modèles sans scaling ---
-        for name, model in models_no_scaled.items():
-            model.fit(X_train, y_train)
-            preds_test = model.predict(X_test)
-            test_r2 = r2_score(y_test, preds_test)
-
-            results.append((name, test_r2))
-
-            if test_r2 > best_score:
-                best_score = test_r2
-                best_model = model
-                best_name = name
-                best_is_scaled = False
-
-        logging.info(f"🏆 Meilleur modèle : {best_name} | R² = {best_score:.4f}")
+        model = XGBRegressor(
+                    n_estimators=500,
+                    max_depth=3,
+                    learning_rate=0.01,
+                    subsample=0.7,
+                    colsample_bytree=0.7,
+                    reg_alpha=0.1,
+                    reg_lambda=1.0,
+                    min_child_weight=5,
+                    gamma=0.1,
+                    random_state=42
+                )
 
 
-        # ============================================================
-        # CALCUL DES MÉTRIQUES POUR STREAMLIT
-        # ============================================================
+        model.fit(X_train, y_train)
+        y_train_pred = model.predict(X_train)
+        y_test_pred = model.predict(X_test)
 
-        def compute_metrics(model, X_train, y_train, X_test, y_test):
-            preds_train = model.predict(X_train)
-            preds_test = model.predict(X_test)
+        train_r2 = r2_score(y_train, y_train_pred)
+        test_r2 = r2_score(y_test, y_test_pred)
+        test_mae = mean_absolute_error(y_test, y_test_pred)
+        test_rmse = np.sqrt(mean_squared_error(y_test, y_test_pred))
 
-            return {
-                "r2_train": r2_score(y_train, preds_train),
-                "r2_test": r2_score(y_test, preds_test),
-                "mae_train": mean_absolute_error(y_train, preds_train),
-                "mae_test": mean_absolute_error(y_test, preds_test),
-                "rmse_train": mean_squared_error(y_train, preds_train) ** 0.5,
-                "rmse_test": mean_squared_error(y_test, preds_test) ** 0.5,
-                
-            }
+        print(f"Train R²: {train_r2:.4f}")
+        print(f"Test R²: {test_r2:.4f}")
+        print(f"Test MAE: {test_mae:.2f}")
+        print(f"Test RMSE: {test_rmse:.2f}")
+        print(f"Overfitting: {train_r2 - test_r2:.4f}")
+        # %%
 
+        #stockage metrcis dans la variable metrics
 
-        X_train_final = X_train_scaled if best_is_scaled else X_train
-        X_test_final = X_test_scaled if best_is_scaled else X_test
-
-        metrics = compute_metrics(best_model, X_train_final, y_train, X_test_final, y_test)
-
-        # CV 5-fold
-        cv_scores = cross_val_score(best_model, X_train_final, y_train, cv=5, scoring='r2')
-        cv_mean = cv_scores.mean()
-
-
-        # ============================================================
-        # 9️⃣ SAUVEGARDE DU MEILLEUR MODÈLE + MÉTRIQUES
-        # ============================================================
-
-        os.makedirs("./data/models", exist_ok=True)
-
-        final_metrics = {
-            "model_name": best_name,
-            "train_r2": metrics["r2_train"],
-            "test_r2": metrics["r2_test"],
-            "train_mae": metrics["mae_train"],
-            "test_mae": metrics["mae_test"],
-            "train_rmse": metrics["rmse_train"],
-            "test_rmse": metrics["rmse_test"],
-            "cv_mean": cv_mean,
-            "overfitting": abs(metrics["r2_train"] - metrics["r2_test"]),
+        metrics = {
+            'model_name': 'XGBBoost',
+            'train_r2': train_r2,
+            'test_r2': test_r2,
+            'test_mae': test_mae,
+            'test_rmse': test_rmse,
             'timestamp': datetime.now().isoformat()
         }
 
-        joblib.dump(best_model, "./data/models/best_model.pkl")
-        joblib.dump(encoder, "./data/models/encoder.pkl")
-        joblib.dump(preprocessing_info, "./data/models/preprocessing_info.pkl")
-        joblib.dump(scaler, "./data/models/scaler.pkl")
-        joblib.dump(final_metrics, "./data/models/metrics.pkl")
+        import joblib
+        import os
+        import json
 
-        logging.info("💾 Modèle + preprocessing + métriques sauvegardés")
+        os.makedirs('./data/models', exist_ok=True)
+        joblib.dump(model, './data/models/model.pkl')
+
+        #save encoder
+        joblib.dump(encoder, './data/models/encoder.pkl')
+
+        #save metrcis
+        with open('./data/models/metrics.json', 'w') as f:
+            json.dump(metrics, f, indent=4)
+
+        #save l'ordre des colonnes/features 
+        #assure toi  que x est le dataframe des features dans le meme ordre que celui utilise a l'entrainement
+        feature_list = list(X.columns)
+        with open('./data/models/feature_list.json', 'w') as f:
+            json.dump(feature_list, f)
+
+        #save la liste des colonnes categorielle utilisées pour encoder
+        try:
+            object_cols = X.select_dtypes(include=[object]).columns.tolist()
+        except Exception:
+            object_cols = []
+
+        with open('./data/models/categorical_cols.json', 'w') as f:
+            json.dump(object_cols, f)
+
+        print("✅ Model, encoder, metrics, feature_list et categorical_cols sauvegardés")
+        print(os.listdir('./data/models'))
 
         return {
-            "best_model": best_name,
-            "best_r2": best_score,
-            "scaled": best_is_scaled,
+            'status': 'success',
+            'model_name': 'XGBBoost',
+            'train_r2': train_r2,
+            'test_r2': test_r2,
+            'test_mae': test_mae,
+            'test_rmse': test_rmse,
+            'overfitting': train_r2 - test_r2,
+            'timestamp': datetime.now().isoformat()
         }
 
     # Définir l'ordre d'exécution
