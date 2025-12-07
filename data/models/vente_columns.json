@@ -1,0 +1,29 @@
+{
+    "numerical_cols": [
+        "superficie",
+        "nombre_chambres",
+        "nombre_sdb",
+        "ratio_sdb_chambres",
+        "surface_par_chambre",
+        "total_pieces",
+        "density",
+        "log_superficie",
+        "sqrt_superficie",
+        "superficie_squared",
+        "is_premium_area",
+        "is_dakar",
+        "is_villa",
+        "is_location",
+        "villa_large",
+        "appt_petit",
+        "high_bathroom_ratio",
+        "spacious"
+    ],
+    "categorical_cols": [
+        "type_bien",
+        "area",
+        "city",
+        "category"
+    ],
+    "total_features": 97
+}

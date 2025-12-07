@@ -4,6 +4,10 @@ import os
 from datetime import datetime, timedelta
 import logging
 import polars as pl 
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+import json
+
 
 default_args = {
     'owner': 'airflow',
@@ -30,7 +34,7 @@ with DAG(
         import time
 
         df = pd.DataFrame()
-        for i in range(1, 14):  
+        for i in range(1, 100):  
             url = f'https://sn.coinafrique.com/categorie/immobilier?page={i}'
             logging.info(f"🔎 Scraping page {i}: {url}")
             res = get(url)
@@ -901,6 +905,13 @@ with DAG(
                 pl.col("area").str.replace_all("Point-e", "Point E").alias("area")
             )
 
+            df_rev = df_rev.with_columns(
+                pl.col("city").str.replace("(?i)thiès", "thies", literal=False).alias("city")
+            )
+            
+            
+            
+
             # --- Remplacement aléatoire des "Dakar" ---
             mask_dakar = pl.col("area") == "Dakar"
             other_areas = df_rev.filter(~mask_dakar)["area"].to_list()
@@ -926,6 +937,166 @@ with DAG(
                     .alias(col)
                 ])
 
+            #remplacer les superficies d'appartements <20 par la mediane des superfices
+            df_rev = df_rev.with_columns(
+                pl.when(
+                    (pl.col("type_bien") == "appartements") & 
+                    (pl.col("superficie") <= 20)
+                )
+                .then(
+                    # Calculer la médiane à la volée (sans les valeurs ≤ 20)
+                    df_rev.filter(
+                        (pl.col("type_bien") == "appartements") & 
+                        (pl.col("superficie") > 20)
+                    )["superficie"].median()
+                )
+                .otherwise(pl.col("superficie"))
+                .alias("superficie")
+            )
+
+            df_rev = df_rev.with_columns(
+                pl.col("area").str.replace("(?i)grand-yoff", "grand_yoff", literal=False).alias("area")
+            )
+
+             #remplacer les superficies d'appartements <20 par la mediane des superfices
+
+            df_rev = df_rev.with_columns(
+                pl.when(
+                    (pl.col("type_bien") == "villas") & 
+                    (pl.col("superficie") <= 20)
+                )
+                .then(
+                    # Calculer la médiane à la volée (sans les valeurs ≤ 20)
+                    df_rev.filter(
+                        (pl.col("type_bien") == "villas") & 
+                        (pl.col("superficie") > 20)
+                    )["superficie"].median()
+                )
+                .otherwise(pl.col("superficie"))
+                .alias("superficie")
+            )
+
+            # Remplacer nombre_chambre > 1 par 1 quand type_bien = "chambre"
+            df_rev = df_rev.with_columns(
+                pl.when(
+                    (pl.col("type_bien") == "chambres") & 
+                    (pl.col("nombre_chambres") > 1)
+                )
+                .then(pl.lit(1))  # Une chambre = 1 chambre
+                .otherwise(pl.col("nombre_chambres"))
+                .alias("nombre_chambres")
+            )
+
+            # Remplacer nombre_sdb > 1 par 1 quand type_bien = "chambre"
+            df_rev = df_rev.with_columns(
+                pl.when(
+                    (pl.col("type_bien") == "chambres") & 
+                    (pl.col("nombre_sdb") > 1)
+                )
+                .then(pl.lit(1))  # Une chambre = 1 chambre
+                .otherwise(pl.col("nombre_sdb"))
+                .alias("nombre_sdb")
+            )
+
+            #remplacer les superficies de chambres < 10 par 15
+            df_rev = df_rev.with_columns(
+                pl.when(
+                    (pl.col("type_bien") == "chambres") & 
+                    (pl.col("superficie") < 10)
+                )
+                .then(pl.lit(15))  # Une chambre = 1 chambre
+                .otherwise(pl.col("superficie"))
+                .alias("superficie")
+            )
+
+            #remplacer les superficies de chambre < 20 par la mediane des superfice
+            df_rev = df_rev.with_columns(
+            pl.when(
+                (pl.col("type_bien") == "chambres") & 
+                (pl.col("superficie") > 20)
+            )
+            .then(
+                # Créer un tableau numpy avec des valeurs aléatoires
+                pl.Series(np.random.randint(10, 16, size=len(df_rev)))
+            )
+            .otherwise(pl.col("superficie"))
+            .alias("superficie")
+        )
+
+            #remplacer les prix de chambre < 50000 par la mediane des prix de chambres
+            df_rev = df_rev.with_columns(
+                pl.when(
+                    (pl.col("type_bien") == "chambres") & 
+                    (pl.col("price") < 50000)
+                )
+                .then(
+                    # Calculer la médiane à la volée (sans les valeurs ≤ 20)
+                    df_rev.filter(
+                        (pl.col("type_bien") == "chambres") & 
+                        (pl.col("price") >= 50000)
+                    )["price"].median()
+                )
+                .otherwise(pl.col("price"))
+                .alias("price")
+            )
+
+            #remplacer les prix de chambre < 100000 par la mediane des prix de chambres
+            df_rev = df_rev.with_columns(
+                pl.when(
+                    (pl.col("type_bien") == "chambres") & 
+                    (pl.col("price") > 100000)
+                )
+                .then(
+                    # Calculer la médiane à la volée (sans les valeurs ≤ 20)
+                    df_rev.filter(
+                        (pl.col("type_bien") == "chambres") & 
+                        (pl.col("price") <= 100000)
+                    )["price"].median()
+                )
+                .otherwise(pl.col("price"))
+                .alias("price")
+            )
+
+            df_rev = df_rev.with_columns(
+                pl.col("type_bien").str.replace("(?i)maisons_de_vacances", "villas", literal=False).alias("type_bien")
+            )
+
+            df_rev = df_rev.with_columns(
+                pl.col("type_bien").str.replace("(?i)immobilier", "villas", literal=False).alias("type_bien")
+            )
+
+
+            #remplacer valeur nombre_chambres et nombre_sdb par 0 pour les type de bien ferme et vergers
+            conditions = pl.col("type_bien").str.to_lowercase().str.contains("fermes|vergers")
+
+            df_rev = df_rev.with_columns([
+                pl.when(conditions).then(0).otherwise(pl.col("nombre_chambres")).alias("nombre_chambres"),
+                pl.when(conditions).then(0).otherwise(pl.col("nombre_sdb")).alias("nombre_sdb")
+            ])
+
+
+            # Remplacer les prix < 10 millions par la médiane des prix >= 10 millions
+            df_rev = df_rev.with_columns(
+                pl.when(
+                    (pl.col("type_bien") == "fermes_&_vergers") & 
+                    (pl.col("price") < 10000000)
+                )
+                .then(
+                    # Calculer la médiane des prix >= 10 millions
+                    df_rev.filter(
+                        (pl.col("type_bien") == "fermes_&_vergers") & 
+                        (pl.col("price") >= 10000000)
+                    )["price"].median()
+                )
+                .otherwise(pl.col("price"))
+                .alias("price")
+            )
+
+
+
+
+
+
             print(df_rev.head(2))
 
             # --- type_bien: "immeubles" → "terrains" ---
@@ -937,7 +1108,7 @@ with DAG(
             ])
 
             # --- Forcer chambres/SDB = 0 pour les terrains ---
-            terrains_list = ['terrains', 'terrains_agricoles', 'terrains_commerciaux', 'bureaux_&_commerces']
+            terrains_list = ['terrains', 'terrains_agricoles', 'terrains_commerciaux']
 
             df_rev = df_rev.with_columns([
                 pl.when(pl.col("type_bien").is_in(terrains_list))
@@ -990,6 +1161,47 @@ with DAG(
                 .alias("price")
             ])
 
+
+            #anoamalies dans les prix des locations
+            # remplacer les plus d'appartements > 150 par la median des prix appa loc
+            
+
+
+            df_loc = df_loc.with_columns(
+                pl.when(
+                    (pl.col("type_bien") == "appartements") & 
+                    (pl.col("price") < 100000)
+                )
+                .then(
+                    # Calculer la médiane à la volée (sans les valeurs ≤ 20)
+                    df_loc.filter(
+                        (pl.col("type_bien") == "appartements") & 
+                        (pl.col("price") >= 100000)
+                    )["price"].median()
+                )
+                .otherwise(pl.col("price"))
+                .alias("price")
+            )
+
+            df_loc = df_loc.with_columns(
+                pl.when(
+                    (pl.col("type_bien") == "appartements") & 
+                    (pl.col("price") > 1500000)
+                )
+                .then(
+                    # CORRECTION: Utiliser df_loc au lieu de df_rev
+                    df_loc.filter(
+                        (pl.col("type_bien") == "appartements") & 
+                        (pl.col("price") <= 1500000)
+                    )["price"].median()
+                )
+                .otherwise(pl.col("price"))
+                .alias("price")
+            )
+
+            
+
+
             # --- Prix anormaux vente (villas < 20M) ---
             median_villas_vente = df_vente.filter(pl.col("type_bien") == "villas")["price"].median()
 
@@ -1017,6 +1229,79 @@ with DAG(
 
             # --- Final merge ---
             df_fin = pl.concat([df_loc, df_vente], how="vertical")
+
+            '''df00 = df_fin.with_columns([
+                pl.when(pl.col('superficie') < 20)
+                .then(pl.col('superficie').median().over('type_bien'))
+                .otherwise(pl.col('superficie'))
+                .alias('superficie')
+            ])'''
+            print("🔄 Conversion appartements meublés → appartements")
+
+            # 1. Marquer et remplacer le type
+            df = df_fin.with_columns([
+                (pl.col('type_bien') == 'appartements_meublés').alias('_was_meuble'),
+                pl.when(pl.col('type_bien') == 'appartements_meublés')
+                .then(pl.lit('appartements'))
+                .otherwise(pl.col('type_bien'))
+                .alias('type_bien')
+            ])
+
+            # 2. Créer groupe de similarité
+            df = df.with_columns([
+                pl.concat_str([
+                    pl.col('nombre_chambres').cast(pl.Utf8),
+                    pl.col('nombre_sdb').cast(pl.Utf8),
+                    pl.col('area'),
+                    pl.col('city')
+                ], separator='_').alias('_group')
+            ])
+
+            # 3. Calculer médianes par groupe (uniquement vrais appartements)
+            group_medians = (
+                df.filter(~pl.col('_was_meuble'))
+                .group_by('_group')  # ← CORRECTION: group_by au lieu de groupby
+                .agg([
+                    pl.col('price').median().alias('_group_price'),
+                    pl.col('superficie').median().alias('_group_sup')
+                ])
+            )
+
+            # 4. Médianes globales (fallback)
+            global_price = df.filter(~pl.col('_was_meuble'))['price'].median()
+            global_sup = df.filter(~pl.col('_was_meuble'))['superficie'].median()
+
+            # 5. Joindre et remplacer
+            df = df.join(group_medians, on='_group', how='left')
+
+            df = df.with_columns([
+                pl.when(pl.col('_was_meuble'))
+                .then(pl.coalesce(pl.col('_group_price'), pl.lit(global_price)))
+                .otherwise(pl.col('price'))
+                .alias('price'),
+                
+                pl.when(pl.col('_was_meuble'))
+                .then(pl.coalesce(pl.col('_group_sup'), pl.lit(global_sup)))
+                .otherwise(pl.col('superficie'))
+                .alias('superficie')
+            ])
+
+            # 6. Statistiques
+            n_meubles = df['_was_meuble'].sum()
+            n_with_group = df.filter(pl.col('_was_meuble') & pl.col('_group_price').is_not_null()).height
+            n_fallback = n_meubles - n_with_group
+
+            print(f"✅ {n_meubles} appartements meublés traités:")
+            print(f"   - {n_with_group} avec similaires")
+            print(f"   - {n_fallback} avec médiane globale")
+
+            # 7. Nettoyer
+            df = df.drop(['_was_meuble', '_group', '_group_price', '_group_sup'])
+
+            print("✅ Remplacement terminé!")
+
+            # 8. Assigner à df_fin pour la suite
+            df_fin = df
 
             df_final = (
                 df_fin
@@ -1161,7 +1446,6 @@ with DAG(
         except Exception as e:
             logging.error(f"❌ Error uploading to SQLite: {e}")
             return False
-    
     @task
     def train_model_after_etl():
         """
@@ -1173,21 +1457,13 @@ with DAG(
         import sqlite3
         import joblib
         import os
+        import json
         import logging
         import time
 
-        from sklearn.model_selection import train_test_split, cross_val_score
-        from sklearn.preprocessing import OneHotEncoder, StandardScaler
+        from sklearn.model_selection import train_test_split, cross_val_score, KFold
+        from sklearn.preprocessing import OneHotEncoder
         from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
-
-        from sklearn.linear_model import RidgeCV, ElasticNetCV
-        from sklearn.ensemble import (
-            GradientBoostingRegressor,
-            RandomForestRegressor,
-            ExtraTreesRegressor
-        )
-        from sklearn.tree import DecisionTreeRegressor
-        import xgboost as xgb
         from xgboost import XGBRegressor
 
         # ============================================================
@@ -1208,11 +1484,12 @@ with DAG(
         logging.info(f"✅ Données chargées : {df.shape}")
 
         # ============================================================
-        # 2️⃣ PRÉTRAITEMENTS (identique à ton code)
+        # 2️⃣ PRÉTRAITEMENTS
         # ============================================================
 
         df.rename(columns={'type': 'type_bien'}, inplace=True)
         df['area'] = df['area'].replace("Point-e", 'Point E')
+        df['city'] = df["city"].replace("thiès", "thies")
         mask_dakar = df['area'] == 'Dakar'
         other_areas = df.loc[~mask_dakar, 'area']
         df.loc[mask_dakar, 'area'] = np.random.choice(
@@ -1226,14 +1503,10 @@ with DAG(
         for col in categorical_cols:
             df[col] = df[col].astype(str).str.lower().str.replace(" ", "_")
 
-        
-        #remplace veleur immeuble par terrain
-        df['type_bien'] = df['type_bien'].replace("immeubles",'terrains')
-
         # Terrains = 0 chambres/sdb
         mask_terr = df["type_bien"].isin([
             "terrains", "terrains_agricoles",
-            "terrains_commerciaux", "bureaux_&_commerces"
+            "terrains_commerciaux"
         ])
         df.loc[mask_terr, ["nombre_chambres", "nombre_sdb"]] = 0
 
@@ -1244,7 +1517,7 @@ with DAG(
             ('villas', 'nombre_chambres', '>', 9),
             ('appartements', 'nombre_sdb', '>', 6),
             ('villas', 'nombre_sdb', '>', 9),
-            ('bureaux_&_commerces', 'superficie', '<', 20)  # Nouveau masque ajouté
+            ('bureaux_&_commerces', 'superficie', '<', 20)
         ]
 
         for type_bien, colonne, operation, seuil in corrections:
@@ -1257,214 +1530,369 @@ with DAG(
                 df.loc[mask, colonne] = mediane
                 print(f"✅ {type_bien}.{colonne}: {count} valeurs {operation} {seuil} → {mediane:.0f}")
         
-        #separation des location et ventes
+        # Séparation location/vente
         df_loc = df[df['category'] == 'location']
         df_vente = df[df['category'] == 'vente']
 
-        #===============================================
-        #gerons les anomalie dans les prix
-        #===============================================
+        # ============================================================
+        # 3️⃣ CORRECTION DES PRIX ABERRANTS
+        # ============================================================
 
-        #remplace les prix de location des villas < 300000 par la median
+        # Prix location villas
         mask_loc = (df_loc['type_bien'] == 'villas') & (df_loc['price'] < 300000)
-        median_villas = df_loc[df_loc['type_bien'] == 'villas']['price'].median()
-        df_loc.loc[mask_loc,'price'] = median_villas
+        if mask_loc.any():
+            median_villas = df_loc[df_loc['type_bien'] == 'villas']['price'].median()
+            df_loc.loc[mask_loc, 'price'] = median_villas
 
-        #remplace les prix de vente des villas < 300000 par la median
+        # Prix vente villas
         mask_vente = (df_vente['type_bien'] == 'villas') & (df_vente['price'] < 20000000)
-        median_villas = df_vente[df_vente['type_bien'] == 'villas']['price'].median()
-        df_vente.loc[mask_vente,'price'] = median_villas
+        if mask_vente.any():
+            median_villas = df_vente[df_vente['type_bien'] == 'villas']['price'].median()
+            df_vente.loc[mask_vente, 'price'] = median_villas
 
+        # Prix terrains
         mask_terrains_bas_prix = df_vente['type_bien'].isin(["terrains", "terrains_agricoles", "terrains_commerciaux"]) & (df_vente['price'] < 5000000)
-        median_terrains = df_vente[df_vente['type_bien'].isin(["terrains", "terrains_agricoles", "terrains_commerciaux"])]['price'].median()
-        df_vente.loc[mask_terrains_bas_prix, 'price'] = median_terrains
+        if mask_terrains_bas_prix.any():
+            median_terrains = df_vente[df_vente['type_bien'].isin(["terrains", "terrains_agricoles", "terrains_commerciaux"])]['price'].median()
+            df_vente.loc[mask_terrains_bas_prix, 'price'] = median_terrains
 
+        # Fusion
+        df = pd.concat([df_loc, df_vente], axis=0, ignore_index=True)
 
-        df = pd.concat([df_loc, df_vente], axis = 0, ignore_index=True)
-
+        # Nettoyage final
         df = df.drop(columns=['id'], errors='ignore')
         df = df.drop_duplicates()
-        df = df[~df['type_bien'].isin(['Unknown', 'Immobilier', 'unknown', 'immobilier'])]
+        df = df[~df['type_bien'].isin(['Unknown', 'Immobilier', 'unknown', 'immobilier', 'terrains'])]
 
+        # ============================================================
+        # 4️⃣ SÉPARATION LOCATION/VENTE
+        # ============================================================
 
-        # Outliers numerical
-        def impute_outliers(df, feature):
-            q1 = df[feature].quantile(0.25)
-            q3 = df[feature].quantile(0.75)
+        df_loc = df[df["category"] == "location"].copy()
+        df_vente = df[df["category"] == "vente"].copy()
+
+        # ============================================================
+        # 5️⃣ CORRECTION DES OUTLIERS PAR GROUPE
+        # ============================================================
+
+        def impute_outliers_group(df_group, feature):
+            q1 = df_group[feature].quantile(0.25)
+            q3 = df_group[feature].quantile(0.75)
             iqr = q3 - q1
             low = q1 - 1.5 * iqr
             high = q3 + 1.5 * iqr
-            df.loc[df[feature] < low, feature] = low
-            df.loc[df[feature] > high, feature] = high
+            df_group.loc[df_group[feature] < low, feature] = low
+            df_group.loc[df_group[feature] > high, feature] = high
+            return df_group
 
         for feature in ["price", "superficie", "nombre_chambres", "nombre_sdb"]:
-            impute_outliers(df, feature)
+            df_loc = impute_outliers_group(df_loc, feature)
+            df_vente = impute_outliers_group(df_vente, feature)
 
-        logging.info("✅ Outliers traités")
-
-        # ============================================================
-        # 3️⃣ FEATURE ENGINEERING
-        # ============================================================
-
-        df['ratio_sdb_chambres'] = df['nombre_sdb'] / (df['nombre_chambres'] + 1)
-        df['surface_par_chambre'] = df['superficie'] / (df['nombre_chambres'] + 1)
-        df['total_pieces'] = df['nombre_chambres'] + df['nombre_sdb']
-        df['density'] = df['nombre_chambres'] / (df['superficie'] + 1)
-            
-        df['log_superficie'] = np.log1p(df['superficie'])
-        df['sqrt_superficie'] = np.sqrt(df['superficie'])
-        df['superficie_squared'] = df['superficie'] ** 2
-            
-        premium_areas = ['almadies', 'ngor', 'mermoz', 'sacré-coeur', 'fann']
-        df['is_premium_area'] = df['area'].isin(premium_areas).astype(int)
-        df['is_dakar'] = (df['city'] == 'dakar').astype(int)
-            
-        df['is_villa'] = (df['type_bien'] == 'villas').astype(int)
-        df['is_location'] = (df['category'] == 'location').astype(int)
-            
-        df['villa_large'] = ((df['type_bien'] == 'villas') & (df['superficie'] > 200)).astype(int)
-        df['appt_petit'] = ((df['type_bien'] == 'appartements') & (df['superficie'] < 80)).astype(int)
-            
-        df['high_bathroom_ratio'] = (df['nombre_sdb'] >= df['nombre_chambres']).astype(int)
-        df['spacious'] = (df['surface_par_chambre'] > 40).astype(int)
-            
-        logging.info("✅ Feature engineering terminé")
+        logging.info("✅ Outliers traités (group-wise capping)")
+        print(f"📍 Locations: {df_loc.shape[0]} annonces")
+        print(f"💰 Ventes: {df_vente.shape[0]} annonces")
 
         # ============================================================
-        # 4️⃣ FEATURES
+        # 6️⃣ FEATURE ENGINEERING - FONCTION SÉPARÉE
         # ============================================================
 
-        numerical_cols = [
-        'superficie', 'nombre_chambres', 'nombre_sdb',
-        'ratio_sdb_chambres', 'surface_par_chambre', 'total_pieces', 'density',
-        'log_superficie', 'sqrt_superficie', 'superficie_squared',
-        'is_premium_area', 'is_dakar', 'is_villa', 'is_location',
-        'villa_large', 'appt_petit', 'high_bathroom_ratio', 'spacious'
-    ]
+        def prepare_features(df, dataset_name):
+            """Préparation des features pour un dataset"""
+            df = df.copy()
+            
+            # Feature engineering
+            df['ratio_sdb_chambres'] = df['nombre_sdb'] / (df['nombre_chambres'] + 1)
+            df['surface_par_chambre'] = df['superficie'] / (df['nombre_chambres'] + 1)
+            df['total_pieces'] = df['nombre_chambres'] + df['nombre_sdb']
+            df['density'] = df['nombre_chambres'] / (df['superficie'] + 1)
+                
+            df['log_superficie'] = np.log1p(df['superficie'])
+            df['sqrt_superficie'] = np.sqrt(df['superficie'])
+            df['superficie_squared'] = df['superficie'] ** 2
+                
+            premium_areas = ['almadies', 'ngor', 'mermoz', 'sacré-coeur', 'fann']
+            df['is_premium_area'] = df['area'].isin(premium_areas).astype(int)
+            df['is_dakar'] = (df['city'] == 'dakar').astype(int)
+                
+            df['is_villa'] = (df['type_bien'] == 'villas').astype(int)
+            df['is_location'] = (df['category'] == 'location').astype(int)
+                
+            df['villa_large'] = ((df['type_bien'] == 'villas') & (df['superficie'] > 200)).astype(int)
+            df['appt_petit'] = ((df['type_bien'] == 'appartements') & (df['superficie'] < 80)).astype(int)
+                
+            df['high_bathroom_ratio'] = (df['nombre_sdb'] >= df['nombre_chambres']).astype(int)
+            df['spacious'] = (df['surface_par_chambre'] > 40).astype(int)
+                
+            logging.info(f"✅ Feature engineering terminé pour {dataset_name}")
+            print(f"✅ {dataset_name}: Feature engineering terminé")
+            
+            return df
 
-        categorical_cols = ["type_bien", "category", "area", "city"]
-
-        X_num = df[numerical_cols]
-        X_cat = df[categorical_cols]
-
-        # One-hot encoding
-        encoder = OneHotEncoder(sparse_output=False, drop="first", handle_unknown="ignore")
-        X_cat_encoded = encoder.fit_transform(X_cat)
-        feature_names = encoder.get_feature_names_out(categorical_cols)
-
-        X_cat_df = pd.DataFrame(X_cat_encoded, columns=feature_names, index=df.index)
-
-        X = pd.concat([X_num.reset_index(drop=True), X_cat_df.reset_index(drop=True)], axis=1)
-        y = df["price"].reset_index(drop=True)
-
-        
-        logging.info(f" Features préparées : {X.shape}")
-
-        preprocessing_info = {
-            "numerical_cols": numerical_cols,
-            "categorical_cols": categorical_cols,
-            "feature_names": feature_names.tolist(),
-            "all_columns": X.columns.to_list()
-        }
-
+        # Appliquer le feature engineering
+        df_loc_prepared = prepare_features(df_loc, "Location")
+        df_vente_prepared = prepare_features(df_vente, "Vente")
 
         # ============================================================
-        # 5️⃣ TRAIN / TEST
+        # 7️⃣ PRÉPARATION DES DONNÉES POUR MODÈLE
         # ============================================================
 
-        X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=0.2, random_state=42, stratify=df["category"]
-        )
+        def prepare_model_data(df):
+            """Prépare les données X, y pour l'entraînement"""
+            # Features numériques
+            numerical_cols = [
+                'superficie', 'nombre_chambres', 'nombre_sdb',
+                'ratio_sdb_chambres', 'surface_par_chambre', 'total_pieces', 'density',
+                'log_superficie', 'sqrt_superficie', 'superficie_squared',
+                'is_premium_area', 'is_dakar', 'is_villa', 'is_location',
+                'villa_large', 'appt_petit', 'high_bathroom_ratio', 'spacious'
+            ]
+            
+            categorical_cols = ["type_bien", "area", "city", "category"]
+            
+            # Vérifier que les colonnes existent
+            numerical_cols = [col for col in numerical_cols if col in df.columns]
+            categorical_cols = [col for col in categorical_cols if col in df.columns]
+            
+            # Séparation
+            X_num = df[numerical_cols]
+            X_cat = df[categorical_cols]
+            
+            # One-hot encoding
+            encoder = OneHotEncoder(sparse_output=False, drop="first", handle_unknown="ignore")
+            X_cat_encoded = encoder.fit_transform(X_cat)
+            feature_names = encoder.get_feature_names_out(categorical_cols)
+            
+            X_cat_df = pd.DataFrame(X_cat_encoded, columns=feature_names, index=df.index)
+            X = pd.concat([X_num.reset_index(drop=True), X_cat_df.reset_index(drop=True)], axis=1)
+            y = df["price"].reset_index(drop=True)
+            
+            return X, y, encoder, numerical_cols, categorical_cols
 
-        logging.info("✅ Split terminé")
+        # Préparation des données
+        X_loc, y_loc, encoder_loc, num_cols_loc, cat_cols_loc = prepare_model_data(df_loc_prepared)
+        X_vente, y_vente, encoder_vente, num_cols_vente, cat_cols_vente = prepare_model_data(df_vente_prepared)
 
+        print(f"📍 Location: {X_loc.shape[1]} features, {X_loc.shape[0]} échantillons")
+        print(f"💰 Vente: {X_vente.shape[1]} features, {X_vente.shape[0]} échantillons")
+
+        # ============================================================
+        # 8️⃣ ENTRAÎNEMENT DES MODÈLES - FONCTION SÉPARÉE
+        # ============================================================
+
+        def train_model(X, y, encoder, model_name, task_type):
+            """Entraîne un modèle XGBoost"""
+            
+            # Train/test split
+            X_train, X_test, y_train, y_test = train_test_split(
+                X, y, test_size=0.2, random_state=42, shuffle=True
+            )
+            
+            print(f"\n🎯 Entraînement {model_name} ({task_type})")
+            print(f"   Train: {X_train.shape}, Test: {X_test.shape}")
+            
+            # Paramètres optimisés
+            if task_type == "location":
+                params = {
+                    'n_estimators': 500,
+                    'max_depth': 5,
+                    'learning_rate': 0.02,
+                    'subsample': 0.8,
+                    'colsample_bytree': 0.8,
+                    'reg_alpha': 0.1,
+                    'reg_lambda': 1.0,
+                    'min_child_weight': 5,
+                    'gamma': 0.1,
+                    'random_state': 42,
+                    'eval_metric': 'rmse',
+                    'n_jobs': -1
+                }
+            else:  # vente
+                params = {
+                    'n_estimators': 300,
+                    'max_depth': 3,
+                    'learning_rate': 0.01,
+                    'subsample': 0.6,
+                    'colsample_bytree': 0.6,
+                    'reg_alpha': 2.0,
+                    'reg_lambda': 10.0,
+                    'min_child_weight': 15,
+                    'gamma': 0.5,
+                    'random_state': 42,
+                    'eval_metric': 'rmse',
+                    'n_jobs': -1
+                }
+            
+            # Modèle XGBoost
+            model = XGBRegressor(**params)
+            
+            # Early stopping avec validation set
+            X_train_fit, X_val, y_train_fit, y_val = train_test_split(
+                X_train, y_train, test_size=0.1, random_state=42
+            )
+            
+            # Entraînement
+            model.fit(
+                X_train_fit, y_train_fit,
+                #eval_set=[(X_val, y_val)],
+                #early_stopping_rounds=50,
+                #verbose=False
+            )
+            
+            # Prédictions
+            y_train_pred = model.predict(X_train)
+            y_test_pred = model.predict(X_test)
+            
+            # Métriques
+            train_r2 = r2_score(y_train, y_train_pred)
+            test_r2 = r2_score(y_test, y_test_pred)
+            test_mae = mean_absolute_error(y_test, y_test_pred)
+            test_rmse = np.sqrt(mean_squared_error(y_test, y_test_pred))
+            
+            # Cross-validation
+            cv_scores = cross_val_score(
+                model, X_train, y_train, 
+                cv=KFold(n_splits=5, shuffle=True, random_state=42),
+                scoring='r2',
+                n_jobs=-1
+            )
+            
+            # Feature importance
+            importance_df = pd.DataFrame({
+                'feature': X.columns,
+                'importance': model.feature_importances_
+            }).sort_values('importance', ascending=False)
+            
+            print(f"\n📊 Résultats {model_name}:")
+            print(f"   Train R²: {train_r2:.4f}")
+            print(f"   Test R²:  {test_r2:.4f}")
+            print(f"   Test MAE: {test_mae:,.0f} FCFA")
+            print(f"   Test RMSE: {test_rmse:,.0f} FCFA")
+            print(f"   Overfitting: {train_r2 - test_r2:.4f}")
+            print(f"   CV R² mean: {cv_scores.mean():.4f} (±{cv_scores.std():.4f})")
+            
+            # Top features
+            print(f"\n🏆 Top 5 features {model_name}:")
+            for i, row in importance_df.head(5).iterrows():
+                print(f"   {row['feature']}: {row['importance']:.4f}")
+            
+            return {
+                'model': model,
+                'encoder': encoder,
+                'train_r2': train_r2,
+                'test_r2': test_r2,
+                'test_mae': test_mae,
+                'test_rmse': test_rmse,
+                'overfitting': train_r2 - test_r2,
+                'cv_mean': cv_scores.mean(),
+                'cv_std': cv_scores.std(),
+                'importance': importance_df,
+                'X_columns': X.columns.tolist()
+            }
+
+        # Entraînement des modèles
         print("\n" + "="*80)
-        print("🚀 Entraînement du modèles ML")
+        print("🚀 DÉBUT DE L'ENTRAÎNEMENT DES MODÈLES")
         print("="*80)
 
+        loc_results = train_model(X_loc, y_loc, encoder_loc, "Location", "location")
+        vente_results = train_model(X_vente, y_vente, encoder_vente, "Vente", "vente")
 
-        model = XGBRegressor(
-                    n_estimators=500,
-                    max_depth=3,
-                    learning_rate=0.01,
-                    subsample=0.7,
-                    colsample_bytree=0.7,
-                    reg_alpha=0.1,
-                    reg_lambda=1.0,
-                    min_child_weight=5,
-                    gamma=0.1,
-                    random_state=42
-                )
+        # ============================================================
+        # 9️⃣ SAUVEGARDE DES MODÈLES
+        # ============================================================
 
+        def save_model_artifacts(results, model_name, num_cols, cat_cols):
+            """Sauvegarde tous les artefacts du modèle"""
+            
+            os.makedirs('./data/models', exist_ok=True)
+            base_path = f'./data/models/{model_name}'
+            
+            # Modèle
+            joblib.dump(results['model'], f'{base_path}_model.pkl')
+            
+            # Encoder
+            joblib.dump(results['encoder'], f'{base_path}_encoder.pkl')
+            
+            # Features
+            with open(f'{base_path}_features.json', 'w') as f:
+                json.dump(results['X_columns'], f, indent=4)
+            
+            # Métriques
+            metrics = {
+                'train_r2': float(results['train_r2']),
+                'test_r2': float(results['test_r2']),
+                'test_mae': float(results['test_mae']),
+                'test_rmse': float(results['test_rmse']),
+                'overfitting': float(results['overfitting']),
+                'cv_mean': float(results['cv_mean']),
+                'cv_std': float(results['cv_std']),
+                'timestamp': time.strftime('%Y-%m-%d %H:%M:%S')
+            }
+            with open(f'{base_path}_metrics.json', 'w') as f:
+                json.dump(metrics, f, indent=4)
+            
+            # Importance des features
+            results['importance'].to_csv(f'{base_path}_importance.csv', index=False)
+            
+            # Colonnes
+            columns_info = {
+                'numerical_cols': num_cols,
+                'categorical_cols': cat_cols,
+                'total_features': len(results['X_columns'])
+            }
+            with open(f'{base_path}_columns.json', 'w') as f:
+                json.dump(columns_info, f, indent=4)
+            
+            print(f"✅ {model_name} sauvegardé avec {len(results['X_columns'])} features")
 
-        model.fit(X_train, y_train)
-        y_train_pred = model.predict(X_train)
-        y_test_pred = model.predict(X_test)
+        # Sauvegarde
+        save_model_artifacts(loc_results, 'location', num_cols_loc, cat_cols_loc)
+        save_model_artifacts(vente_results, 'vente', num_cols_vente, cat_cols_vente)
 
-        train_r2 = r2_score(y_train, y_train_pred)
-        test_r2 = r2_score(y_test, y_test_pred)
-        test_mae = mean_absolute_error(y_test, y_test_pred)
-        test_rmse = np.sqrt(mean_squared_error(y_test, y_test_pred))
+        # ============================================================
+        # 🔟 RAPPORT FINAL
+        # ============================================================
 
-        print(f"Train R²: {train_r2:.4f}")
-        print(f"Test R²: {test_r2:.4f}")
-        print(f"Test MAE: {test_mae:.2f}")
-        print(f"Test RMSE: {test_rmse:.2f}")
-        print(f"Overfitting: {train_r2 - test_r2:.4f}")
-        # %%
-
-        #stockage metrcis dans la variable metrics
-
-        metrics = {
-            'model_name': 'XGBBoost',
-            'train_r2': train_r2,
-            'test_r2': test_r2,
-            'test_mae': test_mae,
-            'test_rmse': test_rmse,
-            'timestamp': datetime.now().isoformat()
-        }
-
-        import joblib
-        import os
-        import json
-
-        os.makedirs('./data/models', exist_ok=True)
-        joblib.dump(model, './data/models/model.pkl')
-
-        #save encoder
-        joblib.dump(encoder, './data/models/encoder.pkl')
-
-        #save metrcis
-        with open('./data/models/metrics.json', 'w') as f:
-            json.dump(metrics, f, indent=4)
-
-        #save l'ordre des colonnes/features 
-        #assure toi  que x est le dataframe des features dans le meme ordre que celui utilise a l'entrainement
-        feature_list = list(X.columns)
-        with open('./data/models/feature_list.json', 'w') as f:
-            json.dump(feature_list, f)
-
-        #save la liste des colonnes categorielle utilisées pour encoder
-        try:
-            object_cols = X.select_dtypes(include=[object]).columns.tolist()
-        except Exception:
-            object_cols = []
-
-        with open('./data/models/categorical_cols.json', 'w') as f:
-            json.dump(object_cols, f)
-
-        print("✅ Model, encoder, metrics, feature_list et categorical_cols sauvegardés")
-        print(os.listdir('./data/models'))
-
+        print("\n" + "="*80)
+        print("🏁 RAPPORT FINAL D'ENTRAÎNEMENT")
+        print("="*80)
+        
+        print(f"\n📍 MODÈLE LOCATION:")
+        print(f"   • R² Test: {loc_results['test_r2']:.4f}")
+        print(f"   • MAE: {loc_results['test_mae']:,.0f} FCFA")
+        print(f"   • Overfitting: {loc_results['overfitting']:.4f}")
+        print(f"   • CV R²: {loc_results['cv_mean']:.4f} (±{loc_results['cv_std']:.4f})")
+        
+        print(f"\n💰 MODÈLE VENTE:")
+        print(f"   • R² Test: {vente_results['test_r2']:.4f}")
+        print(f"   • MAE: {vente_results['test_mae']:,.0f} FCFA")
+        print(f"   • Overfitting: {vente_results['overfitting']:.4f}")
+        print(f"   • CV R²: {vente_results['cv_mean']:.4f} (±{vente_results['cv_std']:.4f})")
+        
+        print(f"\n📁 Modèles sauvegardés dans: ./data/models/")
+        print("   • location_model.pkl")
+        print("   • vente_model.pkl")
+        print("   • *_encoder.pkl")
+        print("   • *_metrics.json")
+        print("   • *_features.json")
+        print("   • *_importance.csv")
+        
         return {
             'status': 'success',
-            'model_name': 'XGBBoost',
-            'train_r2': train_r2,
-            'test_r2': test_r2,
-            'test_mae': test_mae,
-            'test_rmse': test_rmse,
-            'overfitting': train_r2 - test_r2,
-            'timestamp': datetime.now().isoformat()
+            'location_metrics': {
+                'r2': float(loc_results['test_r2']),
+                'mae': float(loc_results['test_mae']),
+                'overfitting': float(loc_results['overfitting']),
+                'cv_mean': float(loc_results['cv_mean'])
+            },
+            'vente_metrics': {
+                'r2': float(vente_results['test_r2']),
+                'mae': float(vente_results['test_mae']),
+                'overfitting': float(vente_results['overfitting']),
+                'cv_mean': float(vente_results['cv_mean'])
+            },
+            'timestamp': time.strftime('%Y-%m-%d %H:%M:%S')
         }
 
     # Définir l'ordre d'exécution

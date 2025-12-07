@@ -197,8 +197,8 @@ elif page == "Prédiction":
     ])
 
     category = st.selectbox("Catégorie", ["location", "vente"])
-    area = st.text_input("Quartier", "grand_dakar")
-    city = st.text_input("Ville", "dakar")
+    area = st.selectbox("Area", sorted(df["area"].unique()))
+    city = st.selectbox("Ville", sorted(df['city'].unique()))
 
     if st.button("Prédire"):
         data = {
