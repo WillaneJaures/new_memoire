@@ -1,0 +1,19 @@
+{
+    "dataset": "location",
+    "best_method": "random",
+    "test_r2": 0.788135290145874,
+    "test_mae": 207823.40625,
+    "test_rmse": 300502.94779253,
+    "cv_mean": 0.8025806744893392,
+    "cv_std": 0.1452022388162242,
+    "params": {
+        "subsample": 0.8,
+        "n_estimators": 300,
+        "min_child_weight": 1,
+        "max_depth": 7,
+        "learning_rate": 0.030000000000000006,
+        "gamma": 0.6666666666666666,
+        "colsample_bytree": 0.9
+    },
+    "timestamp": "2025-12-09 22:09:18"
+}

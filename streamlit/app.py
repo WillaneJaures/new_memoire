@@ -180,13 +180,11 @@ if page == "Dashboard":
                                labels={'x': 'Area', 'y': 'Prix moyen (FCFA)'}, title="Top 10 - Vente")
             st.plotly_chart(fig_vente, use_container_width=True)
     with col2:
-        st.image("../images/rent.png", width=30)
-        st.markdown("### Location")
-        if not df_location.empty:
-            avg_price_location = df_location.groupby('area')['price'].mean().sort_values(ascending=False).head(10)
-            fig_location = px.bar(x=avg_price_location.index, y=avg_price_location.values,
-                                  labels={'x': 'Quartier', 'y': 'Prix moyen (FCFA)'}, title="Top 10 - Location")
-            st.plotly_chart(fig_location, use_container_width=True)
+        st.image("../images/pie-chart.png", width=30)
+        st.subheader("Répartition par type")
+        cat_counts = df['category'].value_counts()
+        fig = px.pie(values=cat_counts.values, names=cat_counts.index)
+        st.plotly_chart(fig, use_container_width=True)
 
 
     st.markdown("---")

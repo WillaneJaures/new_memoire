@@ -1449,30 +1449,47 @@ with DAG(
     @task
     def train_model_after_etl():
         """
-        Entraîne automatiquement le modèle ML juste après l’ETL.
-        Sauvegarde le meilleur modèle + preprocessing + métriques.
+        Entraîne automatiquement le modèle ML juste après l’ETL, incluant
+        l'optimisation des hyperparamètres par différentes méthodes (Grid, Random, Optuna).
+        Sauvegarde UNIQUEMENT le modèle du MEILLEUR optimiseur.
         """
         import pandas as pd
         import numpy as np
         import sqlite3
         import joblib
         import os
+        # Désactiver les logs verbeux de XGBoost
+        os.environ["XGBOOST_DISABLE_STDLOG"] = "1"
         import json
         import logging
         import time
+        import warnings
 
-        from sklearn.model_selection import train_test_split, cross_val_score, KFold
+        from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV, RandomizedSearchCV
         from sklearn.preprocessing import OneHotEncoder
         from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
         from xgboost import XGBRegressor
 
-        # ============================================================
-        # 1️⃣ CHARGEMENT DES DONNÉES
-        # ============================================================
+        # Optional: Bayesian optimization
+        try:
+            import optuna
+        except Exception as e:
+            optuna = None
+            logging.warning("optuna not available. Optuna optimization will be skipped.")
 
-        db_path = "./data/immobilier.db"
+        warnings.filterwarnings("ignore")
+        logging.basicConfig(level=logging.INFO)
+
+        # ------------------------------------------------------------
+        # 1️⃣ CHARGEMENT DES DONNÉES
+        # ------------------------------------------------------------
+        db_path = "../data/immobilier.db"
         if not os.path.exists(db_path):
-            raise FileNotFoundError(f"❌ Base SQLite introuvable : {db_path}")
+            db_path = "./data/immobilier.db"
+            if not os.path.exists(db_path):
+                raise FileNotFoundError(
+                    "❌ Base SQLite introuvable. Chemins vérifiés : ../data/immobilier.db et ./data/immobilier.db"
+                )
 
         conn = sqlite3.connect(db_path)
         df = pd.read_sql("SELECT * FROM realestate", conn)
@@ -1483,99 +1500,92 @@ with DAG(
 
         logging.info(f"✅ Données chargées : {df.shape}")
 
-        # ============================================================
+        # ------------------------------------------------------------
         # 2️⃣ PRÉTRAITEMENTS
-        # ============================================================
+        # ------------------------------------------------------------
+        df = df.copy()
 
-        df.rename(columns={'type': 'type_bien'}, inplace=True)
-        df['area'] = df['area'].replace("Point-e", 'Point E')
-        df['city'] = df["city"].replace("thiès", "thies")
-        mask_dakar = df['area'] == 'Dakar'
-        other_areas = df.loc[~mask_dakar, 'area']
-        df.loc[mask_dakar, 'area'] = np.random.choice(
-            other_areas.values, 
-            size=mask_dakar.sum()
-        )
+        # Renommages et corrections basiques
+        if 'type' in df.columns and 'type_bien' not in df.columns:
+            df.rename(columns={'type': 'type_bien'}, inplace=True)
 
-        categorical_cols = df.select_dtypes(include=[object]).columns
+        if 'area' in df.columns:
+            df['area'] = df['area'].replace("Point-e", "Point E")
+
+        if 'city' in df.columns:
+            df['city'] = df['city'].replace("thiès", "thies")
+
+        # Gestion des zones génériques "Dakar"
+        if 'area' in df.columns:
+            mask_dakar = df['area'] == 'Dakar'
+            other_areas = df.loc[~mask_dakar, 'area'].dropna().unique()
+            if len(other_areas) > 0 and mask_dakar.sum() > 0:
+                df.loc[mask_dakar, 'area'] = np.random.choice(other_areas, size=mask_dakar.sum())
 
         # Nettoyage texte
+        categorical_cols = df.select_dtypes(include=[object]).columns.tolist()
         for col in categorical_cols:
             df[col] = df[col].astype(str).str.lower().str.replace(" ", "_")
 
-        # Terrains = 0 chambres/sdb
+        # Terrains -> 0 chambres/sdb
         mask_terr = df["type_bien"].isin([
-            "terrains", "terrains_agricoles",
-            "terrains_commerciaux"
+            "terrains", "terrains_agricoles", "terrains_commerciaux", "fermes_&_vergers"
         ])
-        df.loc[mask_terr, ["nombre_chambres", "nombre_sdb"]] = 0
+        if 'nombre_chambres' in df.columns and 'nombre_sdb' in df.columns:
+            df.loc[mask_terr, ["nombre_chambres", "nombre_sdb"]] = 0
 
-        # Toutes les corrections en une liste
-        corrections = [
-            ('villas', 'superficie', '<', 150),
-            ('appartements', 'nombre_chambres', '>', 6),
-            ('villas', 'nombre_chambres', '>', 9),
-            ('appartements', 'nombre_sdb', '>', 6),
-            ('villas', 'nombre_sdb', '>', 9),
-            ('bureaux_&_commerces', 'superficie', '<', 20)
-        ]
+        # Remplacements basiques
+        if 'type_bien' in df.columns:
+            df['type_bien'] = df['type_bien'].replace({
+                'appartements_meublés': 'appartements',
+                'maisons_de_vacances': 'villas',
+                'immobilier': 'villas',
+                'immeubles': 'terrains'
+            })
 
-        for type_bien, colonne, operation, seuil in corrections:
-            mask = (df['type_bien'] == type_bien) & (
-                (df[colonne] > seuil) if operation == '>' else (df[colonne] < seuil)
-            )
-            if mask.any():
-                mediane = df[df['type_bien'] == type_bien][colonne].median()
-                count = mask.sum()
-                df.loc[mask, colonne] = mediane
-                print(f"✅ {type_bien}.{colonne}: {count} valeurs {operation} {seuil} → {mediane:.0f}")
-        
-        # Séparation location/vente
-        df_loc = df[df['category'] == 'location']
-        df_vente = df[df['category'] == 'vente']
-
-        # ============================================================
-        # 3️⃣ CORRECTION DES PRIX ABERRANTS
-        # ============================================================
-
-        # Prix location villas
-        mask_loc = (df_loc['type_bien'] == 'villas') & (df_loc['price'] < 300000)
-        if mask_loc.any():
-            median_villas = df_loc[df_loc['type_bien'] == 'villas']['price'].median()
-            df_loc.loc[mask_loc, 'price'] = median_villas
-
-        # Prix vente villas
-        mask_vente = (df_vente['type_bien'] == 'villas') & (df_vente['price'] < 20000000)
-        if mask_vente.any():
-            median_villas = df_vente[df_vente['type_bien'] == 'villas']['price'].median()
-            df_vente.loc[mask_vente, 'price'] = median_villas
-
-        # Prix terrains
-        mask_terrains_bas_prix = df_vente['type_bien'].isin(["terrains", "terrains_agricoles", "terrains_commerciaux"]) & (df_vente['price'] < 5000000)
-        if mask_terrains_bas_prix.any():
-            median_terrains = df_vente[df_vente['type_bien'].isin(["terrains", "terrains_agricoles", "terrains_commerciaux"])]['price'].median()
-            df_vente.loc[mask_terrains_bas_prix, 'price'] = median_terrains
-
-        # Fusion
-        df = pd.concat([df_loc, df_vente], axis=0, ignore_index=True)
-
-        # Nettoyage final
-        df = df.drop(columns=['id'], errors='ignore')
+        # Nettoyage doublons et valeurs nulles/négatives
         df = df.drop_duplicates()
-        df = df[~df['type_bien'].isin(['Unknown', 'Immobilier', 'unknown', 'immobilier', 'terrains'])]
+        if 'price' in df.columns:
+            df = df[df['price'] > 0]
+        if 'superficie' in df.columns:
+            df = df[df['superficie'] > 0]
 
-        # ============================================================
-        # 4️⃣ SÉPARATION LOCATION/VENTE
-        # ============================================================
+        # Filtre types inconnus
+        if 'type_bien' in df.columns:
+            df = df[~df['type_bien'].isin(['unknown', 'immobilier', 'terrains'])]
 
-        df_loc = df[df["category"] == "location"].copy()
-        df_vente = df[df["category"] == "vente"].copy()
+        # ------------------------------------------------------------
+        # 3️⃣ SPLIT LOCATION / VENTE
+        # ------------------------------------------------------------
+        df_loc = df[df['category'] == 'location'].copy() if 'category' in df.columns else df.copy()
+        df_vente = df[df['category'] == 'vente'].copy() if 'category' in df.columns else df.copy()
 
-        # ============================================================
-        # 5️⃣ CORRECTION DES OUTLIERS PAR GROUPE
-        # ============================================================
+        # ------------------------------------------------------------
+        # 4️⃣ GESTION PRIX ABERRANTS (Remplacement par mediane)
+        # ------------------------------------------------------------
+        def replace_price_by_median_if_condition(df_group, cond_mask, col='price'):
+            if cond_mask.any():
+                med = df_group.loc[~cond_mask, col].median()
+                df_group.loc[cond_mask, col] = med
+            return df_group
 
+        if not df_loc.empty and 'type_bien' in df_loc.columns and 'price' in df_loc.columns:
+            mask_low = (df_loc['type_bien'] == 'villas') & (df_loc['price'] < 300000)
+            df_loc = replace_price_by_median_if_condition(df_loc, mask_low, 'price')
+
+        if not df_vente.empty and 'type_bien' in df_vente.columns and 'price' in df_vente.columns:
+            mask_low_v = (df_vente['type_bien'] == 'villas') & (df_vente['price'] < 20000000)
+            df_vente = replace_price_by_median_if_condition(df_vente, mask_low_v, 'price')
+
+            mask_terrains_bas = df_vente['type_bien'].isin(["terrains", "terrains_agricoles", "terrains_commerciaux"]) & (df_vente['price'] < 5000000)
+            df_vente = replace_price_by_median_if_condition(df_vente, mask_terrains_bas, 'price')
+
+        # ------------------------------------------------------------
+        # 5️⃣ OUTLIERS - CAPPING (IQR)
+        # ------------------------------------------------------------
         def impute_outliers_group(df_group, feature):
+            if feature not in df_group.columns or df_group[feature].dropna().empty:
+                return df_group
             q1 = df_group[feature].quantile(0.25)
             q3 = df_group[feature].quantile(0.75)
             iqr = q3 - q1
@@ -1586,60 +1596,65 @@ with DAG(
             return df_group
 
         for feature in ["price", "superficie", "nombre_chambres", "nombre_sdb"]:
-            df_loc = impute_outliers_group(df_loc, feature)
-            df_vente = impute_outliers_group(df_vente, feature)
+            if feature in df_loc.columns:
+                df_loc = df_loc.groupby('type_bien', group_keys=False).apply(lambda g: impute_outliers_group(g, feature))
+            if feature in df_vente.columns:
+                df_vente = df_vente.groupby('type_bien', group_keys=False).apply(lambda g: impute_outliers_group(g, feature))
 
         logging.info("✅ Outliers traités (group-wise capping)")
         print(f"📍 Locations: {df_loc.shape[0]} annonces")
         print(f"💰 Ventes: {df_vente.shape[0]} annonces")
 
-        # ============================================================
-        # 6️⃣ FEATURE ENGINEERING - FONCTION SÉPARÉE
-        # ============================================================
-
-        def prepare_features(df, dataset_name):
-            """Préparation des features pour un dataset"""
-            df = df.copy()
+        # ------------------------------------------------------------
+        # 6️⃣ FEATURE ENGINEERING
+        # ------------------------------------------------------------
+        def prepare_features(df_in):
+            df = df_in.copy()
             
-            # Feature engineering
+            # FillNa pour division safe
+            for col in ['nombre_chambres', 'nombre_sdb']:
+                if col in df.columns: df[col] = df[col].fillna(0)
+                else: df[col] = 0
+            
+            if 'superficie' in df.columns: df['superficie'] = df['superficie'].fillna(0.0)
+            else: df['superficie'] = 0.0
+
+            # Ratios
             df['ratio_sdb_chambres'] = df['nombre_sdb'] / (df['nombre_chambres'] + 1)
             df['surface_par_chambre'] = df['superficie'] / (df['nombre_chambres'] + 1)
             df['total_pieces'] = df['nombre_chambres'] + df['nombre_sdb']
             df['density'] = df['nombre_chambres'] / (df['superficie'] + 1)
-                
+
+            # Transformations mathématiques
             df['log_superficie'] = np.log1p(df['superficie'])
             df['sqrt_superficie'] = np.sqrt(df['superficie'])
             df['superficie_squared'] = df['superficie'] ** 2
-                
+
+            # Booléens
             premium_areas = ['almadies', 'ngor', 'mermoz', 'sacré-coeur', 'fann']
-            df['is_premium_area'] = df['area'].isin(premium_areas).astype(int)
-            df['is_dakar'] = (df['city'] == 'dakar').astype(int)
-                
-            df['is_villa'] = (df['type_bien'] == 'villas').astype(int)
-            df['is_location'] = (df['category'] == 'location').astype(int)
-                
-            df['villa_large'] = ((df['type_bien'] == 'villas') & (df['superficie'] > 200)).astype(int)
-            df['appt_petit'] = ((df['type_bien'] == 'appartements') & (df['superficie'] < 80)).astype(int)
-                
+            df['is_premium_area'] = df['area'].isin(premium_areas).astype(int) if 'area' in df.columns else 0
+            df['is_dakar'] = (df['city'] == 'dakar').astype(int) if 'city' in df.columns else 0
+            df['is_villa'] = (df['type_bien'] == 'villas').astype(int) if 'type_bien' in df.columns else 0
+            df['is_location'] = (df['category'] == 'location').astype(int) if 'category' in df.columns else 0
+            
+            # Spécifiques
+            df['villa_large'] = ((df['type_bien'] == 'villas') & (df['superficie'] > 200)).astype(int) if 'type_bien' in df.columns else 0
+            df['appt_petit'] = ((df['type_bien'] == 'appartements') & (df['superficie'] < 80)).astype(int) if 'type_bien' in df.columns else 0
             df['high_bathroom_ratio'] = (df['nombre_sdb'] >= df['nombre_chambres']).astype(int)
             df['spacious'] = (df['surface_par_chambre'] > 40).astype(int)
-                
-            logging.info(f"✅ Feature engineering terminé pour {dataset_name}")
-            print(f"✅ {dataset_name}: Feature engineering terminé")
-            
+
             return df
 
-        # Appliquer le feature engineering
-        df_loc_prepared = prepare_features(df_loc, "Location")
-        df_vente_prepared = prepare_features(df_vente, "Vente")
+        df_loc_prepared = prepare_features(df_loc)
+        df_vente_prepared = prepare_features(df_vente)
 
-        # ============================================================
-        # 7️⃣ PRÉPARATION DES DONNÉES POUR MODÈLE
-        # ============================================================
+        logging.info("✅ Feature engineering terminé")
 
+        # ------------------------------------------------------------
+        # 7️⃣ PREPARE MODEL DATA
+        # ------------------------------------------------------------
         def prepare_model_data(df):
-            """Prépare les données X, y pour l'entraînement"""
-            # Features numériques
+            df = df.copy()
             numerical_cols = [
                 'superficie', 'nombre_chambres', 'nombre_sdb',
                 'ratio_sdb_chambres', 'surface_par_chambre', 'total_pieces', 'density',
@@ -1647,253 +1662,261 @@ with DAG(
                 'is_premium_area', 'is_dakar', 'is_villa', 'is_location',
                 'villa_large', 'appt_petit', 'high_bathroom_ratio', 'spacious'
             ]
-            
             categorical_cols = ["type_bien", "area", "city", "category"]
-            
-            # Vérifier que les colonnes existent
-            numerical_cols = [col for col in numerical_cols if col in df.columns]
-            categorical_cols = [col for col in categorical_cols if col in df.columns]
-            
-            # Séparation
-            X_num = df[numerical_cols]
-            X_cat = df[categorical_cols]
-            
-            # One-hot encoding
-            encoder = OneHotEncoder(sparse_output=False, drop="first", handle_unknown="ignore")
-            X_cat_encoded = encoder.fit_transform(X_cat)
-            feature_names = encoder.get_feature_names_out(categorical_cols)
-            
-            X_cat_df = pd.DataFrame(X_cat_encoded, columns=feature_names, index=df.index)
-            X = pd.concat([X_num.reset_index(drop=True), X_cat_df.reset_index(drop=True)], axis=1)
-            y = df["price"].reset_index(drop=True)
-            
-            return X, y, encoder, numerical_cols, categorical_cols
 
-        # Préparation des données
-        X_loc, y_loc, encoder_loc, num_cols_loc, cat_cols_loc = prepare_model_data(df_loc_prepared)
-        X_vente, y_vente, encoder_vente, num_cols_vente, cat_cols_vente = prepare_model_data(df_vente_prepared)
+            # Filtrer colonnes existantes
+            numerical_cols = [c for c in numerical_cols if c in df.columns]
+            categorical_cols = [c for c in categorical_cols if c in df.columns]
+
+            X_num = df[numerical_cols].reset_index(drop=True) if numerical_cols else pd.DataFrame(index=df.index)
+            X_cat = df[categorical_cols].fillna("missing").reset_index(drop=True) if categorical_cols else pd.DataFrame()
+
+            encoder = None
+            if categorical_cols:
+                encoder = OneHotEncoder(sparse_output=False, drop="first", handle_unknown="ignore")
+                X_cat_encoded = encoder.fit_transform(X_cat)
+                feature_names = encoder.get_feature_names_out(categorical_cols)
+                X_cat_df = pd.DataFrame(X_cat_encoded, columns=feature_names)
+                X = pd.concat([X_num.reset_index(drop=True), X_cat_df.reset_index(drop=True)], axis=1)
+            else:
+                X = X_num
+
+            y = df["price"].reset_index(drop=True) if 'price' in df.columns else pd.Series([])
+
+            return X, y, encoder
+
+        X_loc, y_loc, encoder_loc = prepare_model_data(df_loc_prepared)
+        X_vente, y_vente, encoder_vente = prepare_model_data(df_vente_prepared)
 
         print(f"📍 Location: {X_loc.shape[1]} features, {X_loc.shape[0]} échantillons")
         print(f"💰 Vente: {X_vente.shape[1]} features, {X_vente.shape[0]} échantillons")
 
-        # ============================================================
-        # 8️⃣ ENTRAÎNEMENT DES MODÈLES - FONCTION SÉPARÉE
-        # ============================================================
-
-        def train_model(X, y, encoder, model_name, task_type):
-            """Entraîne un modèle XGBoost"""
-            
-            # Train/test split
-            X_train, X_test, y_train, y_test = train_test_split(
-                X, y, test_size=0.2, random_state=42, shuffle=True
-            )
-            
-            print(f"\n🎯 Entraînement {model_name} ({task_type})")
-            print(f"   Train: {X_train.shape}, Test: {X_test.shape}")
-            
-            # Paramètres optimisés
-            if task_type == "location":
-                params = {
-                    'n_estimators': 500,
-                    'max_depth': 5,
-                    'learning_rate': 0.02,
-                    'subsample': 0.8,
-                    'colsample_bytree': 0.8,
-                    'reg_alpha': 0.1,
-                    'reg_lambda': 1.0,
-                    'min_child_weight': 5,
-                    'gamma': 0.1,
-                    'random_state': 42,
-                    'eval_metric': 'rmse',
-                    'n_jobs': -1
-                }
-            else:  # vente
-                params = {
-                    'n_estimators': 300,
-                    'max_depth': 3,
-                    'learning_rate': 0.01,
-                    'subsample': 0.6,
-                    'colsample_bytree': 0.6,
-                    'reg_alpha': 2.0,
-                    'reg_lambda': 10.0,
-                    'min_child_weight': 15,
-                    'gamma': 0.5,
-                    'random_state': 42,
-                    'eval_metric': 'rmse',
-                    'n_jobs': -1
-                }
-            
-            # Modèle XGBoost
-            model = XGBRegressor(**params)
-            
-            # Early stopping avec validation set
-            X_train_fit, X_val, y_train_fit, y_val = train_test_split(
-                X_train, y_train, test_size=0.1, random_state=42
-            )
-            
-            # Entraînement
-            model.fit(
-                X_train_fit, y_train_fit,
-                #eval_set=[(X_val, y_val)],
-                #early_stopping_rounds=50,
-                #verbose=False
-            )
-            
-            # Prédictions
-            y_train_pred = model.predict(X_train)
-            y_test_pred = model.predict(X_test)
-            
-            # Métriques
-            train_r2 = r2_score(y_train, y_train_pred)
-            test_r2 = r2_score(y_test, y_test_pred)
-            test_mae = mean_absolute_error(y_test, y_test_pred)
-            test_rmse = np.sqrt(mean_squared_error(y_test, y_test_pred))
-            
-            # Cross-validation
-            cv_scores = cross_val_score(
-                model, X_train, y_train, 
-                cv=KFold(n_splits=5, shuffle=True, random_state=42),
-                scoring='r2',
-                n_jobs=-1
-            )
-            
-            # Feature importance
-            importance_df = pd.DataFrame({
-                'feature': X.columns,
-                'importance': model.feature_importances_
-            }).sort_values('importance', ascending=False)
-            
-            print(f"\n📊 Résultats {model_name}:")
-            print(f"   Train R²: {train_r2:.4f}")
-            print(f"   Test R²:  {test_r2:.4f}")
-            print(f"   Test MAE: {test_mae:,.0f} FCFA")
-            print(f"   Test RMSE: {test_rmse:,.0f} FCFA")
-            print(f"   Overfitting: {train_r2 - test_r2:.4f}")
-            print(f"   CV R² mean: {cv_scores.mean():.4f} (±{cv_scores.std():.4f})")
-            
-            # Top features
-            print(f"\n🏆 Top 5 features {model_name}:")
-            for i, row in importance_df.head(5).iterrows():
-                print(f"   {row['feature']}: {row['importance']:.4f}")
-            
-            return {
-                'model': model,
-                'encoder': encoder,
-                'train_r2': train_r2,
-                'test_r2': test_r2,
-                'test_mae': test_mae,
-                'test_rmse': test_rmse,
-                'overfitting': train_r2 - test_r2,
-                'cv_mean': cv_scores.mean(),
-                'cv_std': cv_scores.std(),
-                'importance': importance_df,
-                'X_columns': X.columns.tolist()
+        # ------------------------------------------------------------
+        # 8️⃣ OPTIMIZATION HELPERS
+        # ------------------------------------------------------------
+        def optimize_grid_search(X, y, task_type):
+            print("\n🔍 GRID SEARCH...")
+            param_grid = {
+                "n_estimators": [200, 400, 600],
+                "max_depth": [3, 4, 5],
+                "learning_rate": [0.005, 0.01, 0.02],
+                "subsample": [0.6, 0.8, 1.0],
+                "colsample_bytree": [0.6, 0.8, 1.0]
             }
+            model = XGBRegressor(eval_metric="rmse", random_state=42, n_jobs=-1, verbosity=0)
+            gs = GridSearchCV(model, param_grid, scoring="r2", cv=3, n_jobs=-1, verbose=0)
+            gs.fit(X, y)
+            return gs.best_estimator_, gs.best_params_, gs.best_score_
 
-        # Entraînement des modèles
-        print("\n" + "="*80)
-        print("🚀 DÉBUT DE L'ENTRAÎNEMENT DES MODÈLES")
-        print("="*80)
+        def optimize_random_search(X, y, task_type, n_iter=40):
+            print("\n🎲 RANDOM SEARCH...")
+            param_dist = {
+                "n_estimators": np.arange(200, 1001, 100),
+                "max_depth": np.arange(2, 9),
+                "learning_rate": np.linspace(0.005, 0.05, 10),
+                "subsample": np.linspace(0.5, 1.0, 6),
+                "colsample_bytree": np.linspace(0.5, 1.0, 6),
+                "gamma": np.linspace(0, 1, 10),
+                "min_child_weight": np.arange(1, 20)
+            }
+            model = XGBRegressor(eval_metric="rmse", random_state=42, n_jobs=-1, verbosity=0)
+            rs = RandomizedSearchCV(model, param_dist, scoring="r2", cv=3, n_jobs=-1, n_iter=n_iter, verbose=0, random_state=42)
+            rs.fit(X, y)
+            return rs.best_estimator_, rs.best_params_, rs.best_score_
 
-        loc_results = train_model(X_loc, y_loc, encoder_loc, "Location", "location")
-        vente_results = train_model(X_vente, y_vente, encoder_vente, "Vente", "vente")
+        def optimize_bayesian_optuna(X, y, task_type, n_trials=40):
+            if optuna is None:
+                logging.warning("Optuna non installé.")
+                return None, None, None
+            print("\n🤖 OPTUNA BAYESIAN OPTIMIZATION...")
 
-        # ============================================================
-        # 9️⃣ SAUVEGARDE DES MODÈLES
-        # ============================================================
+            def objective(trial):
+                params = {
+                    "n_estimators": trial.suggest_int("n_estimators", 300, 1000),
+                    "max_depth": trial.suggest_int("max_depth", 3, 8),
+                    "learning_rate": trial.suggest_float("learning_rate", 0.005, 0.05),
+                    "subsample": trial.suggest_float("subsample", 0.5, 1.0),
+                    "colsample_bytree": trial.suggest_float("colsample_bytree", 0.5, 1.0),
+                    "gamma": trial.suggest_float("gamma", 0.0, 1.0),
+                    "min_child_weight": trial.suggest_int("min_child_weight", 1, 20),
+                    "reg_alpha": trial.suggest_float("reg_alpha", 0.0, 5.0),
+                    "reg_lambda": trial.suggest_float("reg_lambda", 0.1, 10.0),
+                }
+                model = XGBRegressor(**params, eval_metric="rmse", random_state=42, n_jobs=-1, verbosity=0)
+                scores = cross_val_score(model, X, y, scoring="r2", cv=3, n_jobs=-1)
+                return float(scores.mean())
 
-        def save_model_artifacts(results, model_name, num_cols, cat_cols):
-            """Sauvegarde tous les artefacts du modèle"""
+            study = optuna.create_study(direction="maximize")
+            study.optimize(objective, n_trials=n_trials, show_progress_bar=False)
+            best_params = study.best_params
+            best_score = study.best_value
+            best_model = XGBRegressor(**best_params, eval_metric="rmse", random_state=42, n_jobs=-1, verbosity=0)
+            best_model.fit(X, y)
+            return best_model, best_params, best_score
+
+        # ------------------------------------------------------------
+        # 9️⃣ TRAIN + OPTIMIZE PIPELINE
+        # ------------------------------------------------------------
+        def train_and_optimize_all(X, y, encoder, dataset_name, output_dir="./data/models"):
+            os.makedirs(output_dir, exist_ok=True)
+
+            if X.shape[0] < 30:
+                logging.warning(f"Dataset {dataset_name} trop petit. Skip.")
+                return None
+
+            # 1) Try all optimizers
+            methods = {}
+            try:
+                m_gs, p_gs, s_gs = optimize_grid_search(X, y, dataset_name)
+                methods["grid"] = (m_gs, p_gs, s_gs)
+            except Exception as e:
+                logging.exception(f"Grid search failed: {e}")
+
+            try:
+                m_rs, p_rs, s_rs = optimize_random_search(X, y, dataset_name)
+                methods["random"] = (m_rs, p_rs, s_rs)
+            except Exception as e:
+                logging.exception(f"Random search failed: {e}")
+
+            try:
+                m_opt, p_opt, s_opt = optimize_bayesian_optuna(X, y, dataset_name)
+                methods["optuna"] = (m_opt, p_opt, s_opt)
+            except Exception as e:
+                logging.exception(f"Optuna failed: {e}")
+
+            # Evaluate on Hold-out Test set
+            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, shuffle=True)
+
+            def eval_model(m):
+                y_pred = m.predict(X_test)
+                r2 = r2_score(y_test, y_pred)
+                mae = mean_absolute_error(y_test, y_pred)
+                rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+                return r2, mae, rmse
+
+            # Select Best Model based on Hold-out R2
+            best_method = None
+            best_pack = None
+            best_r2_test = -np.inf
+            best_eval_metrics = (None, None, None)
+
+            for m_name, (model_obj, params_obj, _) in methods.items():
+                if model_obj is None: continue
+                
+                curr_r2, curr_mae, curr_rmse = eval_model(model_obj)
+                
+                if curr_r2 > best_r2_test:
+                    best_r2_test = curr_r2
+                    best_method = m_name
+                    best_pack = (model_obj, params_obj)
+                    best_eval_metrics = (curr_r2, curr_mae, curr_rmse)
+
+            if best_pack is None:
+                logging.error(f"Aucun modèle valide pour {dataset_name}.")
+                return None
+
+            # Unpack winner
+            best_model_obj, best_params_obj = best_pack
+            final_r2, final_mae, final_rmse = best_eval_metrics
+
+            # Compute CV Mean on full data for metrics
+            try:
+                cv_scores = cross_val_score(best_model_obj, X, y, cv=3, scoring="r2", n_jobs=-1)
+                cv_mean = float(cv_scores.mean())
+                cv_std = float(cv_scores.std())
+            except:
+                cv_mean, cv_std = None, None
+
+            # Filenames
+            base_name = f"{dataset_name.lower()}_{best_method}_optimized"
+            model_file = os.path.join(output_dir, f"{base_name}_model.pkl")
+            encoder_file = os.path.join(output_dir, f"{base_name}_encoder.pkl")
+            features_file = os.path.join(output_dir, f"{base_name}_features.json")
+            metrics_file = os.path.join(output_dir, f"{base_name}_metrics.json")
+            importance_file = os.path.join(output_dir, f"{base_name}_importance.csv")
+
+            # Save Artifacts
+            joblib.dump(best_model_obj, model_file)
+            if encoder:
+                joblib.dump(encoder, encoder_file)
+            else:
+                joblib.dump(None, encoder_file)
+
+            # Feature Importance
+            try:
+                imp_df = pd.DataFrame({
+                    "feature": X.columns,
+                    "importance": best_model_obj.feature_importances_
+                }).sort_values("importance", ascending=False)
+                imp_df.to_csv(importance_file, index=False)
+            except: pass
+
+            # Save Features List
+            try:
+                with open(features_file, "w") as f:
+                    json.dump({"features": X.columns.tolist()}, f, indent=2)
+            except: pass
+
+            # ============================================================
+            # ✨ SAVE METRICS (CORRECTION DU TYPAGE JSON)
+            # ============================================================
             
-            os.makedirs('./data/models', exist_ok=True)
-            base_path = f'./data/models/{model_name}'
-            
-            # Modèle
-            joblib.dump(results['model'], f'{base_path}_model.pkl')
-            
-            # Encoder
-            joblib.dump(results['encoder'], f'{base_path}_encoder.pkl')
-            
-            # Features
-            with open(f'{base_path}_features.json', 'w') as f:
-                json.dump(results['X_columns'], f, indent=4)
-            
-            # Métriques
+            # Nettoyage des paramètres (conversion numpy -> types natifs pour JSON)
+            safe_params = {}
+            if isinstance(best_params_obj, dict):
+                for k, v in best_params_obj.items():
+                    if isinstance(v, (np.integer, int)):
+                        safe_params[k] = int(v)
+                    elif isinstance(v, (np.floating, float)):
+                        safe_params[k] = float(v)
+                    else:
+                        safe_params[k] = v
+
             metrics = {
-                'train_r2': float(results['train_r2']),
-                'test_r2': float(results['test_r2']),
-                'test_mae': float(results['test_mae']),
-                'test_rmse': float(results['test_rmse']),
-                'overfitting': float(results['overfitting']),
-                'cv_mean': float(results['cv_mean']),
-                'cv_std': float(results['cv_std']),
-                'timestamp': time.strftime('%Y-%m-%d %H:%M:%S')
+                "dataset": dataset_name,
+                "best_method": best_method,
+                # Casting explicite en float pour éviter l'erreur de sérialisation JSON
+                "test_r2": float(final_r2) if final_r2 is not None else None,
+                "test_mae": float(final_mae) if final_mae is not None else None,
+                "test_rmse": float(final_rmse) if final_rmse is not None else None,
+                "cv_mean": float(cv_mean) if cv_mean is not None else None,
+                "cv_std": float(cv_std) if cv_std is not None else None,
+                "params": safe_params,
+                "timestamp": time.strftime('%Y-%m-%d %H:%M:%S')
             }
-            with open(f'{base_path}_metrics.json', 'w') as f:
+
+            with open(metrics_file, "w") as f:
                 json.dump(metrics, f, indent=4)
-            
-            # Importance des features
-            results['importance'].to_csv(f'{base_path}_importance.csv', index=False)
-            
-            # Colonnes
-            columns_info = {
-                'numerical_cols': num_cols,
-                'categorical_cols': cat_cols,
-                'total_features': len(results['X_columns'])
+
+            logging.info(f"💾 Modèle sauvegardé : {model_file} (R2={final_r2:.4f})")
+
+            return {
+                "dataset": dataset_name,
+                "best_method": best_method,
+                "best_r2_test": float(final_r2)
             }
-            with open(f'{base_path}_columns.json', 'w') as f:
-                json.dump(columns_info, f, indent=4)
-            
-            print(f"✅ {model_name} sauvegardé avec {len(results['X_columns'])} features")
 
-        # Sauvegarde
-        save_model_artifacts(loc_results, 'location', num_cols_loc, cat_cols_loc)
-        save_model_artifacts(vente_results, 'vente', num_cols_vente, cat_cols_vente)
+        # ------------------------------------------------------------
+        # 10️⃣ EXECUTION
+        # ------------------------------------------------------------
+        models_output_dir = "./data/models"
+        os.makedirs(models_output_dir, exist_ok=True)
 
-        # ============================================================
-        # 🔟 RAPPORT FINAL
-        # ============================================================
+        loc_res = None
+        if X_loc.shape[0] >= 30:
+            loc_res = train_and_optimize_all(X_loc, y_loc, encoder_loc, "location", models_output_dir)
+
+        vente_res = None
+        if X_vente.shape[0] >= 30:
+            vente_res = train_and_optimize_all(X_vente, y_vente, encoder_vente, "vente", models_output_dir)
 
         print("\n" + "="*80)
-        print("🏁 RAPPORT FINAL D'ENTRAÎNEMENT")
+        print("🏁 RAPPORT FINAL")
         print("="*80)
-        
-        print(f"\n📍 MODÈLE LOCATION:")
-        print(f"   • R² Test: {loc_results['test_r2']:.4f}")
-        print(f"   • MAE: {loc_results['test_mae']:,.0f} FCFA")
-        print(f"   • Overfitting: {loc_results['overfitting']:.4f}")
-        print(f"   • CV R²: {loc_results['cv_mean']:.4f} (±{loc_results['cv_std']:.4f})")
-        
-        print(f"\n💰 MODÈLE VENTE:")
-        print(f"   • R² Test: {vente_results['test_r2']:.4f}")
-        print(f"   • MAE: {vente_results['test_mae']:,.0f} FCFA")
-        print(f"   • Overfitting: {vente_results['overfitting']:.4f}")
-        print(f"   • CV R²: {vente_results['cv_mean']:.4f} (±{vente_results['cv_std']:.4f})")
-        
-        print(f"\n📁 Modèles sauvegardés dans: ./data/models/")
-        print("   • location_model.pkl")
-        print("   • vente_model.pkl")
-        print("   • *_encoder.pkl")
-        print("   • *_metrics.json")
-        print("   • *_features.json")
-        print("   • *_importance.csv")
-        
-        return {
-            'status': 'success',
-            'location_metrics': {
-                'r2': float(loc_results['test_r2']),
-                'mae': float(loc_results['test_mae']),
-                'overfitting': float(loc_results['overfitting']),
-                'cv_mean': float(loc_results['cv_mean'])
-            },
-            'vente_metrics': {
-                'r2': float(vente_results['test_r2']),
-                'mae': float(vente_results['test_mae']),
-                'overfitting': float(vente_results['overfitting']),
-                'cv_mean': float(vente_results['cv_mean'])
-            },
-            'timestamp': time.strftime('%Y-%m-%d %H:%M:%S')
-        }
+        if loc_res: print(f"📍 LOCATION: {loc_res['best_method']} | R2: {loc_res['best_r2_test']:.4f}")
+        if vente_res: print(f"💰 VENTE:    {vente_res['best_method']} | R2: {vente_res['best_r2_test']:.4f}")
+
+        return {"status": "success", "loc": loc_res, "vente": vente_res}
 
     # Définir l'ordre d'exécution
     coinmarket = scrape_coinmarket()

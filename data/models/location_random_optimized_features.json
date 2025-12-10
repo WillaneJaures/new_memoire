@@ -1,4 +1,5 @@
-[
+{
+  "features": [
     "superficie",
     "nombre_chambres",
     "nombre_sdb",
@@ -120,4 +121,5 @@
     "city_thies",
     "city_toubab_dialao",
     "city_ziguinchor"
-]
+  ]
+}

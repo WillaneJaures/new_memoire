@@ -1,0 +1,17 @@
+{
+    "dataset": "vente",
+    "best_method": "grid",
+    "test_r2": 0.5803863406181335,
+    "test_mae": 57393552.0,
+    "test_rmse": 79478451.32068078,
+    "cv_mean": 0.4429673155148824,
+    "cv_std": 0.03923975744161549,
+    "params": {
+        "colsample_bytree": 0.6,
+        "learning_rate": 0.01,
+        "max_depth": 5,
+        "n_estimators": 600,
+        "subsample": 1.0
+    },
+    "timestamp": "2025-12-09 22:11:04"
+}
